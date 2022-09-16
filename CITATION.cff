@@ -1,0 +1,12 @@
+cff-version: 1.2.0
+title: snowfake
+version: 0.1
+message: Please use this information to cite this work.
+type: software
+authors:
+  - given-names: Matt
+    family-names: Hall
+    email: matt@agilescientific.com
+    affiliation: Agile Scientific
+    orcid: 'https://orcid.org/0000-0002-4054-8295'
+date-released: 2021-11-28
