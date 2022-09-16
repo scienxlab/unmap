@@ -145,14 +145,14 @@ def get_cmap(cmap, arr=None, levels=256, quantize=False):
             raise TypeError("cmap must be a str (name of a matplotlib cmap) or an array-like.")
 
         if (cmap.ndim == 1) and (cmap.size == 4):
-            cmap = crop_out(arr, cmap, force_landscape=True, reduce=np.mean)
+            cmap = crop_out(arr, cmap)
 
         if quantize:
             cmap, _ = kmeans(cmap, levels)
 
         if (cmap.ndim == 3) and (cmap.shape[0] > cmap.shape[1]):
             # Then it is a vertical rectangle.
-            cmap = np.swapaxes(cmap, 0, 1)
+            cmap = np.swapaxes(cmap[::-1], 0, 1)
 
         if (cmap.ndim == 3):
             cmap = np.mean(cmap, axis=0)
