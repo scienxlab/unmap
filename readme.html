@@ -1,15 +1,15 @@
 <!doctype html>
-<html class="no-js">
+<html class="no-js" lang="en">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
-    <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="snowfake package" href="snowfake.html" /><link rel="prev" title="Snowfake: Gravner–Griffeath snowflakes" href="index.html" />
+    <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="unmap package" href="unmap.html" /><link rel="prev" title="unmap: Gravner–Griffeath snowflakes" href="index.html" />
 
-    <link rel="shortcut icon" href="_static/favicon.ico"/><meta name="generator" content="sphinx-4.4.0, furo 2022.02.14.1"/>
-        <title>snowfake - snowfake documentation</title>
+    <link rel="shortcut icon" href="_static/favicon.ico"/><meta name="generator" content="sphinx-5.1.1, furo 2022.09.15"/>
+        <title>unmap - unmap documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?digest=a8f031f701c6af50c9919b48f173a5785af06fac" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?digest=25ceb02ed1c46dc30f2321ff83e92799f69dfdb9" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?digest=9ec31e2665bf879c1d47d93a8ec4893870ee1e45" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css" />
     
     
@@ -21,24 +21,28 @@
   --color-code-foreground: black;
   
   }
-  body[data-theme="dark"] {
-    --color-code-background: #202020;
-  --color-code-foreground: #d0d0d0;
-  
-  }
-  @media (prefers-color-scheme: dark) {
-    body:not([data-theme="light"]) {
+  @media not print {
+    body[data-theme="dark"] {
       --color-code-background: #202020;
   --color-code-foreground: #d0d0d0;
   
     }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+      }
+    }
   }
 </style></head>
   <body>
+    
     <script>
       document.body.dataset.theme = localStorage.getItem("theme") || "auto";
     </script>
     
+
 <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
   <symbol id="svg-toc" viewBox="0 0 24 24">
     <title>Contents</title>
@@ -120,7 +124,7 @@
       </label>
     </div>
     <div class="header-center">
-      <a href="index.html"><div class="brand">snowfake  documentation</div></a>
+      <a href="index.html"><div class="brand">unmap  documentation</div></a>
     </div>
     <div class="header-right">
       <div class="theme-toggle-container theme-toggle-header">
@@ -140,11 +144,8 @@
   <aside class="sidebar-drawer">
     <div class="sidebar-container">
       
-      <div class="sidebar-sticky"><a class="sidebar-brand centered" href="index.html">
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="index.html">
   
-  <div class="sidebar-logo-container">
-    <img class="sidebar-logo" src="_static/snowfake_logo.png" alt="Logo"/>
-  </div>
   
   
 </a><form class="sidebar-search-container" method="get" action="search.html" role="search">
@@ -155,17 +156,17 @@
 <div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
   <p class="caption" role="heading"><span class="caption-text">User guide</span></p>
 <ul class="current">
-<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">snowfake</a></li>
+<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">unmap</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">API reference</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="snowfake.html">snowfake package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="unmap.html">unmap package</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Project links</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference external" href="https://pypi.org/project/snowfake/">PyPI releases</a></li>
-<li class="toctree-l1"><a class="reference external" href="https://github.com/agile-geoscience/snowfake">Code in GitHub</a></li>
-<li class="toctree-l1"><a class="reference external" href="https://github.com/agile-geoscience/snowfake/issues">Issue tracker</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://pypi.org/project/unmap/">PyPI releases</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/kwinkunks/unmap">Code in GitHub</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/kwinkunks/unmap/issues">Issue tracker</a></li>
 <li class="toctree-l1"><a class="reference external" href="https://code.agilescientific.com/community">Community guidelines</a></li>
 <li class="toctree-l1"><a class="reference external" href="https://code.agilescientific.com">Agile's software</a></li>
 <li class="toctree-l1"><a class="reference external" href="https://www.agilescientific.com">Agile's website</a></li>
@@ -181,7 +182,14 @@
   <div class="main">
     <div class="content">
       <div class="article-container">
-        <div class="content-icon-container"><div class="theme-toggle-container theme-toggle-content">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          <div class="theme-toggle-container theme-toggle-content">
             <button class="theme-toggle">
               <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
               <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
@@ -195,92 +203,64 @@
           </label>
         </div>
         <article role="main">
-          <section class="tex2jax_ignore mathjax_ignore" id="snowfake">
-<h1>snowfake<a class="headerlink" href="#snowfake" title="Permalink to this headline">#</a></h1>
-<p><a class="reference external" href="https://github.com/agile-geoscience/snowfake/actions/workflows/run-tests.yml"><img alt="Run tests" src="https://github.com/agile-geoscience/snowfake/actions/workflows/run-tests.yml/badge.svg"/></a>
-<a class="reference external" href="https://github.com/agile-geoscience/snowfake/actions/workflows/build-docs.yml"><img alt="Build docs" src="https://github.com/agile-geoscience/snowfake/actions/workflows/build-docs.yml/badge.svg"/></a>
-<a class="reference external" href="https://pypi.org/project/snowfake//"><img alt="PyPI version" src="https://img.shields.io/pypi/v/snowfake.svg"/></a>
-<a class="reference external" href="https://pypi.org/project/snowfake//"><img alt="PyPI versions" src="https://img.shields.io/pypi/pyversions/snowfake.svg"/></a>
-<a class="reference external" href="https://pypi.org/project/snowfake/"><img alt="PyPI license" src="https://img.shields.io/pypi/l/snowfake.svg"/></a></p>
-<p>Make Gravner-Griffeath “snowfakes”! This code implements:</p>
-<blockquote>
-<div><p>Janko Gravner, David Griffeath (2008). Modeling snow crystal growth II: A mesoscopic lattice map with plausible dynamics. <em>Physica D: Nonlinear Phenomena</em> <strong>237</strong> (3), p 385-404. <a class="reference external" href="https://doi.org/10.1016/j.physd.2007.09.008">DOI: 10.1016/j.physd.2007.09.008</a>.</p>
-</div></blockquote>
-<p><img alt="Snowfakes" src="https://www.dropbox.com/s/8mquyaiumdiuwwf/snowfakes.png?raw=1"/></p>
+          <section class="tex2jax_ignore mathjax_ignore" id="unmap">
+<h1>unmap<a class="headerlink" href="#unmap" title="Permalink to this heading">#</a></h1>
+<p><a class="reference external" href="https://github.com/kwinkunks/unmap/actions/workflows/run-tests.yml"><img alt="Run tests" src="https://github.com/kwinkunks/unmap/actions/workflows/run-tests.yml/badge.svg" /></a>
+<a class="reference external" href="https://github.com/kwinkunks/unmap/actions/workflows/build-docs.yml"><img alt="Build docs" src="https://github.com/kwinkunks/unmap/actions/workflows/build-docs.yml/badge.svg" /></a>
+<a class="reference external" href="https://pypi.org/project/unmap//"><img alt="PyPI version" src="https://img.shields.io/pypi/v/unmap.svg" /></a>
+<a class="reference external" href="https://pypi.org/project/unmap//"><img alt="PyPI versions" src="https://img.shields.io/pypi/pyversions/unmap.svg" /></a>
+<a class="reference external" href="https://pypi.org/project/unmap/"><img alt="PyPI license" src="https://img.shields.io/pypi/l/unmap.svg" /></a></p>
+<p>Unmap data from pseudocolor images, with knowledge of the colourmap (for now!).</p>
 <section id="installation">
-<h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">#</a></h2>
-<p>You can install this package with <code class="docutils literal notranslate"><span class="pre">pip</span></code> (be careful not to type “snowflake”):</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pip install snowfake
-</pre></div>
-</div>
-<p>Installing <code class="docutils literal notranslate"><span class="pre">scikit-image</span></code> allows you to use a different affine transformation, but I haven’t figured out yet if it’s better or not.</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pip install snowfake[skimage]
+<h2>Installation<a class="headerlink" href="#installation" title="Permalink to this heading">#</a></h2>
+<p>You can install this package with <code class="docutils literal notranslate"><span class="pre">pip</span></code>:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pip install unmap
 </pre></div>
 </div>
 </section>
 <section id="documentation">
-<h2>Documentation<a class="headerlink" href="#documentation" title="Permalink to this headline">#</a></h2>
-<p>Read <a class="reference external" href="https://code.agilescientific.com/snowfake">the documentation</a></p>
+<h2>Documentation<a class="headerlink" href="#documentation" title="Permalink to this heading">#</a></h2>
+<p>Read <a class="reference external" href="https://code.agilescientific.com/unmap">the documentation</a></p>
 </section>
 <section id="example">
-<h2>Example<a class="headerlink" href="#example" title="Permalink to this headline">#</a></h2>
-<p>You can produce a random snowfake with:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">snowfake</span>
-<span class="n">s</span> <span class="o">=</span> <span class="n">snowfake</span><span class="o">.</span><span class="n">random</span><span class="p">()</span>
-</pre></div>
-</div>
-<p>Alternatively, this code produces the crystal in Figure 5b of the Gravner &amp; Griffeath (2008):</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">snowfake</span> <span class="kn">import</span> <span class="n">Snowfake</span>
+<h2>Example<a class="headerlink" href="#example" title="Permalink to this heading">#</a></h2>
+<p>We’ll grab an image from the web and unmap it:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_image_from_web</span><span class="p">(</span><span class="n">uri</span><span class="p">):</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">uri</span><span class="p">)</span><span class="o">.</span><span class="n">content</span>
+    <span class="n">img</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">BytesIO</span><span class="p">(</span><span class="n">data</span><span class="p">))</span><span class="o">.</span><span class="n">convert</span><span class="p">(</span><span class="s1">&#39;RGB&#39;</span><span class="p">)</span>
+    <span class="n">rgb_im</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">img</span><span class="p">)[</span><span class="o">...</span><span class="p">,</span> <span class="p">:</span><span class="mi">3</span><span class="p">]</span> <span class="o">/</span> <span class="mf">255.</span>
+    <span class="k">return</span> <span class="n">rgb_im</span>
 
-<span class="n">params</span> <span class="o">=</span>  <span class="p">{</span>
-    <span class="s1">'ρ'</span><span class="p">:</span> <span class="mf">0.35</span><span class="p">,</span>  <span class="c1"># or 'rho': 0.35 if you prefer...</span>
-    <span class="s1">'β'</span><span class="p">:</span> <span class="mf">1.4</span><span class="p">,</span>
-    <span class="s1">'α'</span><span class="p">:</span> <span class="mf">0.001</span><span class="p">,</span>
-    <span class="s1">'θ'</span><span class="p">:</span> <span class="mf">0.015</span><span class="p">,</span>
-    <span class="s1">'κ'</span><span class="p">:</span> <span class="mf">0.05</span><span class="p">,</span>
-    <span class="s1">'μ'</span><span class="p">:</span> <span class="mf">0.015</span><span class="p">,</span>
-    <span class="s1">'γ'</span><span class="p">:</span> <span class="mf">0.01</span><span class="p">,</span>
-    <span class="s1">'σ'</span><span class="p">:</span> <span class="mf">0.00005</span><span class="p">,</span>
-    <span class="s1">'random'</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
-<span class="p">}</span>
-<span class="n">s</span> <span class="o">=</span> <span class="n">Snowfake</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="mi">801</span><span class="p">,</span> <span class="o">**</span><span class="n">params</span><span class="p">)</span>
+<span class="c1"># An image from Matteo Niccoli&#39;s blog:</span>
+<span class="c1"># https://mycartablog.com/2014/08/24/what-your-brain-does-with-colours-when-you-are-not-looking-part-1/</span>
+<span class="n">img</span> <span class="o">=</span> <span class="n">get_image_from_web</span><span class="p">(</span><span class="s1">&#39;https://i0.wp.com/mycartablog.com/wp-content/uploads/2014/03/spectrogram_jet.png&#39;</span><span class="p">)</span>
+
+<span class="kn">import</span> <span class="nn">gio</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="n">gio</span><span class="o">.</span><span class="n">unmap</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;jet&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Now you’re ready to grow and plot the snowfake:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">s</span><span class="o">.</span><span class="n">grow</span><span class="p">()</span>
-<span class="n">s</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
-</pre></div>
-</div>
-<p>The various physical parameter arrays are available as <code class="docutils literal notranslate"><span class="pre">s.a</span></code> (attachment flag), <code class="docutils literal notranslate"><span class="pre">s.b</span></code> (boundary mass), <code class="docutils literal notranslate"><span class="pre">s.c</span></code> (the crystal itself) and <code class="docutils literal notranslate"><span class="pre">s.d</span></code> (the vapour). The arrays exist on hexgrids; you can rectify them with, for example, <code class="docutils literal notranslate"><span class="pre">s.rectify('c')</span></code>.</p>
-<p>The parameter <code class="docutils literal notranslate"><span class="pre">σ</span></code> (note that you can also spell out <code class="docutils literal notranslate"><span class="pre">sigma</span></code> if you prefer) can be a 1D array with one sample per epoch. This will vary the vapour density <code class="docutils literal notranslate"><span class="pre">ρ</span></code> through <em>time</em>. The parameter <code class="docutils literal notranslate"><span class="pre">ρ</span></code> can be a 2D array of shape <code class="docutils literal notranslate"><span class="pre">(size,</span> <span class="pre">size)</span></code>; this will vary the initial vapour density through <em>space</em>.</p>
 </section>
 <section id="testing">
-<h2>Testing<a class="headerlink" href="#testing" title="Permalink to this headline">#</a></h2>
+<h2>Testing<a class="headerlink" href="#testing" title="Permalink to this heading">#</a></h2>
 <p>You can run the tests (requires <code class="docutils literal notranslate"><span class="pre">pytest</span></code> and <code class="docutils literal notranslate"><span class="pre">pytest-cov</span></code>) with</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>python run_tests.py
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pytest
 </pre></div>
 </div>
 </section>
 <section id="building">
-<h2>Building<a class="headerlink" href="#building" title="Permalink to this headline">#</a></h2>
+<h2>Building<a class="headerlink" href="#building" title="Permalink to this heading">#</a></h2>
 <p>This repo uses PEP 517-style packaging. <a class="reference external" href="https://setuptools.pypa.io/en/latest/build_meta.html">Read more about this</a> and <a class="reference external" href="https://packaging.python.org/en/latest/tutorials/packaging-projects/">about Python packaging in general</a>.</p>
 <p>Building the project requires <code class="docutils literal notranslate"><span class="pre">build</span></code>, so first:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pip install build
 </pre></div>
 </div>
-<p>Then to build <code class="docutils literal notranslate"><span class="pre">snowfake</span></code> locally:</p>
+<p>Then to build <code class="docutils literal notranslate"><span class="pre">unmap</span></code> locally:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>python -m build
 </pre></div>
 </div>
 <p>The builds both <code class="docutils literal notranslate"><span class="pre">.tar.gz</span></code> and <code class="docutils literal notranslate"><span class="pre">.whl</span></code> files, either of which you can install with <code class="docutils literal notranslate"><span class="pre">pip</span></code>.</p>
-</section>
-<section id="continuous-integration">
-<h2>Continuous integration<a class="headerlink" href="#continuous-integration" title="Permalink to this headline">#</a></h2>
-<p>This repo has two GitHub ‘workflows’ or ‘actions’:</p>
-<ul class="simple">
-<li><p>Push to <code class="docutils literal notranslate"><span class="pre">main</span></code>: Run all tests on all version of Python. This is the <strong>Run tests</strong> workflow.</p></li>
-<li><p>Publish a new release: Build and upload to PyPI. This is the <strong>Publish to PyPI</strong> workflow. Publish using the GitHub interface, for example (<a class="reference external" href="https://docs.github.com/en/repositories/releasing-projects-on-github/managing-releases-in-a-repository">read more</a></p></li>
-</ul>
 </section>
 </section>
 
@@ -289,17 +269,17 @@
       <footer>
         
         <div class="related-pages">
-          <a class="next-page" href="snowfake.html">
+          <a class="next-page" href="unmap.html">
               <div class="page-info">
                 <div class="context">
                   <span>Next</span>
                 </div>
-                <div class="title">snowfake package</div>
+                <div class="title">unmap package</div>
               </div>
-              <svg><use href="#svg-arrow-right"></use></svg>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
             </a>
           <a class="prev-page" href="index.html">
-              <svg><use href="#svg-arrow-right"></use></svg>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
               <div class="page-info">
                 <div class="context">
                   <span>Previous</span>
@@ -342,19 +322,18 @@
       <div class="toc-sticky toc-scroll">
         <div class="toc-title-container">
           <span class="toc-title">
-            Contents
+            On this page
           </span>
         </div>
         <div class="toc-tree-container">
           <div class="toc-tree">
             <ul>
-<li><a class="reference internal" href="#">snowfake</a><ul>
+<li><a class="reference internal" href="#">unmap</a><ul>
 <li><a class="reference internal" href="#installation">Installation</a></li>
 <li><a class="reference internal" href="#documentation">Documentation</a></li>
 <li><a class="reference internal" href="#example">Example</a></li>
 <li><a class="reference internal" href="#testing">Testing</a></li>
 <li><a class="reference internal" href="#building">Building</a></li>
-<li><a class="reference internal" href="#continuous-integration">Continuous integration</a></li>
 </ul>
 </li>
 </ul>
@@ -369,6 +348,7 @@
 </div><script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
     <script src="_static/scripts/furo.js"></script>
     </body>

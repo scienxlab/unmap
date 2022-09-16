@@ -1,11 +1,11 @@
 unmap package
-================
+=============
 
 Submodules
 ----------
 
 unmap.unmap module
-------------------------
+------------------
 
 .. automodule:: unmap.unmap
    :members:
