@@ -1,4 +1,4 @@
-from io import Strinunmap
+from io import StringIO
 
 from PIL import Image
 import numpy as np
@@ -12,32 +12,27 @@ def kernel(sizex, sizey):
     g = np.exp(-0.333*(x**2/float(sizex)+y**2/float(sizey)))
     return g / g.sum()
 
-def make_map(n, nx=64, ny=64, kernel_size=None, seed=None):
-    imgs = []
-    for i in range(n):
-        rng = np.random.RandomState(seed=seed)
-        if kernel_size is None:
-            kx, ky = (7, 7)
-        else:
-            kx, ky = kernel_size
-        f = kernel(kx, ky)
-        z = rng.rand(nx+2*kx, ny+2*ky)
-
-        z = scipy.signal.convolve(z, f, mode='valid')
-        z = (z - z.min())/(z.max() - z.min())
-        imgs.append(z)
+def make_map(nx=64, ny=64, kernel_size=None, seed=None):
+    rng = np.random.RandomState(seed=seed)
+    if kernel_size is None:
+        kx, ky = (7, 7)
+    else:
+        kx, ky = kernel_size
+    f = kernel(kx, ky)
+    z = rng.rand(nx+2*kx, ny+2*ky)
+    z = scipy.signal.convolve(z, f, mode='valid')
+    z = (z - z.min())/(z.max() - z.min())
     
-    return np.stack(imgs)
+    return z
 
 def get_cbar(cmap, n=32, pixels=5):
-    arr = cm.get_cmap()(np.arange(0, n, 1)/(n-1))[..., :3]
+    arr = cm.get_cmap(cmap)(np.arange(0, n, 1)/(n-1))[..., :3]
     return np.tile(arr, (pixels, 1)).reshape(pixels, n, 3)
 
 def make_image_and_cbar(cmap, seed=None):
-    data = np.squeeze(make_map(1))
-    cmap = cm.get_cmap(cmap)
-    cbar = get_cbar(cmap, 128, pixels=5)
-    return cmap(data)[..., :3], cbar
+    data = make_map()
+    c = cm.get_cmap(cmap)
+    return c(data)[..., :3], get_cbar(cmap, 256, pixels=5)
 
 
 def test_unmap():
@@ -45,16 +40,19 @@ def test_unmap():
     """
     img, cbar = make_image_and_cbar('jet', seed=42)
 
+    # Add some white pixels as 'background'; will become NaNs.
+    img[:3, :3, :] = 1
+
     # Using a cbar image.
-    data = unmap.unmap(img, cmap=cbar, threshold=0.05, vrange=(100, 200), background=(1, 1, 1), levels=256)
-    assert data.shape == (231, 231)
+    data = unmap.unmap(img, cmap=cbar, vrange=(100, 200))
+    assert data.shape == (64, 64)
     assert np.nanmax(data) == 200
-    assert np.nanmean(data) - 150.60721435278933 < 1e-6
+    assert np.nanmean(data) - 161.4341107536765 < 1e-6
     assert np.any(np.isnan(data))
 
     # Using a matplotlib cmap.
-    data = unmap.unmap(img, cmap='jet', threshold=0.05, vrange=(200, 300))
-    assert np.nanmean(data) - 250.6121076492208 < 1e-6
+    data = unmap.unmap(img, cmap='jet', vrange=(200, 300))
+    assert np.nanmean(data) - 261.4341107536765 < 1e-6
 
 
 def is_greyscale():

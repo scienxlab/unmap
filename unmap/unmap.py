@@ -96,11 +96,9 @@ def remove_hillshade(img):
     return hsv_to_rgb(hsv_im), hillshade
 
 
-def crop_out(arr, rect, force_landscape=False, reduce=None, reverse='auto'):
+def crop_out(arr, rect):
     """
     Crop pixels out of a larger image.
-
-    If reduce is a function, it is applied across the short axis.
     """
     l, t, r, b = rect
     assert (r >= l) and (b >= t), "Right and bottom must be greater than left and top respectively; the origin is at the top left of the image."
@@ -108,18 +106,6 @@ def crop_out(arr, rect, force_landscape=False, reduce=None, reverse='auto'):
     r += 1 if r == l else 0
     b += 1 if t == b else 0
     pixels = arr[t:b, l:r]
-
-    if force_landscape and (r - l < b - t):
-        # Then it is a vertical rectangle.
-        pixels = np.swapaxes(pixels, 0, 1)
-        if reverse == 'auto':
-            reverse = True
-
-    if reduce is not None:
-        pixels = reduce(pixels, axis=0)
-        
-    if reverse:
-        pixels = pixels[::-1]
 
     return pixels
 
@@ -162,7 +148,14 @@ def get_cmap(cmap, arr=None, levels=256, quantize=False):
             cmap = crop_out(arr, cmap, force_landscape=True, reduce=np.mean)
 
         if quantize:
-            cmap, _ = kmeans(cmap, levels)        
+            cmap, _ = kmeans(cmap, levels)
+
+        if (cmap.ndim == 3) and (cmap.shape[0] > cmap.shape[1]):
+            # Then it is a vertical rectangle.
+            cmap = np.swapaxes(cmap, 0, 1)
+
+        if (cmap.ndim == 3):
+            cmap = np.mean(cmap, axis=0)
 
         if (cmap.ndim == 2) and (cmap.shape[1] in [3, 4]):
             cmap = LinearSegmentedColormap.from_list('', cmap[:, :3], N=levels)
