@@ -1,5 +1,4 @@
-from .snowfake import Snowfake
-from .snowfake import random
+from .unmap import *
 
 from pkg_resources import get_distribution, DistributionNotFound
 try:

@@ -8,5 +8,5 @@ requires = [
 build-backend = "setuptools.build_meta"
 
 [tool.setuptools_scm]
-write_to = "snowfake/_version.py"
+write_to = "unmap/_version.py"
 git_describe_command = "git describe --dirty --tags --long --match v* --first-parent"

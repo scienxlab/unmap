@@ -1,13 +1,13 @@
-snowfake package
+unmap package
 ================
 
 Submodules
 ----------
 
-snowfake.snowfake module
+unmap.unmap module
 ------------------------
 
-.. automodule:: snowfake.snowfake
+.. automodule:: unmap.unmap
    :members:
    :undoc-members:
    :show-inheritance:
@@ -15,7 +15,7 @@ snowfake.snowfake module
 Module contents
 ---------------
 
-.. automodule:: snowfake
+.. automodule:: unmap
    :members:
    :undoc-members:
    :show-inheritance:

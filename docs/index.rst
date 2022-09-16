@@ -3,13 +3,13 @@
 .. container:: noclass
    :name: forkongithub
 
-   `Fork on GitHub <https://github.com/agilescientific/snowfake>`_
+   `Fork on GitHub <https://github.com/kwinkunks/unmap>`_
 
 
-Snowfake: Gravner–Griffeath snowflakes
+unmap: Gravner–Griffeath snowflakes
 ======================================
 
-    | ❄️️ ``snowfake`` is a simple physics-based snowflake simulation.
+    | ❄️️ ``unmap`` is a simple physics-based snowflake simulation.
 
 
 User guide
@@ -29,7 +29,7 @@ API reference
     :maxdepth: 2
     :caption: API reference
 
-    snowfake
+    unmap
 
 * :ref:`genindex`
 
@@ -37,9 +37,9 @@ API reference
     :caption: Project links
     :hidden:
 
-    PyPI releases <https://pypi.org/project/snowfake/>
-    Code in GitHub <https://github.com/agilescientific/snowfake>
-    Issue tracker <https://github.com/agilescientific/snowfake/issues>
+    PyPI releases <https://pypi.org/project/unmap/>
+    Code in GitHub <https://github.com/kwinkunks/unmap>
+    Issue tracker <https://github.com/kwinkunks/unmap/issues>
     Community guidelines <https://code.agilescientific.com/community>
     Agile's software <https://code.agilescientific.com>
     Agile's website <https://www.agilescientific.com>

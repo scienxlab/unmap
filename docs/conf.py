@@ -32,7 +32,7 @@ import sys
 sys.path.insert(0, os.path.abspath('..')) 
 
 # -- Project information -----------------------------------------------------
-project = 'snowfake'
+project = 'unmap'
 copyright = '2022, Agile Scientific'
 author = 'Agile Scientific'
 
@@ -62,7 +62,7 @@ exclude_patterns = ['_build']
 # Apidoc automation
 # https://pypi.org/project/sphinxcontrib-apidoc/
 # The apidoc extension and this code automatically update apidoc.
-apidoc_module_dir = '../snowfake'
+apidoc_module_dir = '../unmap'
 apidoc_output_dir = './'
 apidoc_excluded_paths = []
 apidoc_toc_file = False
@@ -105,4 +105,4 @@ html_css_files = [
 
 # Branding.
 html_favicon = '_static/favicon.ico'
-html_logo = '_static/snowfake_logo.png'
+html_logo = '_static/unmap_logo.png'
