@@ -1,6 +1,7 @@
 name: Build docs
 
 on:
+  [ workflow_dispatch ]
   release:
     types: [ published ]
 
