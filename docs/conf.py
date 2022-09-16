@@ -33,8 +33,8 @@ sys.path.insert(0, os.path.abspath('..'))
 
 # -- Project information -----------------------------------------------------
 project = 'unmap'
-copyright = '2022, Agile Scientific'
-author = 'Agile Scientific'
+copyright = '2022, Matt Hall'
+author = 'Matt Hall'
 
 # -- General configuration ---------------------------------------------------
 
