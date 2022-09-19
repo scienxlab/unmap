@@ -19,12 +19,12 @@ You can install this package with `pip`:
 
 ## Documentation
 
-Read [the documentation](https://code.agilescientific.com/unmap)
+Read [the documentation](https://kwinkunks.github.io/unmap)
 
 
 ## Example
 
-We'll grab an image from the web and unmap it. First we'll download the image:
+Let's grab an image from the web and unmap it. First we'll download the image:
 
 ```python
 from io import BytesIO
