@@ -20,6 +20,7 @@ User guide
     :caption: User guide
 
     readme
+    userguide/Unmap_data_from_an_image.ipynb
 
 
 API reference
