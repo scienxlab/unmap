@@ -15,6 +15,7 @@ help:
 .PHONY: help html
 
 html:
+	python process_ipynb.py $(SOURCEDIR)/notebooks
 	$(SPHINXBUILD) -E -b html $(SPHINXOPTS) $(SOURCEDIR) $(BUILDDIR)/html 
 	python process_html.py $(BUILDDIR)/html
 	@echo

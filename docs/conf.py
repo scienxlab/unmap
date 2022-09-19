@@ -44,20 +44,12 @@ author = 'Matt Hall'
 extensions = ['sphinx.ext.githubpages',
               'sphinxcontrib.apidoc',
               'sphinx.ext.napoleon',
-              'myst_parser',
+              'myst_nb',
               'sphinx.ext.viewcode'
 ]
 
 myst_enable_extensions = ["dollarmath", "amsmath"]
-
-
-# Add any paths that contain templates here, relative to this directory.
-templates_path = ['_templates']
-
-# List of patterns, relative to source directory, that match files and
-# directories to ignore when looking for source files.
-# This pattern also affects html_static_path and html_extra_path.
-exclude_patterns = ['_build']
+jupyter_execute_notebooks = "force"
 
 # Apidoc automation
 # https://pypi.org/project/sphinxcontrib-apidoc/
@@ -67,6 +59,14 @@ apidoc_output_dir = './'
 apidoc_excluded_paths = []
 apidoc_toc_file = False
 apidoc_separate_modules = False
+
+# Add any paths that contain templates here, relative to this directory.
+templates_path = ['_templates']
+
+# List of patterns, relative to source directory, that match files and
+# directories to ignore when looking for source files.
+# This pattern also affects html_static_path and html_extra_path.
+exclude_patterns = ['_build', 'notebooks']
 
 # -- Options for HTML output -------------------------------------------------
 
@@ -105,4 +105,4 @@ html_css_files = [
 
 # Branding.
 html_favicon = '_static/favicon.ico'
-html_logo = '_static/unmap_logo.png'
+html_logo = '_static/unmap.png'
