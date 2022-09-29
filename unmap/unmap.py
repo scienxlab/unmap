@@ -1,3 +1,12 @@
+"""
+unmap.py
+
+Functions for recoving data from images with a known colourmap.
+
+Author: Matt Hall
+Copyright: 2022, Matt Hall
+Licence: Apache 2.0
+"""
 import warnings
 from collections import Counter
 
