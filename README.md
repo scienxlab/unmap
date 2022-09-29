@@ -7,7 +7,9 @@
 [![PyPI license](https://img.shields.io/pypi/l/unmap.svg)](https://pypi.org/project/unmap/)
 
 
-Unmap data from pseudocolor images, with knowledge of the colourmap (for now!).
+Unmap data from pseudocolor images, with knowledge of the colourmap for now, but the goal is to drop this requirement. 
+
+in other words, this library is the opposite of `plt.imshow()`. 
 
 
 ## Installation
