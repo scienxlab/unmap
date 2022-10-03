@@ -21,6 +21,7 @@ User guide
 
     readme
     userguide/Unmap_data_from_an_image.ipynb
+    userguide/Guess_the_colourmap_from_an_image.ipynb
 
 
 API reference

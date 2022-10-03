@@ -65,7 +65,7 @@ def construct_graph(imarray, colors=256, normed=True):
 
     # Normalize.
     if normed:
-        glcm /= (1e-9 + np.sum(glcm, axis=-1))
+        glcm = glcm / (1e-9 + np.sum(glcm, axis=-1))
 
     # Construct and remove self-loops.
     G = nx.from_numpy_array(glcm)
@@ -164,7 +164,7 @@ def longest_shortest_path(G):
         path (list): Longest shortest path.
     """
     
-    dist = lambda *_, d: d['dist']**2
+    dist = lambda u, v, d: d['dist']**2
 
     # Find the longest shortest path.
     paths = nx.shortest_path_length(G, weight=dist)
@@ -181,7 +181,7 @@ def longest_shortest_path(G):
                             target=t)
 
 
-def path_to_cmap(path, unique_colors, colors=256, reverse='auto'):
+def path_to_cmap(path, unique_colors, colors=256, reverse='auto', equilibrate=False):
     """
     Convert a path through the graph to a colormap.
 
@@ -193,11 +193,14 @@ def path_to_cmap(path, unique_colors, colors=256, reverse='auto'):
         reverse (bool): Whether to reverse the colormap. If 'auto', the
             colormap will start with the end closest to dark blue. If False,
             the direction is essentially random.
+        equilibrate (bool): Whether to equilibrate the colormap. This will
+            try to ensure that the colormap's colors are as evenly spaced as
+            possible.
 
     Returns:
         matplotlib.colors.LinearSegmentedColormap: Colormap.
     """
-    cpath = [unique_colors[n] for n in path]
+    cpath = np.asarray(unique_colors)[path]
     if reverse == 'auto':
         cool_dark = np.array([0, 0, 0.5])
         if np.linalg.norm(cpath[0] - cool_dark) > np.linalg.norm(cpath[-1] - cool_dark):
@@ -208,10 +211,23 @@ def path_to_cmap(path, unique_colors, colors=256, reverse='auto'):
         cpath = cpath[::-1]
     if colors is None:
         colors = 2 * len(cpath)  # Not sure what the default should be.
-    return LinearSegmentedColormap.from_list("recovered", cpath, N=colors)
+    cmap = LinearSegmentedColormap.from_list("recovered", cpath, N=colors)
+    if equilibrate:
+        dists = np.linalg.norm(cpath[:-1] - cpath[1:], axis=-1)
+        invdist = np.cumsum(1 / dists) / (1 / dists).sum()
+        cmap = LinearSegmentedColormap.from_list('recovered', cmap(invdist), N=colors)
+    return cmap
 
 
-def guess_cmap(fname, source_colors=256, target_colors=256, min_weight=0.025, max_dist=0.25, max_neighbours=20, reverse='auto', ):
+def guess_cmap(fname,
+               source_colors=256,
+               target_colors=256,
+               min_weight=0.025,
+               max_dist=0.25,
+               max_neighbours=20,
+               reverse='auto',
+               equilibrate=False
+               ):
     """
     Guess the colormap of an image.
 
@@ -231,4 +247,4 @@ def guess_cmap(fname, source_colors=256, target_colors=256, min_weight=0.025, ma
     G = construct_graph(imarray, colors=source_colors)
     G0 = prune_graph(G, uniq, min_weight=min_weight, max_dist=max_dist, max_neighbours=max_neighbours)
     path = longest_shortest_path(G0)
-    return path_to_cmap(path, uniq, colors=target_colors, reverse=reverse)
+    return path_to_cmap(path, uniq, colors=target_colors, reverse=reverse, equilibrate=equilibrate)

@@ -14,7 +14,7 @@ import numpy as np
 from scipy.spatial import cKDTree
 from scipy.cluster.vq import kmeans
 from matplotlib import cm
-from matplotlib.colors import hsv_to_rgb, rgb_to_hsv
+from matplotlib.colors import ListedColormap, hsv_to_rgb, rgb_to_hsv
 from matplotlib.colors import to_rgb, LinearSegmentedColormap
 
 
@@ -146,6 +146,9 @@ def get_cmap(cmap, arr=None, levels=256, quantize=False):
             return cm.get_cmap(cmap)
         except ValueError:
             raise ValueError("cmap name not recognized by matplotlib")
+
+    elif isinstance(cmap, LinearSegmentedColormap) or isinstance(cmap, ListedColormap):
+        return cmap
 
     else:
         try:
