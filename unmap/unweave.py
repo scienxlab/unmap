@@ -42,8 +42,8 @@ def convert_imarray(imarray, colors=256):
     imp = Image.fromarray(np.uint8(imarray))
     imp = imp.quantize(colors=colors, dither=Image.NONE)
     imp.thumbnail((512, 512))
-    imarray = np.asarray(imp)
-    palette = np.asarray(imp.getpalette()).reshape(-1, 3)
+    imarray = np.array(imp)
+    palette = np.array(imp.getpalette()).reshape(-1, 3)
     unique = ordered_unique(tuple(i) for i in palette[:colors]/255)
     return imarray, np.array(unique)
 
@@ -63,7 +63,7 @@ def construct_graph(imarray, colors=256, normed=True):
     Returns:
         G (nx.Graph): Value adjacency graph.
     """
-    glcm = graycomatrix(np.asarray(imarray),
+    glcm = graycomatrix(imarray,
                         distances=[1],
                         angles=[0, np.pi/4, np.pi/2, 3*np.pi/4],
                         levels=colors,
