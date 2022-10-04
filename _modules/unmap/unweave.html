@@ -274,7 +274,7 @@
 <span class="sd">    Returns:</span>
 <span class="sd">        G (nx.Graph): Value adjacency graph.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">glcm</span> <span class="o">=</span> <span class="n">graycomatrix</span><span class="p">(</span><span class="n">imarray</span><span class="p">,</span>
+    <span class="n">glcm</span> <span class="o">=</span> <span class="n">graycomatrix</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">imarray</span><span class="p">),</span>
                         <span class="n">distances</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
                         <span class="n">angles</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mi">4</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mi">4</span><span class="p">],</span>
                         <span class="n">levels</span><span class="o">=</span><span class="n">colors</span><span class="p">,</span>

@@ -60,6 +60,6 @@ File [0;32m~/.local/lib/python3.8/site-packages/PIL/Image.py:3147[0m, in [0;3
 [1;32m   3148[0m     [38;5;124m"[39m[38;5;124mcannot identify image file [39m[38;5;132;01m%r[39;00m[38;5;124m"[39m [38;5;241m%[39m (filename [38;5;28;01mif[39;00m filename [38;5;28;01melse[39;00m fp)
 [1;32m   3149[0m )
 
-[0;31mUnidentifiedImageError[0m: cannot identify image file <_io.BytesIO object at 0x7f2645c48f40>
-UnidentifiedImageError: cannot identify image file <_io.BytesIO object at 0x7f2645c48f40>
+[0;31mUnidentifiedImageError[0m: cannot identify image file <_io.BytesIO object at 0x7fa19228dc20>
+UnidentifiedImageError: cannot identify image file <_io.BytesIO object at 0x7fa19228dc20>
 
