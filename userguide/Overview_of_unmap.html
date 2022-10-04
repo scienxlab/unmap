@@ -234,7 +234,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x7f8afe219970&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x7fa92c352a30&gt;
 </pre></div>
 </div>
 <img alt="../_images/6cc0bc38dc9874c1f27eef08f1be96ca67ffe4d54900e59e3af16e06d97cd7a7.png" src="../_images/6cc0bc38dc9874c1f27eef08f1be96ca67ffe4d54900e59e3af16e06d97cd7a7.png" />
@@ -270,7 +270,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x7f8afc0ac820&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x7fa92a1e48e0&gt;
 </pre></div>
 </div>
 <img alt="../_images/98d064bd3767f3949a30f87b46bb3e20b0b063a3424ef947f6cd123fd385983a.png" src="../_images/98d064bd3767f3949a30f87b46bb3e20b0b063a3424ef947f6cd123fd385983a.png" />
@@ -292,60 +292,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ValueError</span><span class="g g-Whitespace">                                </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span> <span class="p">[</span><span class="mi">4</span><span class="p">],</span> <span class="n">line</span> <span class="mi">3</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="kn">import</span> <span class="nn">unmap</span>
-<span class="ne">----&gt; </span><span class="mi">3</span> <span class="n">cmap</span> <span class="o">=</span> <span class="n">unmap</span><span class="o">.</span><span class="n">guess_cmap_from_array</span><span class="p">(</span><span class="n">imarray</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="n">cmap</span>
-
-<span class="nn">File ~/.local/lib/python3.8/site-packages/unmap/unweave.py:257,</span> in <span class="ni">guess_cmap_from_array</span><span class="nt">(array, source_colors, target_colors, min_weight, max_dist, max_neighbours, reverse, equilibrate)</span>
-<span class="g g-Whitespace">    </span><span class="mi">241</span> <span class="sd">&quot;&quot;&quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">242</span><span class="sd"> Guess the colormap of an image.</span>
-<span class="g g-Whitespace">    </span><span class="mi">243</span><span class="sd"> </span>
-<span class="sd">   (...)</span>
-<span class="g g-Whitespace">    </span><span class="mi">254</span><span class="sd"> </span>
-<span class="g g-Whitespace">    </span><span class="mi">255</span><span class="sd"> &quot;&quot;&quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">256</span> <span class="n">imarray</span><span class="p">,</span> <span class="n">uniq</span> <span class="o">=</span> <span class="n">convert_imarray</span><span class="p">(</span><span class="n">array</span><span class="p">,</span> <span class="n">colors</span><span class="o">=</span><span class="n">source_colors</span><span class="p">)</span>
-<span class="ne">--&gt; </span><span class="mi">257</span> <span class="n">G</span> <span class="o">=</span> <span class="n">construct_graph</span><span class="p">(</span><span class="n">imarray</span><span class="p">,</span> <span class="n">colors</span><span class="o">=</span><span class="n">source_colors</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">258</span> <span class="n">G0</span> <span class="o">=</span> <span class="n">prune_graph</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">uniq</span><span class="p">,</span> <span class="n">min_weight</span><span class="o">=</span><span class="n">min_weight</span><span class="p">,</span> <span class="n">max_dist</span><span class="o">=</span><span class="n">max_dist</span><span class="p">,</span> <span class="n">max_neighbours</span><span class="o">=</span><span class="n">max_neighbours</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">259</span> <span class="n">path</span> <span class="o">=</span> <span class="n">longest_shortest_path</span><span class="p">(</span><span class="n">G0</span><span class="p">)</span>
-
-<span class="nn">File ~/.local/lib/python3.8/site-packages/unmap/unweave.py:66,</span> in <span class="ni">construct_graph</span><span class="nt">(imarray, colors, normed)</span>
-<span class="g g-Whitespace">     </span><span class="mi">51</span> <span class="k">def</span> <span class="nf">construct_graph</span><span class="p">(</span><span class="n">imarray</span><span class="p">,</span> <span class="n">colors</span><span class="o">=</span><span class="mi">256</span><span class="p">,</span> <span class="n">normed</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
-<span class="g g-Whitespace">     </span><span class="mi">52</span>     <span class="sd">&quot;&quot;&quot;</span>
-<span class="g g-Whitespace">     </span><span class="mi">53</span><span class="sd">     Construct an undirected value adjacency graph from an image array.</span>
-<span class="g g-Whitespace">     </span><span class="mi">54</span><span class="sd"> </span>
-<span class="sd">   (...)</span>
-<span class="g g-Whitespace">     </span><span class="mi">64</span><span class="sd">         G (nx.Graph): Value adjacency graph.</span>
-<span class="g g-Whitespace">     </span><span class="mi">65</span><span class="sd">     &quot;&quot;&quot;</span>
-<span class="ne">---&gt; </span><span class="mi">66</span>     <span class="n">glcm</span> <span class="o">=</span> <span class="n">graycomatrix</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">imarray</span><span class="p">),</span>
-<span class="g g-Whitespace">     </span><span class="mi">67</span>                         <span class="n">distances</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
-<span class="g g-Whitespace">     </span><span class="mi">68</span>                         <span class="n">angles</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mi">4</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mi">4</span><span class="p">],</span>
-<span class="g g-Whitespace">     </span><span class="mi">69</span>                         <span class="n">levels</span><span class="o">=</span><span class="n">colors</span><span class="p">,</span>
-<span class="g g-Whitespace">     </span><span class="mi">70</span>                         <span class="n">symmetric</span><span class="o">=</span><span class="kc">True</span>
-<span class="g g-Whitespace">     </span><span class="mi">71</span>                         <span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">73</span>     <span class="c1"># Add transitions over all directions.</span>
-<span class="g g-Whitespace">     </span><span class="mi">74</span>     <span class="n">glcm</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">squeeze</span><span class="p">(</span><span class="n">glcm</span><span class="p">),</span> <span class="n">axis</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
-
-<span class="nn">File ~/.local/lib/python3.8/site-packages/skimage/feature/texture.py:142,</span> in <span class="ni">graycomatrix</span><span class="nt">(image, distances, angles, levels, symmetric, normed)</span>
-<span class="g g-Whitespace">    </span><span class="mi">138</span> <span class="n">P</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">levels</span><span class="p">,</span> <span class="n">levels</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">distances</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">angles</span><span class="p">)),</span>
-<span class="g g-Whitespace">    </span><span class="mi">139</span>              <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">uint32</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="s1">&#39;C&#39;</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">141</span> <span class="c1"># count co-occurences</span>
-<span class="ne">--&gt; </span><span class="mi">142</span> <span class="n">_glcm_loop</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">distances</span><span class="p">,</span> <span class="n">angles</span><span class="p">,</span> <span class="n">levels</span><span class="p">,</span> <span class="n">P</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">144</span> <span class="c1"># make each GLMC symmetric</span>
-<span class="g g-Whitespace">    </span><span class="mi">145</span> <span class="k">if</span> <span class="n">symmetric</span><span class="p">:</span>
-
-<span class="nn">File ~/.local/lib/python3.8/site-packages/skimage/feature/_texture.pyx:19,</span> in <span class="ni">skimage.feature._texture._glcm_loop</span><span class="nt">()</span>
-
-<span class="nn">File stringsource:658,</span> in <span class="ni">View.MemoryView.memoryview_cwrapper</span><span class="nt">()</span>
-
-<span class="nn">File stringsource:349,</span> in <span class="ni">View.MemoryView.memoryview.__cinit__</span><span class="nt">()</span>
-
-<span class="ne">ValueError</span>: buffer source array is read-only
-</pre></div>
-</div>
-</div>
+<div class="output text_html"><div style="vertical-align: middle;"><strong>recovered</strong> </div><div class="cmap"><img alt="recovered colormap" title="recovered" style="border: 1px solid #555;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAgAAAABACAYAAABsv8+/AAAAGHRFWHRUaXRsZQByZWNvdmVyZWQgY29sb3JtYXCmg4jWAAAAHnRFWHREZXNjcmlwdGlvbgByZWNvdmVyZWQgY29sb3JtYXDkGG5dAAAAMHRFWHRBdXRob3IATWF0cGxvdGxpYiB2My42LjAsIGh0dHBzOi8vbWF0cGxvdGxpYi5vcmfhqHMCAAAAMnRFWHRTb2Z0d2FyZQBNYXRwbG90bGliIHYzLjYuMCwgaHR0cHM6Ly9tYXRwbG90bGliLm9yZ88O7CUAAAKOSURBVHic7dY9ctswGARQkJRzgJwkfe5/qcQCUghgBhDpTOp9r/lm8UPKlordfnz/2UoppWzHa/RZ9seSx/5r/f38km/239ZH7u8r+0fPfR5f53J8m9eXfO7v8+c+P+9+k7e9r+9Lnve3/Xr97t72tn6d/36ubT53M9vIxzzbcbN+PnfruSx52d/adK717ffcLmc9rvfrXvv+13M938a9t9ym/Da3m/VzPr+cpZ8r+2cppZTtXO/5GPk57e9bn//KfR7/mv3eUa7vPZa89797nD/XS52fW9bz671lfX3uen7J43M9yjw/ys16e81vy3xbH++pr+//aOss0/7jzNdzX/Kjvn7g4+t9PLd5f8lHz+fP4y3P7+n/lnPuz3a5vvXPX879nutdrtP5/53t5n47c13ysl/n54z1Vq/Pt7rkfq8+r59Tl/v3ub9uWa915HK5/hz3xrk657Ff27w//rw1t7bcP5+3zH7us+df/T2/6/Uc+5/L13if+++xAABxFAAACKQAAEAgBQAAAikAABBIAQCAQAoAAARSAAAgkAIAAIEUAAAIpAAAQCAFAAACKQAAEEgBAIBACgAABFIAACCQAgAAgRQAAAikAABAIAUAAAIpAAAQSAEAgEAKAAAEUgAAIJACAACBFAAACKQAAEAgBQAAAikAABBIAQCAQAoAAARSAAAgkAIAAIEUAAAIpAAAQCAFAAACKQAAEEgBAIBACgAABFIAACCQAgAAgRQAAAikAABAIAUAAAIpAAAQSAEAgEAKAAAEUgAAIJACAACBFAAACKQAAEAgBQAAAikAABBIAQCAQAoAAARSAAAgkAIAAIEUAAAIpAAAQCAFAAACKQAAEEgBAIBACgAABPoDzAJODyx2+qwAAAAASUVORK5CYII="></div><div style="vertical-align: middle; max-width: 514px; display: flex; justify-content: space-between;"><div style="float: left;"><div title="#30123bff" style="display: inline-block; width: 1em; height: 1em; margin: 0; vertical-align: middle; border: 1px solid #555; background-color: #30123bff;"></div> under</div><div style="margin: 0 auto; display: inline-block;">bad <div title="#00000000" style="display: inline-block; width: 1em; height: 1em; margin: 0; vertical-align: middle; border: 1px solid #555; background-color: #00000000;"></div></div><div style="float: right;">over <div title="#7b0402ff" style="display: inline-block; width: 1em; height: 1em; margin: 0; vertical-align: middle; border: 1px solid #555; background-color: #7b0402ff;"></div></div></div></div>
 </div>
 <p>Phew! It looks good. Now we can give this to the unmapping function.</p>
 </section>
@@ -385,10 +332,10 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x7fb251321f10&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x7fa92a14e9d0&gt;
 </pre></div>
 </div>
-<img alt="../_images/fe93d4c6f3ae23ff07512adaaefbcc11e2218aa2d65fd0254fbe375b2cdd4462.png" src="../_images/fe93d4c6f3ae23ff07512adaaefbcc11e2218aa2d65fd0254fbe375b2cdd4462.png" />
+<img alt="../_images/4c63c355b74badc411aa4fb50f1f5cd671f2e2239fd5a46a662d79c43834be5b.png" src="../_images/4c63c355b74badc411aa4fb50f1f5cd671f2e2239fd5a46a662d79c43834be5b.png" />
 </div>
 </div>
 <p>Or we can plot it with the colourmap we recovered:</p>
@@ -399,10 +346,10 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x7fb25135cc10&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x7fa92a09d220&gt;
 </pre></div>
 </div>
-<img alt="../_images/a16f2b0656c63eb9ecdccb6ea700e589b05d9b0772cb4743255d0303f8c90566.png" src="../_images/a16f2b0656c63eb9ecdccb6ea700e589b05d9b0772cb4743255d0303f8c90566.png" />
+<img alt="../_images/5e5afea7bf147fdaf2992010b9adc61d6c04803837b643aa6f50926e5784018a.png" src="../_images/5e5afea7bf147fdaf2992010b9adc61d6c04803837b643aa6f50926e5784018a.png" />
 </div>
 </div>
 <p>Or, in this case, we can use the colourmap we know was applied originally to create the image:</p>
@@ -413,10 +360,10 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x7fb2512ab790&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x7fa92a00d130&gt;
 </pre></div>
 </div>
-<img alt="../_images/ddef16dae70fd05d7cd06f3cd0a2adce37f818efa926cc6c6ee36e8d04b04976.png" src="../_images/ddef16dae70fd05d7cd06f3cd0a2adce37f818efa926cc6c6ee36e8d04b04976.png" />
+<img alt="../_images/5b76cb1bdc6c2068bc60736b8a497f00e44b0506bd850ceef4cc551b003e0306.png" src="../_images/5b76cb1bdc6c2068bc60736b8a497f00e44b0506bd850ceef4cc551b003e0306.png" />
 </div>
 </div>
 <p>These results look very close.</p>
@@ -429,10 +376,10 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.colorbar.Colorbar at 0x7fb251193d30&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.colorbar.Colorbar at 0x7fa929fa5e20&gt;
 </pre></div>
 </div>
-<img alt="../_images/6d8c9a1e34370d1d8210ef5ac80b9f9994bc88fd2cf43ab8f4ebdb8123a1b8f5.png" src="../_images/6d8c9a1e34370d1d8210ef5ac80b9f9994bc88fd2cf43ab8f4ebdb8123a1b8f5.png" />
+<img alt="../_images/344349a102240ebdf93b83a651d0262cdccaa1fd97a69c83b5b105d9b39061f7.png" src="../_images/344349a102240ebdf93b83a651d0262cdccaa1fd97a69c83b5b105d9b39061f7.png" />
 </div>
 </div>
 <p>The absolute error seems to go up to a little above 8% in some areas. Each colourmap has its own error profile, but this order of error magnitude is typical.</p>
@@ -449,10 +396,10 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x7fb251035bb0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x7fa929d6db50&gt;
 </pre></div>
 </div>
-<img alt="../_images/c9d4e5603373ce0a68e0b97f0c35c210c66ef09d0e1395eee2b0ffa9923c8ab2.png" src="../_images/c9d4e5603373ce0a68e0b97f0c35c210c66ef09d0e1395eee2b0ffa9923c8ab2.png" />
+<img alt="../_images/87a1a83e68b589a2f1c3a5926971082c1c04e1e959d0c523375384141bf15b82.png" src="../_images/87a1a83e68b589a2f1c3a5926971082c1c04e1e959d0c523375384141bf15b82.png" />
 </div>
 </div>
 <p>Nice. If it works.</p>
