@@ -2,15 +2,14 @@
 <html class="no-js" lang="en">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
-    <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
-<link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="unmap package" href="../unmap.html" /><link rel="prev" title="unmap" href="../readme.html" />
+    <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+<link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="Guess the colourmap from an image" href="Guess_the_colourmap_from_an_image.html" /><link rel="prev" title="Overview of unmap" href="Overview_of_unmap.html" />
 
-    <link rel="shortcut icon" href="../_static/favicon.ico"/><meta name="generator" content="sphinx-5.1.1, furo 2022.09.15"/>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/><meta name="generator" content="sphinx-5.2.3, furo 2022.09.29"/>
         <title>Unmap data from an image - unmap documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?digest=9ec31e2665bf879c1d47d93a8ec4893870ee1e45" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?digest=d81277517bee4d6b0349d71bb2661d4890b5617c" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
     <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
     
@@ -162,7 +161,9 @@
   <p class="caption" role="heading"><span class="caption-text">User guide</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../readme.html">unmap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Overview_of_unmap.html">Overview of <code class="docutils literal notranslate"><span class="pre">unmap</span></code></a></li>
 <li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Unmap data from an image</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Guess_the_colourmap_from_an_image.html">Guess the colourmap from an image</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">API reference</span></p>
 <ul>
@@ -194,7 +195,8 @@
           <span>Back to top</span>
         </a>
         <div class="content-icon-container">
-          <div class="theme-toggle-container theme-toggle-content">
+          
+<div class="theme-toggle-container theme-toggle-content">
             <button class="theme-toggle">
               <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
               <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
@@ -218,7 +220,8 @@
 <li><p><strong>You don’t have a lot of pixels.</strong> Small images are hard to rip data from. We’d always like more pixels.</p></li>
 <li><p><strong>There are a lot of annotations.</strong> Usually these get in the way of the data.</p></li>
 <li><p><strong>The image is lossily compressed.</strong> Most PDFs contain JPEGs and JPEG is <a class="reference external" href="https://en.wikipedia.org/wiki/Lossy_compression">lossy</a>. This means the colours are a bit garbled, especially around abrupt edges (like annotations!).</p></li>
-<li><p><strong>The image has hillshading.</strong> The cute shadow effect adds another layer of complexity… but we can still have a go.</p></li>
+<li><p><strong>The image has dithering.</strong> If the number of colours in the image has been reduced at some point, there’s a good chance it has been <a class="reference external" href="https://en.wikipedia.org/wiki/Dither">dithered</a>.</p></li>
+<li><p><strong>The image has hillshading or specularity.</strong> Cute 3D effects add another layer of complexity… but we can still have a go.</p></li>
 <li><p><strong>It’s a 3D perspective plot.</strong> You might be able to recover the data from what you can <em>see</em>, but 3D perspective views add another type of distortion that I daresay could be undone, but not by me.</p></li>
 <li><p><strong>The image is poor.</strong> If it’s a photo or scan of a paper document… well, now you ‘ve got the unknown transform from the data to the image, then the unknown transform of the image to the physical plot, then the unknown transform of the plot to the image you have. I mean, come on.</p></li>
 </ul>
@@ -253,7 +256,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x7f91545fefd0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x7f7854151f10&gt;
 </pre></div>
 </div>
 <img alt="../_images/3e38ccd3b2e87d7134911e710f448727682d80797af2677f60d1e5e3e21ab5aa.png" src="../_images/3e38ccd3b2e87d7134911e710f448727682d80797af2677f60d1e5e3e21ab5aa.png" />
@@ -335,7 +338,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x7f914dfd4790&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x7f784da1dbb0&gt;
 </pre></div>
 </div>
 <img alt="../_images/fcbcf8888d15bfb889deb614da03546ef1664747f90418975b540bc0a2564a4e.png" src="../_images/fcbcf8888d15bfb889deb614da03546ef1664747f90418975b540bc0a2564a4e.png" />
@@ -360,7 +363,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x7f914df50dc0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x7f7831c5f190&gt;
 </pre></div>
 </div>
 <img alt="../_images/e95610611a5af6e10d09fb013e6bb3465ea3e811480b3f5e7adcbc7ab9cc7781.png" src="../_images/e95610611a5af6e10d09fb013e6bb3465ea3e811480b3f5e7adcbc7ab9cc7781.png" />
@@ -381,7 +384,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x7f914decad60&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x7f7831e1db20&gt;
 </pre></div>
 </div>
 <img alt="../_images/2835e80aa54ae931146a9f3278ca591e0a633355e4fff5bf6abeed6f56947d31.png" src="../_images/2835e80aa54ae931146a9f3278ca591e0a633355e4fff5bf6abeed6f56947d31.png" />
@@ -399,7 +402,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x7f914de4e070&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x7f7831f32b50&gt;
 </pre></div>
 </div>
 <img alt="../_images/33948d9f99fd65ddda2ee4a6861f24a63992e5e26471e33d63d2020fc2edbe83.png" src="../_images/33948d9f99fd65ddda2ee4a6861f24a63992e5e26471e33d63d2020fc2edbe83.png" />
@@ -417,7 +420,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.contour.QuadContourSet at 0x7f914ddc5460&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.contour.QuadContourSet at 0x7f7831f0ea00&gt;
 </pre></div>
 </div>
 <img alt="../_images/65afcf60dfbe2a243ee8131dbd6c583bc963af89984612a3cd16f4c3a46b317f.png" src="../_images/65afcf60dfbe2a243ee8131dbd6c583bc963af89984612a3cd16f4c3a46b317f.png" />
@@ -433,23 +436,23 @@
       <footer>
         
         <div class="related-pages">
-          <a class="next-page" href="../unmap.html">
+          <a class="next-page" href="Guess_the_colourmap_from_an_image.html">
               <div class="page-info">
                 <div class="context">
                   <span>Next</span>
                 </div>
-                <div class="title">unmap package</div>
+                <div class="title">Guess the colourmap from an image</div>
               </div>
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
             </a>
-          <a class="prev-page" href="../readme.html">
+          <a class="prev-page" href="Overview_of_unmap.html">
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
               <div class="page-info">
                 <div class="context">
                   <span>Previous</span>
                 </div>
                 
-                <div class="title">unmap</div>
+                <div class="title">Overview of <code class="docutils literal notranslate"><span class="pre">unmap</span></code></div>
                 
               </div>
             </a>
@@ -512,11 +515,7 @@
     <script src="../_static/underscore.js"></script>
     <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
     <script src="../_static/scripts/furo.js"></script>
-    <script>let toggleHintShow = 'Click to show';</script>
-    <script>let toggleHintHide = 'Click to hide';</script>
-    <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../_static/togglebutton.js"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     </body>
 </html>

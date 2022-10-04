@@ -1,0 +1,529 @@
+<!doctype html>
+<html class="no-js" lang="en">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+<link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="unmap package" href="../unmap.html" /><link rel="prev" title="Unmap data from an image" href="Unmap_data_from_an_image.html" />
+
+    <link rel="shortcut icon" href="../_static/favicon.ico"/><meta name="generator" content="sphinx-5.2.3, furo 2022.09.29"/>
+        <title>Guess the colourmap from an image - unmap documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?digest=d81277517bee4d6b0349d71bb2661d4890b5617c" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #f8f8f8;
+  --color-code-foreground: black;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+      }
+    }
+  }
+</style></head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-half" viewBox="0 0 24 24">
+    <title>Auto light/dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-shadow">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+      <circle cx="12" cy="12" r="9" />
+      <path d="M13 12h5" />
+      <path d="M13 15h4" />
+      <path d="M13 18h1" />
+      <path d="M13 9h4" />
+      <path d="M13 6h1" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation">
+  <div class="visually-hidden">Hide navigation sidebar</div>
+</label>
+<label class="overlay toc-overlay" for="__toc">
+  <div class="visually-hidden">Hide table of contents sidebar</div>
+</label>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <div class="visually-hidden">Toggle site navigation sidebar</div>
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="../index.html"><div class="brand">unmap  documentation</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle">
+          <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+          <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <div class="visually-hidden">Toggle table of contents sidebar</div>
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand centered" href="../index.html">
+  
+  <div class="sidebar-logo-container">
+    <img class="sidebar-logo" src="../_static/unmap.png" alt="Logo"/>
+  </div>
+  
+  
+</a><form class="sidebar-search-container" method="get" action="../search.html" role="search">
+  <input class="sidebar-search" placeholder=Search name="q" aria-label="Search">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <p class="caption" role="heading"><span class="caption-text">User guide</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../readme.html">unmap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Overview_of_unmap.html">Overview of <code class="docutils literal notranslate"><span class="pre">unmap</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="Unmap_data_from_an_image.html">Unmap data from an image</a></li>
+<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Guess the colourmap from an image</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../unmap.html">unmap package</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Project links</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://pypi.org/project/unmap/">PyPI releases</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/kwinkunks/unmap">Code in GitHub</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/kwinkunks/unmap/issues">Issue tracker</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://code.agilescientific.com/community">Community guidelines</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://code.agilescientific.com">More tools</a></li>
+</ul>
+
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          
+<div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle">
+              <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+              <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+            <div class="visually-hidden">Toggle table of contents sidebar</div>
+            <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+          </label>
+        </div>
+        <article role="main">
+          <section class="tex2jax_ignore mathjax_ignore" id="guess-the-colourmap-from-an-image">
+<h1>Guess the colourmap from an image<a class="headerlink" href="#guess-the-colourmap-from-an-image" title="Permalink to this heading">#</a></h1>
+<p>The functions in <code class="docutils literal notranslate"><span class="pre">unmap.unweave.py</span></code> attempt to guess the colourmap from an image, using the graph implied by the colour co-occurrence matrix.</p>
+<p>The following things will make things difficult:</p>
+<ul class="simple">
+<li><p><strong>You don’t have a lot of pixels.</strong> Small images are hard to rip data from. We’d always like more pixels.</p></li>
+<li><p><strong>The colourmap is not smooth.</strong> If there are strong colour contrasts in the colourmap, then the algorithm will struggle.</p></li>
+<li><p><strong>The data distribution is not uniform.</strong> (It probably isn’t.) This wilkl tend to over-represent certain colours.</p></li>
+<li><p><strong>There are a lot of annotations.</strong> Usually these get in the way of the data, especially if they use colours that also appear in the colourmap.</p></li>
+<li><p><strong>The image is lossily compressed.</strong> Most PDFs contain JPEGs and JPEG is <a class="reference external" href="https://en.wikipedia.org/wiki/Lossy_compression">lossy</a>. This means the colours are a bit garbled, especially around abrupt edges (like annotations!).</p></li>
+<li><p><strong>The image has dithering.</strong> If the number of colours in the image has been reduced at some point, there’s a good chance it has been <a class="reference external" href="https://en.wikipedia.org/wiki/Dither">dithered</a>.</p></li>
+<li><p><strong>The image has hillshading or specularity.</strong> Cute 3D effects add another layer of complexity… but we can still have a go.</p></li>
+<li><p><strong>The image is poor.</strong> If it’s a photo or scan of a paper document… well, now you ‘ve got the unknown transform from the data to the image, then the unknown transform of the image to the physical plot, then the unknown transform of the plot to the image you have. I mean, come on.</p></li>
+</ul>
+<p>Finally, if you don’t have the colourmap information in a legend, then you may also not know the range of the data. There’s nothing you can do about that, unfortunately.</p>
+<p>Things we may add in the future:</p>
+<ul class="simple">
+<li><p>Remove hillshade or specularity.</p></li>
+<li><p>Selectively remove certain colours. (Right now, colours that are different from anything else in the colourmap will likely be dropped anyway, e.g. black borders, because they are too far from the other colours.)</p></li>
+<li><p>Colourbar corrections for, e.g. a Gaussian distribution assumption.</p></li>
+<li><p>Match the language between <code class="docutils literal notranslate"><span class="pre">unmap.py</span></code> and <code class="docutils literal notranslate"><span class="pre">unweave.py</span></code>.</p></li>
+<li><p>Add a <code class="docutils literal notranslate"><span class="pre">mask</span></code> option so that a person can more easily just focus on the data area.</p></li>
+</ul>
+<section id="example">
+<h2>Example<a class="headerlink" href="#example" title="Permalink to this heading">#</a></h2>
+<p>Let’s try to guess the colourmaps of some images on the web.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">io</span> <span class="kn">import</span> <span class="n">BytesIO</span>
+
+<span class="kn">import</span> <span class="nn">requests</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">PIL</span> <span class="kn">import</span> <span class="n">Image</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+
+<span class="k">def</span> <span class="nf">get_image_from_web</span><span class="p">(</span><span class="n">uri</span><span class="p">):</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">uri</span><span class="p">)</span><span class="o">.</span><span class="n">content</span>
+    <span class="n">img</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">BytesIO</span><span class="p">(</span><span class="n">data</span><span class="p">))</span><span class="o">.</span><span class="n">convert</span><span class="p">(</span><span class="s1">&#39;RGB&#39;</span><span class="p">)</span>
+    <span class="n">rgb_im</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">img</span><span class="p">)[</span><span class="o">...</span><span class="p">,</span> <span class="p">:</span><span class="mi">3</span><span class="p">]</span> <span class="o">/</span> <span class="mf">255.</span>
+    <span class="k">return</span> <span class="n">rgb_im</span>
+
+<span class="c1"># Public domain image.</span>
+<span class="n">uri</span> <span class="o">=</span> <span class="s1">&#39;https://upload.wikimedia.org/wikipedia/commons/2/2b/VariableFrequency.jpg&#39;</span>
+<span class="n">img</span> <span class="o">=</span> <span class="n">get_image_from_web</span><span class="p">(</span><span class="n">uri</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">img</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">UnidentifiedImageError</span><span class="g g-Whitespace">                    </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span> <span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">17</span>
+<span class="g g-Whitespace">     </span><span class="mi">15</span> <span class="c1"># Public domain image.</span>
+<span class="g g-Whitespace">     </span><span class="mi">16</span> <span class="n">uri</span> <span class="o">=</span> <span class="s1">&#39;https://upload.wikimedia.org/wikipedia/commons/2/2b/VariableFrequency.jpg&#39;</span>
+<span class="ne">---&gt; </span><span class="mi">17</span> <span class="n">img</span> <span class="o">=</span> <span class="n">get_image_from_web</span><span class="p">(</span><span class="n">uri</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">19</span> <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">img</span><span class="p">)</span>
+
+<span class="nn">Cell In [1], line 11,</span> in <span class="ni">get_image_from_web</span><span class="nt">(uri)</span>
+<span class="g g-Whitespace">      </span><span class="mi">9</span> <span class="k">def</span> <span class="nf">get_image_from_web</span><span class="p">(</span><span class="n">uri</span><span class="p">):</span>
+<span class="g g-Whitespace">     </span><span class="mi">10</span>     <span class="n">data</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">uri</span><span class="p">)</span><span class="o">.</span><span class="n">content</span>
+<span class="ne">---&gt; </span><span class="mi">11</span>     <span class="n">img</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">BytesIO</span><span class="p">(</span><span class="n">data</span><span class="p">))</span><span class="o">.</span><span class="n">convert</span><span class="p">(</span><span class="s1">&#39;RGB&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">12</span>     <span class="n">rgb_im</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">img</span><span class="p">)[</span><span class="o">...</span><span class="p">,</span> <span class="p">:</span><span class="mi">3</span><span class="p">]</span> <span class="o">/</span> <span class="mf">255.</span>
+<span class="g g-Whitespace">     </span><span class="mi">13</span>     <span class="k">return</span> <span class="n">rgb_im</span>
+
+<span class="nn">File ~/.local/lib/python3.8/site-packages/PIL/Image.py:3147,</span> in <span class="ni">open</span><span class="nt">(fp, mode, formats)</span>
+<span class="g g-Whitespace">   </span><span class="mi">3145</span> <span class="k">for</span> <span class="n">message</span> <span class="ow">in</span> <span class="n">accept_warnings</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">3146</span>     <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="n">message</span><span class="p">)</span>
+<span class="ne">-&gt; </span><span class="mi">3147</span> <span class="k">raise</span> <span class="n">UnidentifiedImageError</span><span class="p">(</span>
+<span class="g g-Whitespace">   </span><span class="mi">3148</span>     <span class="s2">&quot;cannot identify image file </span><span class="si">%r</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">filename</span> <span class="k">if</span> <span class="n">filename</span> <span class="k">else</span> <span class="n">fp</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">3149</span> <span class="p">)</span>
+
+<span class="ne">UnidentifiedImageError</span>: cannot identify image file &lt;_io.BytesIO object at 0x7f2645c48f40&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can give the image URI directly to <code class="docutils literal notranslate"><span class="pre">guess_cmap()</span></code>. It will read the image and try to construct a colourmap from it.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">unmap</span> <span class="kn">import</span> <span class="n">guess_cmap</span>
+
+<span class="n">guess_cmap</span><span class="p">(</span><span class="n">uri</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div style="vertical-align: middle;"><strong>recovered</strong> </div><div class="cmap"><img alt="recovered colormap" title="recovered" style="border: 1px solid #555;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAgAAAABACAYAAABsv8+/AAAAGHRFWHRUaXRsZQByZWNvdmVyZWQgY29sb3JtYXCmg4jWAAAAHnRFWHREZXNjcmlwdGlvbgByZWNvdmVyZWQgY29sb3JtYXDkGG5dAAAAMHRFWHRBdXRob3IATWF0cGxvdGxpYiB2My41LjAsIGh0dHBzOi8vbWF0cGxvdGxpYi5vcmdSPF7BAAAAMnRFWHRTb2Z0d2FyZQBNYXRwbG90bGliIHYzLjUuMCwgaHR0cHM6Ly9tYXRwbG90bGliLm9yZ3yaweYAAAKTSURBVHic7dZLYpwwFARAATlYbpID+cgeIAs/4SAgs/GuqzaaJwkQDJ+e/vz+2Ftr7XPd21fbWmutvar93Ia65r22dj+/1zXe2jK0v36m3r7W0favdt+2Krfb/lb9+7Hdfb317epo/TQudc17HL/M78uea3yqeqp6Ptc1b2u9vu9vU2/rQPPPtFPtd+71fF9PVb+bd6lrvfM01vf943qu29V6lt7O9/X8NF77e5jXjvM9L7Sv63H8Up/3f1z28fyf+h/Gl3G8fix1vLnapc7n0j+Mj/3zcaB+4HpO+kKW/bSwvcYv84f6+37b6zj7cF69Pvc/1+f+afgfxut/6V+e5t1v988Nee5f3oyP2/f7r94cy/6qdq3LtZ7qZRv7/z9/qvn7+jq12+s19N/Pu86vF329N7+f6/NzcVyv4/nt9fxm/Ly/S9vejNf+x/7+mmz7em6P78S5//iebOv9dvv5+3K8EPuNPy2n8+11G+rH8f5dqOu91v+wDvXT+PZmfj8KABBEAACAQAIAAAQSAAAgkAAAAIEEAAAIJAAAQCABAAACCQAAEEgAAIBAAgAABBIAACCQAAAAgQQAAAgkAABAIAEAAAIJAAAQSAAAgEACAAAEEgAAIJAAAACBBAAACCQAAEAgAQAAAgkAABBIAACAQAIAAAQSAAAgkAAAAIEEAAAIJAAAQCABAAACCQAAEEgAAIBAAgAABBIAACCQAAAAgQQAAAgkAABAIAEAAAIJAAAQSAAAgEACAAAEEgAAIJAAAACBBAAACCQAAEAgAQAAAgkAABBIAACAQAIAAAQSAAAgkAAAAIEEAAAIJAAAQCABAAACCQAAEEgAAIBAAgAABBIAACCQAAAAgQQAAAgkAABAoL+7s9V0BR+BgAAAAABJRU5ErkJggg=="></div><div style="vertical-align: middle; max-width: 514px; display: flex; justify-content: space-between;"><div style="float: left;"><div title="#5f408bff" style="display: inline-block; width: 1em; height: 1em; margin: 0; vertical-align: middle; border: 1px solid #555; background-color: #5f408bff;"></div> under</div><div style="margin: 0 auto; display: inline-block;">bad <div title="#00000000" style="display: inline-block; width: 1em; height: 1em; margin: 0; vertical-align: middle; border: 1px solid #555; background-color: #00000000;"></div></div><div style="float: right;">over <div title="#acaf9aff" style="display: inline-block; width: 1em; height: 1em; margin: 0; vertical-align: middle; border: 1px solid #555; background-color: #acaf9aff;"></div></div></div></div>
+</div>
+<p>We got something, but it missed out the blues. We can try adjusting the maximum (Euclidean) distance allowed between neighbouring colours.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">guess_cmap</span><span class="p">(</span><span class="n">uri</span><span class="p">,</span> <span class="n">max_dist</span><span class="o">=</span><span class="mf">0.4</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div style="vertical-align: middle;"><strong>recovered</strong> </div><div class="cmap"><img alt="recovered colormap" title="recovered" style="border: 1px solid #555;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAgAAAABACAYAAABsv8+/AAAAGHRFWHRUaXRsZQByZWNvdmVyZWQgY29sb3JtYXCmg4jWAAAAHnRFWHREZXNjcmlwdGlvbgByZWNvdmVyZWQgY29sb3JtYXDkGG5dAAAAMHRFWHRBdXRob3IATWF0cGxvdGxpYiB2My41LjAsIGh0dHBzOi8vbWF0cGxvdGxpYi5vcmdSPF7BAAAAMnRFWHRTb2Z0d2FyZQBNYXRwbG90bGliIHYzLjUuMCwgaHR0cHM6Ly9tYXRwbG90bGliLm9yZ3yaweYAAAKKSURBVHic7dZJYpwwEAVQhpw0+1zPh7O7IYsu4UhAeuPdf28jV0mMbuDPf35/7NM0TZ+fX9NrfFyOX1/X/Xfz07QO46+fqbf9Ne6vcd+2KrfL/lT9/djuut7adnW02vpc17rb+dP6dtpLzc9Vz1UvfV3rtqnV1/1pbmMdaPmZca79Lq1eruu56nfrTnWd7zKP9XV/PJ/zdnU+axuX63q5m6/93aybjuvtT7Sd1+38qe73f9z28frv+jfz6zhff6x1vKXGta7n1B/mx/5yHKgduJ6TdiLr3p3YXvOn9UP9/Xvb6zj7cF2t7vv3dd+fh//DeP9P/fVu3fV2//wg+/76Zn7cvv3+6s2x7o8an3W7nl29bmP//+vnWr8/H924PR5D/3rdef1rXXtvfj/X/XNx3K/j+W318ma+399pnN7M1/7HfntNTvuzH4/vRN8/vifb83q7vf++HC/E9sOf1+56Wz0N9e18+y7U/X7W/+E51Hfz25v17SgAQBABAAACCQAAEEgAAIBAAgAABBIAACCQAAAAgQQAAAgkAABAIAEAAAIJAAAQSAAAgEACAAAEEgAAIJAAAACBBAAACCQAAEAgAQAAAgkAABBIAACAQAIAAAQSAAAgkAAAAIEEAAAIJAAAQCABAAACCQAAEEgAAIBAAgAABBIAACCQAAAAgQQAAAgkAABAIAEAAAIJAAAQSAAAgEACAAAEEgAAIJAAAACBBAAACCQAAEAgAQAAAgkAABBIAACAQAIAAAQSAAAgkAAAAIEEAAAIJAAAQCABAAACCQAAEEgAAIBAAgAABBIAACCQAAAAgQQAAAgkAABAIAEAAAIJAAAQSAAAgEACAAAEEgAAIJAAAACB/gIoCd50a0CGfQAAAABJRU5ErkJggg=="></div><div style="vertical-align: middle; max-width: 514px; display: flex; justify-content: space-between;"><div style="float: left;"><div title="#6d62b6ff" style="display: inline-block; width: 1em; height: 1em; margin: 0; vertical-align: middle; border: 1px solid #555; background-color: #6d62b6ff;"></div> under</div><div style="margin: 0 auto; display: inline-block;">bad <div title="#00000000" style="display: inline-block; width: 1em; height: 1em; margin: 0; vertical-align: middle; border: 1px solid #555; background-color: #00000000;"></div></div><div style="float: right;">over <div title="#acaf9aff" style="display: inline-block; width: 1em; height: 1em; margin: 0; vertical-align: middle; border: 1px solid #555; background-color: #acaf9aff;"></div></div></div></div>
+</div>
+<p>We seem to be close; we’re getting a lot of blue-green though. The <code class="docutils literal notranslate"><span class="pre">equilibrate</span></code> option might help spread the colourbar out a bit more evenly.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">guess_cmap</span><span class="p">(</span><span class="n">uri</span><span class="p">,</span> <span class="n">max_dist</span><span class="o">=</span><span class="mf">0.4</span><span class="p">,</span> <span class="n">equilibrate</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div style="vertical-align: middle;"><strong>recovered</strong> </div><div class="cmap"><img alt="recovered colormap" title="recovered" style="border: 1px solid #555;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAgAAAABACAYAAABsv8+/AAAAGHRFWHRUaXRsZQByZWNvdmVyZWQgY29sb3JtYXCmg4jWAAAAHnRFWHREZXNjcmlwdGlvbgByZWNvdmVyZWQgY29sb3JtYXDkGG5dAAAAMHRFWHRBdXRob3IATWF0cGxvdGxpYiB2My41LjAsIGh0dHBzOi8vbWF0cGxvdGxpYi5vcmdSPF7BAAAAMnRFWHRTb2Z0d2FyZQBNYXRwbG90bGliIHYzLjUuMCwgaHR0cHM6Ly9tYXRwbG90bGliLm9yZ3yaweYAAAMSSURBVHic7dZNctw2EAZQgKRkLVKVVZzc/45OIg1/vECDKqBKowP0e5t2UyAIEqjxV9e6XKWUcl1XKaWUq/T6jVpbXaMu9fn4ZRp33/fSyvqjTbu+Rf9Hq8vPNnz9K/7e6v421iNq+fPvqP+M/daeU16m+hrreC1jv0W/lrFfvqn1i+vbVNep3uOm5798c986jbtrfT7+m/XX6Ps213WsfZ4l6tqOUVnrOfVHDG/Xl97XR7zuI65HLXuM34d+ifvveXof53a9zqEucYI/j1300/glau0nvk41rtfo690f0/rG9W/3eqf37+uK2Xv/OW6s2/Q9tnjO5/v2dfT5o7/X1+pLfN/X8hH1Mcy/TN91ub7q+/69x/0fsb7Wv11tvh9TLXEuatRSx3XXeI+7ll6nv9djmKf3W/Svpdf2Xbf5PJTn52A94/rZ+i36JWrd4/lHr/E+MV+JcfcP6EfUR7x27886juv9ucRzoj/ipJzleT3Geu0xcV9f1Gs/x/H7eF/dl/G5+7ie+oh19f5+v7j+MV1/H+t5tHWd8Z2uqOcj+vfo4/7zv9bvv+Kx/8by/h/ni+0oZ7z3Ed/7rvGe1znXeN60fbH9fdvKIzbq3r6oRxnvv7dz+n/0s87Xr+m+eZ7peX1bo9/jB/uIut/bNvb3cbtr+0f/HQIAEhEAACAhAQAAEhIAACAhAQAAEhIAACAhAQAAEhIAACAhAQAAEhIAACAhAQAAEhIAACAhAQAAEhIAACAhAQAAEhIAACAhAQAAEhIAACAhAQAAEhIAACAhAQAAEhIAACAhAQAAEhIAACAhAQAAEhIAACAhAQAAEhIAACAhAQAAEhIAACAhAQAAEhIAACAhAQAAEhIAACAhAQAAEhIAACAhAQAAEhIAACAhAQAAEhIAACAhAQAAEhIAACAhAQAAEhIAACAhAQAAEhIAACAhAQAAEhIAACAhAQAAEhIAACAhAQAAEhIAACAhAQAAEhIAACAhAQAAEhIAACAhAQAAEhIAACAhAQAAEhIAACAhAQAAEhIAACAhAQAAEvoN0yoJJnG55ZQAAAAASUVORK5CYII="></div><div style="vertical-align: middle; max-width: 514px; display: flex; justify-content: space-between;"><div style="float: left;"><div title="#040102ff" style="display: inline-block; width: 1em; height: 1em; margin: 0; vertical-align: middle; border: 1px solid #555; background-color: #040102ff;"></div> under</div><div style="margin: 0 auto; display: inline-block;">bad <div title="#00000000" style="display: inline-block; width: 1em; height: 1em; margin: 0; vertical-align: middle; border: 1px solid #555; background-color: #00000000;"></div></div><div style="float: right;">over <div title="#8b0904ff" style="display: inline-block; width: 1em; height: 1em; margin: 0; vertical-align: middle; border: 1px solid #555; background-color: #8b0904ff;"></div></div></div></div>
+</div>
+<p>This helps a little, but sometimes this option can emphasize some abrupt colour boundaries, like the one in the red zone of the one above.</p>
+<p>We could now give this colourmap to the unmapper:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">unmap</span> <span class="kn">import</span> <span class="n">unmap</span>
+
+<span class="n">cmap</span> <span class="o">=</span> <span class="n">guess_cmap</span><span class="p">(</span><span class="n">uri</span><span class="p">,</span> <span class="n">max_dist</span><span class="o">=</span><span class="mf">0.4</span><span class="p">,</span> <span class="n">equilibrate</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">unmap</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">cmap</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let’s look at the result:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x7f42ca275e80&gt;
+</pre></div>
+</div>
+<img alt="../_images/0587fdc5030c1a85e7f5fc199b3967a0818aaab7a3621f36a63f062fc9ef9c58.png" src="../_images/0587fdc5030c1a85e7f5fc199b3967a0818aaab7a3621f36a63f062fc9ef9c58.png" />
+</div>
+</div>
+<p>Too many colours were not mapped, because they are too far from anything in the colourmap. We can relax the threshold a bit:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">unmap</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">cmap</span><span class="p">,</span> <span class="n">threshold</span><span class="o">=</span><span class="mf">0.4</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x7f42ca2beee0&gt;
+</pre></div>
+</div>
+<img alt="../_images/af1b22d21b0b894c81cc329c1998705a04b7f2e8eeabc5784c7dc84a49467750.png" src="../_images/af1b22d21b0b894c81cc329c1998705a04b7f2e8eeabc5784c7dc84a49467750.png" />
+</div>
+</div>
+<p>This result looks good.</p>
+</section>
+<section id="compare-with-the-known-colourmap">
+<h2>Compare with the known colourmap<a class="headerlink" href="#compare-with-the-known-colourmap" title="Permalink to this heading">#</a></h2>
+<p>In this case, it looks like the actual colourmap is probably <code class="docutils literal notranslate"><span class="pre">jet</span></code>, let’s compare:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.cm</span> <span class="k">as</span> <span class="nn">cm</span>
+
+<span class="n">cm</span><span class="o">.</span><span class="n">jet</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div style="vertical-align: middle;"><strong>jet</strong> </div><div class="cmap"><img alt="jet colormap" title="jet" style="border: 1px solid #555;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAgAAAABACAYAAABsv8+/AAAAEnRFWHRUaXRsZQBqZXQgY29sb3JtYXBCuQ5RAAAAGHRFWHREZXNjcmlwdGlvbgBqZXQgY29sb3JtYXBOkXwLAAAAMHRFWHRBdXRob3IATWF0cGxvdGxpYiB2My41LjAsIGh0dHBzOi8vbWF0cGxvdGxpYi5vcmdSPF7BAAAAMnRFWHRTb2Z0d2FyZQBNYXRwbG90bGliIHYzLjUuMCwgaHR0cHM6Ly9tYXRwbG90bGliLm9yZ3yaweYAAAGcSURBVHic7dbLTgJBEEDR4uF3++GCuqDHREx04RPvOZtKTUNnEljc3cz908zMzN1lzHG+dv8r9+7mXUfztub62x5Pa55nZma/5uFlXs6Pb56veVhz1udm26/nZ8//6z23+b7b/uE957Wftvm45qzzy9ytfbZ5vto/ev7T3/vr9/3yezytuX72edj209W+nc/refri/bvu3Q8AkCMAACBIAABAkAAAgCABAABBAgAAggQAAAQJAAAIEgAAECQAACBIAABAkAAAgCABAABBAgAAggQAAAQJAAAIEgAAECQAACBIAABAkAAAgCABAABBAgAAggQAAAQJAAAIEgAAECQAACBIAABAkAAAgCABAABBAgAAggQAAAQJAAAIEgAAECQAACBIAABAkAAAgCABAABBAgAAggQAAAQJAAAIEgAAECQAACBIAABAkAAAgCABAABBAgAAggQAAAQJAAAIEgAAECQAACBIAABAkAAAgCABAABBAgAAggQAAAQJAAAIEgAAECQAACBIAABAkAAAgCABAABBAgAAggQAAAQ9AzXZs/6J5AA/AAAAAElFTkSuQmCC"></div><div style="vertical-align: middle; max-width: 514px; display: flex; justify-content: space-between;"><div style="float: left;"><div title="#000080ff" style="display: inline-block; width: 1em; height: 1em; margin: 0; vertical-align: middle; border: 1px solid #555; background-color: #000080ff;"></div> under</div><div style="margin: 0 auto; display: inline-block;">bad <div title="#00000000" style="display: inline-block; width: 1em; height: 1em; margin: 0; vertical-align: middle; border: 1px solid #555; background-color: #00000000;"></div></div><div style="float: right;">over <div title="#800000ff" style="display: inline-block; width: 1em; height: 1em; margin: 0; vertical-align: middle; border: 1px solid #555; background-color: #800000ff;"></div></div></div></div>
+</div>
+<p>This is comparable to the result we get when passing the known colourmap, <code class="docutils literal notranslate"><span class="pre">jet</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">unmap</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;jet&#39;</span><span class="p">,</span> <span class="n">threshold</span><span class="o">=</span><span class="mf">0.4</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x7f42c9f92130&gt;
+</pre></div>
+</div>
+<img alt="../_images/ecbfb553c8581ec2ac9bd9c4cd74bb2d253e1f6bb72971d294942ea9f8ba94c3.png" src="../_images/ecbfb553c8581ec2ac9bd9c4cd74bb2d253e1f6bb72971d294942ea9f8ba94c3.png" />
+</div>
+</div>
+<p>We don’t know the range of the data though, of course.</p>
+</section>
+<section id="try-a-seismic-section">
+<h2>Try a seismic section<a class="headerlink" href="#try-a-seismic-section" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">uri</span> <span class="o">=</span> <span class="s2">&quot;https://www.fathomgeophysics.com/images/post-image/post-image-seismic-data-analysis-972x360.jpg&quot;</span>
+
+<span class="n">img</span> <span class="o">=</span> <span class="n">get_image_from_web</span><span class="p">(</span><span class="n">uri</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">img</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x7fdaca99efd0&gt;
+</pre></div>
+</div>
+<img alt="../_images/9636a345af57c2287d9b22365ca32fabae415e00d07918e81ed6df5e2591c91b.png" src="../_images/9636a345af57c2287d9b22365ca32fabae415e00d07918e81ed6df5e2591c91b.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">guess_cmap</span><span class="p">(</span><span class="n">uri</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div style="vertical-align: middle;"><strong>recovered</strong> </div><div class="cmap"><img alt="recovered colormap" title="recovered" style="border: 1px solid #555;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAgAAAABACAYAAABsv8+/AAAAGHRFWHRUaXRsZQByZWNvdmVyZWQgY29sb3JtYXCmg4jWAAAAHnRFWHREZXNjcmlwdGlvbgByZWNvdmVyZWQgY29sb3JtYXDkGG5dAAAAMHRFWHRBdXRob3IATWF0cGxvdGxpYiB2My41LjAsIGh0dHBzOi8vbWF0cGxvdGxpYi5vcmdSPF7BAAAAMnRFWHRTb2Z0d2FyZQBNYXRwbG90bGliIHYzLjUuMCwgaHR0cHM6Ly9tYXRwbG90bGliLm9yZ3yaweYAAAIISURBVHic7dY7coMwAEVRwSJTZOHZTaw0FowEGiBFUrxzGoyQhD+M5y4fn1+1lFK+X6WUUsrrt8f6N+trXc6PZR3G+/PXzXnbeRnv82xeeY8vSxmO5+PrZHw2/+n43f2b47zhuE2czVu6eeP1w7rL+7YZtZza9nl4ffzcl9fbi8l92uXpuv7Fcbyd9l/McHm7wXF8nH/+++7bLMP56XbHfa/OZ/s9nDd7n/fXnS77g3VXz+Ew7/J56febvb/2XM6ei8PwbHyy/X+vW95/r+v4/zAdr/fmr/31tX2Ph/HZ/Mn92n2G8XVbX7vz/Xrt95/ss3+O833G97Pv8z4WACCOAACAQAIAAAIJAAAIJAAAIJAAAIBAAgAAAgkAAAgkAAAgkAAAgEACAAACCQAACCQAACCQAACAQAIAAAIJAAAIJAAAIJAAAIBAAgAAAgkAAAgkAAAgkAAAgEACAAACCQAACCQAACCQAACAQAIAAAIJAAAIJAAAIJAAAIBAAgAAAgkAAAgkAAAgkAAAgEACAAACCQAACCQAACCQAACAQAIAAAIJAAAIJAAAIJAAAIBAAgAAAgkAAAgkAAAgkAAAgEACAAACCQAACCQAACCQAACAQAIAAAIJAAAIJAAAIJAAAIBAAgAAAgkAAAgkAAAgkAAAgEACAAACCQAACCQAACCQAACAQAIAAAL9AJr8ZcnO025sAAAAAElFTkSuQmCC"></div><div style="vertical-align: middle; max-width: 514px; display: flex; justify-content: space-between;"><div style="float: left;"><div title="#565ad6ff" style="display: inline-block; width: 1em; height: 1em; margin: 0; vertical-align: middle; border: 1px solid #555; background-color: #565ad6ff;"></div> under</div><div style="margin: 0 auto; display: inline-block;">bad <div title="#00000000" style="display: inline-block; width: 1em; height: 1em; margin: 0; vertical-align: middle; border: 1px solid #555; background-color: #00000000;"></div></div><div style="float: right;">over <div title="#abaef1ff" style="display: inline-block; width: 1em; height: 1em; margin: 0; vertical-align: middle; border: 1px solid #555; background-color: #abaef1ff;"></div></div></div></div>
+</div>
+<p>Oh dear… seismic is tricky because the middle of thr distribution is so over-represented.</p>
+<p>This time we need to tweak a few things: we need to allow more connections between colours (both <code class="docutils literal notranslate"><span class="pre">min_weight</span></code> and <code class="docutils literal notranslate"><span class="pre">max_neighbours</span></code>), and allow larger jumps in colour (<code class="docutils literal notranslate"><span class="pre">max_dist</span></code>).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">guess_cmap</span><span class="p">(</span><span class="n">uri</span><span class="p">,</span> <span class="n">min_weight</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span> <span class="n">max_dist</span><span class="o">=</span><span class="mf">0.15</span><span class="p">,</span> <span class="n">max_neighbours</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div style="vertical-align: middle;"><strong>recovered</strong> </div><div class="cmap"><img alt="recovered colormap" title="recovered" style="border: 1px solid #555;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAgAAAABACAYAAABsv8+/AAAAGHRFWHRUaXRsZQByZWNvdmVyZWQgY29sb3JtYXCmg4jWAAAAHnRFWHREZXNjcmlwdGlvbgByZWNvdmVyZWQgY29sb3JtYXDkGG5dAAAAMHRFWHRBdXRob3IATWF0cGxvdGxpYiB2My41LjAsIGh0dHBzOi8vbWF0cGxvdGxpYi5vcmdSPF7BAAAAMnRFWHRTb2Z0d2FyZQBNYXRwbG90bGliIHYzLjUuMCwgaHR0cHM6Ly9tYXRwbG90bGliLm9yZ3yaweYAAALfSURBVHic7dZBkpswEAXQFjhxzSK5SHa5/zlylElNYkMWSEzRmFyg39v0yKCWBPbUbz9+/lojIt4/loiIeP+z1b+PrxER0eJbr98jIuLtPm/1rdf7FBER93vrNSIiYprXrU5bv7mP52nq463ebtu8L1u7fTzv49Fv6f3WQ/+59evtOP92O/afe5/Rt28j+jb2+ZHqlK7v41Md5xvrbOOW5rXWP4/j9bzuPq9NvbbXffb+Le1z+6Ol+6/O09K6J2P+GPbx1fNqY995vbFOen5t7DeffzzPtP+W+7WW5q0X5zj2ndK6+bmM93mb0/Pcv0fry/Pd+vXP79vx/Yz15vH76HWKrcYy6nOrz1HT9fz5ejz3OsbPx7Hf+Hzd5rV93Ccucbyvrzf6rcuo+42pjn327+mS1+nz17Tv5Xj9s+2xf57X8us+9TmeY78+xuvxfHG5r62003nzev+f//n56/PtdUn9TuPlOG3I6+Z5p32meam20/z0fbh8nxfP4aJf28819hOpT6r5PV+tlxsuF+fL88fv6/R76/XxeDleex2r7qun+eO+SL+ncX+/Gs++77+9Pnpd9n0d63M51o9e33v9vY7/NwBAOQIAABQkAABAQQIAABQkAABAQQIAABQkAABAQQIAABQkAABAQQIAABQkAABAQQIAABQkAABAQQIAABQkAABAQQIAABQkAABAQQIAABQkAABAQQIAABQkAABAQQIAABQkAABAQQIAABQkAABAQQIAABQkAABAQQIAABQkAABAQQIAABQkAABAQQIAABQkAABAQQIAABQkAABAQQIAABQkAABAQQIAABQkAABAQQIAABQkAABAQQIAABQkAABAQQIAABQkAABAQQIAABQkAABAQQIAABQkAABAQQIAABQkAABAQQIAABQkAABAQQIAABQkAABAQQIAABQkAABAQQIAABQkAABAQQIAABQkAABAQQIAABQkAABAQf8AEaQsroC0LOEAAAAASUVORK5CYII="></div><div style="vertical-align: middle; max-width: 514px; display: flex; justify-content: space-between;"><div style="float: left;"><div title="#2b32d6ff" style="display: inline-block; width: 1em; height: 1em; margin: 0; vertical-align: middle; border: 1px solid #555; background-color: #2b32d6ff;"></div> under</div><div style="margin: 0 auto; display: inline-block;">bad <div title="#00000000" style="display: inline-block; width: 1em; height: 1em; margin: 0; vertical-align: middle; border: 1px solid #555; background-color: #00000000;"></div></div><div style="float: right;">over <div title="#c1302fff" style="display: inline-block; width: 1em; height: 1em; margin: 0; vertical-align: middle; border: 1px solid #555; background-color: #c1302fff;"></div></div></div></div>
+</div>
+</section>
+</section>
+
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          <a class="next-page" href="../unmap.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">unmap package</div>
+              </div>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="Unmap_data_from_an_image.html">
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">Unmap data from an image</div>
+                
+              </div>
+            </a>
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+                Copyright &#169; 2022, Matt Hall
+            </div>
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            
+          </div>
+          <div class="right-details">
+            <div class="icons">
+              <a class="muted-link " href="https://code.agilescientific.com" aria-label="Agile">
+                <svg width="200" height="200" version="1.1" viewBox="0 0 187.5 187.5" xmlns="http://www.w3.org/2000/svg">
+                <g transform="matrix(3.94 -1.28 1.28 3.94 -906.1 -3676)" style="color-rendering:auto;color:#000000;fill:#14ca29;image-rendering:auto;isolation:auto;mix-blend-mode:normal;shape-rendering:auto;solid-color:#000000;stroke-width:1px;text-decoration-color:#000000;text-decoration-line:none;text-decoration-style:solid;text-indent:0;text-transform:none;white-space:normal">
+                <path d="m-46.98 936.1q3.515-1.622 6.705-3.244t5.083-2.379 3.028-0.757q1.893 0 3.244 1.298 1.406 1.244 1.406 3.136 0 1.081-0.7029 2.271-0.6489 1.136-1.406 1.46-6.975 2.758-15.36 4.001 1.514 1.406 3.731 3.731t2.325 2.487q0.8111 1.136 2.271 2.812 1.46 1.676 2.001 2.65 0.5948 0.9192 0.5948 2.271 0 1.73-1.298 3.028t-3.352 1.298q-2.055 0-4.65-3.19-2.541-3.19-6.597-11.46-4.109 7.462-5.515 9.841t-2.704 3.623q-1.298 1.19-2.974 1.19-2.001 0-3.352-1.352-1.298-1.406-1.298-2.974 0-1.46 0.5407-2.217 4.975-6.759 10.38-11.73-4.542-0.7029-8.111-1.568t-7.57-2.541q-0.6489-0.3244-1.298-1.46-0.5948-1.19-0.5948-2.163 0-1.893 1.352-3.136 1.406-1.298 3.19-1.298 1.298 0 3.244 0.8111 1.947 0.757 4.921 2.271 3.028 1.46 6.867 3.298-0.7029-3.407-1.19-7.786-0.4326-4.434-0.4326-6.056 0-2.001 1.244-3.407 1.298-1.46 3.298-1.46 1.947 0 3.19 1.46 1.298 1.406 1.298 3.785 0 0.6489-0.2163 2.595-0.1622 1.893-0.5407 4.65-0.3244 2.704-0.757 6.218z" style="fill:#14ca29"/>
+                </g>
+                </svg>
+            </a>
+              
+            </div>
+          </div>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">Guess the colourmap from an image</a><ul>
+<li><a class="reference internal" href="#example">Example</a></li>
+<li><a class="reference internal" href="#compare-with-the-known-colourmap">Compare with the known colourmap</a></li>
+<li><a class="reference internal" href="#try-a-seismic-section">Try a seismic section</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
+      
+      
+    </aside>
+  </div>
+</div><script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/scripts/furo.js"></script>
+    </body>
+</html>

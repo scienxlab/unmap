@@ -1,0 +1,549 @@
+<!doctype html>
+<html class="no-js" lang="en">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+<link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="Unmap data from an image" href="Unmap_data_from_an_image.html" /><link rel="prev" title="unmap" href="../readme.html" />
+
+    <link rel="shortcut icon" href="../_static/favicon.ico"/><meta name="generator" content="sphinx-5.2.3, furo 2022.09.29"/>
+        <title>Overview of unmap - unmap documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?digest=d81277517bee4d6b0349d71bb2661d4890b5617c" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #f8f8f8;
+  --color-code-foreground: black;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+      }
+    }
+  }
+</style></head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-half" viewBox="0 0 24 24">
+    <title>Auto light/dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-shadow">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+      <circle cx="12" cy="12" r="9" />
+      <path d="M13 12h5" />
+      <path d="M13 15h4" />
+      <path d="M13 18h1" />
+      <path d="M13 9h4" />
+      <path d="M13 6h1" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation">
+  <div class="visually-hidden">Hide navigation sidebar</div>
+</label>
+<label class="overlay toc-overlay" for="__toc">
+  <div class="visually-hidden">Hide table of contents sidebar</div>
+</label>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <div class="visually-hidden">Toggle site navigation sidebar</div>
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="../index.html"><div class="brand">unmap  documentation</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle">
+          <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+          <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <div class="visually-hidden">Toggle table of contents sidebar</div>
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand centered" href="../index.html">
+  
+  <div class="sidebar-logo-container">
+    <img class="sidebar-logo" src="../_static/unmap.png" alt="Logo"/>
+  </div>
+  
+  
+</a><form class="sidebar-search-container" method="get" action="../search.html" role="search">
+  <input class="sidebar-search" placeholder=Search name="q" aria-label="Search">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <p class="caption" role="heading"><span class="caption-text">User guide</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../readme.html">unmap</a></li>
+<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Overview of <code class="docutils literal notranslate"><span class="pre">unmap</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="Unmap_data_from_an_image.html">Unmap data from an image</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Guess_the_colourmap_from_an_image.html">Guess the colourmap from an image</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../unmap.html">unmap package</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Project links</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://pypi.org/project/unmap/">PyPI releases</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/kwinkunks/unmap">Code in GitHub</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/kwinkunks/unmap/issues">Issue tracker</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://code.agilescientific.com/community">Community guidelines</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://code.agilescientific.com">More tools</a></li>
+</ul>
+
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          
+<div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle">
+              <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+              <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+            <div class="visually-hidden">Toggle table of contents sidebar</div>
+            <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+          </label>
+        </div>
+        <article role="main">
+          <section class="tex2jax_ignore mathjax_ignore" id="overview-of-unmap">
+<h1>Overview of <code class="docutils literal notranslate"><span class="pre">unmap</span></code><a class="headerlink" href="#overview-of-unmap" title="Permalink to this heading">#</a></h1>
+<p>This library aims to do 2 things:</p>
+<ol class="arabic simple">
+<li><p>Guess the colourmap from a pseudocolour image, for those occasions when the colourmap is not known and not published along with the image.</p></li>
+<li><p>Reocover (‘unmap’) the data from a pseudocolour image, essentially performing the reverse of the pseudocolour process.</p></li>
+</ol>
+<p>These 2 distinct tasks are illustrated below.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">gio</span> <span class="kn">import</span> <span class="n">generate_random_surface</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">matplotlib.cm</span> <span class="k">as</span> <span class="nn">cm</span>
+
+<span class="c1"># Make a random surface and normalize it to the range [0, 1].</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">generate_random_surface</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">32</span><span class="p">,</span> <span class="mi">32</span><span class="p">),</span> <span class="n">random_seed</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span><span class="o">.</span><span class="n">values</span>
+<span class="n">data</span> <span class="o">=</span> <span class="p">(</span><span class="n">data</span> <span class="o">-</span> <span class="n">data</span><span class="o">.</span><span class="n">min</span><span class="p">())</span> <span class="o">/</span> <span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">-</span> <span class="n">data</span><span class="o">.</span><span class="n">min</span><span class="p">())</span>
+
+<span class="c1"># Take a look at it.</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;Greys_r&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x7f0b3fb70790&gt;
+</pre></div>
+</div>
+<img alt="../_images/6cc0bc38dc9874c1f27eef08f1be96ca67ffe4d54900e59e3af16e06d97cd7a7.png" src="../_images/6cc0bc38dc9874c1f27eef08f1be96ca67ffe4d54900e59e3af16e06d97cd7a7.png" />
+</div>
+</div>
+<p>Note: this is a greyscale image; it’s the closest thing we can make to a ‘pure’ visualization of the data. The values in the data array correspond to a grey level from 0 (black) to 1 (white).</p>
+<p>If we were to look closely at the top-left corner, it’s just a grid of numbers…</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">data</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span><span class="si">:</span><span class="s1">0.2f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">data</span><span class="p">[:</span><span class="mi">5</span><span class="p">,</span> <span class="p">:</span><span class="mi">5</span><span class="p">],</span> <span class="n">vmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/97fe0fafb83849dfc39e599025165e45cff85f7c042d26d11666af273ae7329a.png" src="../_images/97fe0fafb83849dfc39e599025165e45cff85f7c042d26d11666af273ae7329a.png" />
+</div>
+</div>
+<p>Now we’ll make an RGB image out of this 2D array. This involves using a look-up table of colours, called a <strong>colourmap</strong>, to transform each data value into an RGB colour, which is a 3-tuple of floats like (0.25, 0.33, 0.9). In doing so, we lose the data values themselves; they are now encoded as colours.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Make a pseudocolored RGB image array.</span>
+<span class="n">imarray</span> <span class="o">=</span> <span class="n">cm</span><span class="o">.</span><span class="n">turbo</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
+<span class="c1"># Display the RGB image.</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">imarray</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x7f0b3da055b0&gt;
+</pre></div>
+</div>
+<img alt="../_images/98d064bd3767f3949a30f87b46bb3e20b0b063a3424ef947f6cd123fd385983a.png" src="../_images/98d064bd3767f3949a30f87b46bb3e20b0b063a3424ef947f6cd123fd385983a.png" />
+</div>
+</div>
+<p>If we know the colourmap and the original range of the data, then recovering data from this image is not too hard: we can do a reverse look-up of each colour in the image and replace it with the corresponding data value. This library, <code class="docutils literal notranslate"><span class="pre">unmap</span></code>, can handle this.</p>
+<p>On the other hand, without knowledge of the colourmap, or the range of values in the original array, it is hard to recover the original dataset from this image. But in some cases, <code class="docutils literal notranslate"><span class="pre">unmap</span></code> can help with this too.</p>
+<section id="guess-the-colourmap">
+<h2>Guess the colourmap<a class="headerlink" href="#guess-the-colourmap" title="Permalink to this heading">#</a></h2>
+<p>We know that we used the <code class="docutils literal notranslate"><span class="pre">jet</span></code> colormap to create this image, but that information is not contained in the image. It’s just a 3D NumPy array.</p>
+<p>Let’s see if <code class="docutils literal notranslate"><span class="pre">unmap.guess_cmap_from_array()</span></code> can guess the colourmap we used:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">unmap</span>
+
+<span class="n">cmap</span> <span class="o">=</span> <span class="n">unmap</span><span class="o">.</span><span class="n">guess_cmap_from_array</span><span class="p">(</span><span class="n">imarray</span><span class="p">)</span>
+<span class="n">cmap</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ValueError</span><span class="g g-Whitespace">                                </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span> <span class="p">[</span><span class="mi">4</span><span class="p">],</span> <span class="n">line</span> <span class="mi">3</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="kn">import</span> <span class="nn">unmap</span>
+<span class="ne">----&gt; </span><span class="mi">3</span> <span class="n">cmap</span> <span class="o">=</span> <span class="n">unmap</span><span class="o">.</span><span class="n">guess_cmap_from_array</span><span class="p">(</span><span class="n">imarray</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="n">cmap</span>
+
+<span class="nn">File ~/.local/lib/python3.8/site-packages/unmap/unweave.py:257,</span> in <span class="ni">guess_cmap_from_array</span><span class="nt">(array, source_colors, target_colors, min_weight, max_dist, max_neighbours, reverse, equilibrate)</span>
+<span class="g g-Whitespace">    </span><span class="mi">241</span> <span class="sd">&quot;&quot;&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">242</span><span class="sd"> Guess the colormap of an image.</span>
+<span class="g g-Whitespace">    </span><span class="mi">243</span><span class="sd"> </span>
+<span class="sd">   (...)</span>
+<span class="g g-Whitespace">    </span><span class="mi">254</span><span class="sd"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">255</span><span class="sd"> &quot;&quot;&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">256</span> <span class="n">imarray</span><span class="p">,</span> <span class="n">uniq</span> <span class="o">=</span> <span class="n">convert_imarray</span><span class="p">(</span><span class="n">array</span><span class="p">,</span> <span class="n">colors</span><span class="o">=</span><span class="n">source_colors</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">257</span> <span class="n">G</span> <span class="o">=</span> <span class="n">construct_graph</span><span class="p">(</span><span class="n">imarray</span><span class="p">,</span> <span class="n">colors</span><span class="o">=</span><span class="n">source_colors</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">258</span> <span class="n">G0</span> <span class="o">=</span> <span class="n">prune_graph</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">uniq</span><span class="p">,</span> <span class="n">min_weight</span><span class="o">=</span><span class="n">min_weight</span><span class="p">,</span> <span class="n">max_dist</span><span class="o">=</span><span class="n">max_dist</span><span class="p">,</span> <span class="n">max_neighbours</span><span class="o">=</span><span class="n">max_neighbours</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">259</span> <span class="n">path</span> <span class="o">=</span> <span class="n">longest_shortest_path</span><span class="p">(</span><span class="n">G0</span><span class="p">)</span>
+
+<span class="nn">File ~/.local/lib/python3.8/site-packages/unmap/unweave.py:66,</span> in <span class="ni">construct_graph</span><span class="nt">(imarray, colors, normed)</span>
+<span class="g g-Whitespace">     </span><span class="mi">51</span> <span class="k">def</span> <span class="nf">construct_graph</span><span class="p">(</span><span class="n">imarray</span><span class="p">,</span> <span class="n">colors</span><span class="o">=</span><span class="mi">256</span><span class="p">,</span> <span class="n">normed</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+<span class="g g-Whitespace">     </span><span class="mi">52</span>     <span class="sd">&quot;&quot;&quot;</span>
+<span class="g g-Whitespace">     </span><span class="mi">53</span><span class="sd">     Construct an undirected value adjacency graph from an image array.</span>
+<span class="g g-Whitespace">     </span><span class="mi">54</span><span class="sd"> </span>
+<span class="sd">   (...)</span>
+<span class="g g-Whitespace">     </span><span class="mi">64</span><span class="sd">         G (nx.Graph): Value adjacency graph.</span>
+<span class="g g-Whitespace">     </span><span class="mi">65</span><span class="sd">     &quot;&quot;&quot;</span>
+<span class="ne">---&gt; </span><span class="mi">66</span>     <span class="n">glcm</span> <span class="o">=</span> <span class="n">graycomatrix</span><span class="p">(</span><span class="n">imarray</span><span class="p">,</span>
+<span class="g g-Whitespace">     </span><span class="mi">67</span>                         <span class="n">distances</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
+<span class="g g-Whitespace">     </span><span class="mi">68</span>                         <span class="n">angles</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mi">4</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mi">4</span><span class="p">],</span>
+<span class="g g-Whitespace">     </span><span class="mi">69</span>                         <span class="n">levels</span><span class="o">=</span><span class="n">colors</span><span class="p">,</span>
+<span class="g g-Whitespace">     </span><span class="mi">70</span>                         <span class="n">symmetric</span><span class="o">=</span><span class="kc">True</span>
+<span class="g g-Whitespace">     </span><span class="mi">71</span>                         <span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">73</span>     <span class="c1"># Add transitions over all directions.</span>
+<span class="g g-Whitespace">     </span><span class="mi">74</span>     <span class="n">glcm</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">squeeze</span><span class="p">(</span><span class="n">glcm</span><span class="p">),</span> <span class="n">axis</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="nn">File ~/.local/lib/python3.8/site-packages/skimage/feature/texture.py:142,</span> in <span class="ni">graycomatrix</span><span class="nt">(image, distances, angles, levels, symmetric, normed)</span>
+<span class="g g-Whitespace">    </span><span class="mi">138</span> <span class="n">P</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">levels</span><span class="p">,</span> <span class="n">levels</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">distances</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">angles</span><span class="p">)),</span>
+<span class="g g-Whitespace">    </span><span class="mi">139</span>              <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">uint32</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="s1">&#39;C&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">141</span> <span class="c1"># count co-occurences</span>
+<span class="ne">--&gt; </span><span class="mi">142</span> <span class="n">_glcm_loop</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">distances</span><span class="p">,</span> <span class="n">angles</span><span class="p">,</span> <span class="n">levels</span><span class="p">,</span> <span class="n">P</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">144</span> <span class="c1"># make each GLMC symmetric</span>
+<span class="g g-Whitespace">    </span><span class="mi">145</span> <span class="k">if</span> <span class="n">symmetric</span><span class="p">:</span>
+
+<span class="nn">File ~/.local/lib/python3.8/site-packages/skimage/feature/_texture.pyx:19,</span> in <span class="ni">skimage.feature._texture._glcm_loop</span><span class="nt">()</span>
+
+<span class="nn">File stringsource:658,</span> in <span class="ni">View.MemoryView.memoryview_cwrapper</span><span class="nt">()</span>
+
+<span class="nn">File stringsource:349,</span> in <span class="ni">View.MemoryView.memoryview.__cinit__</span><span class="nt">()</span>
+
+<span class="ne">ValueError</span>: buffer source array is read-only
+</pre></div>
+</div>
+</div>
+</div>
+<p>Phew! It looks good. Now we can give this to the unmapping function.</p>
+</section>
+<section id="recover-the-data">
+<h2>Recover the data<a class="headerlink" href="#recover-the-data" title="Permalink to this heading">#</a></h2>
+<p>Use <code class="docutils literal notranslate"><span class="pre">unmap.unmap()</span></code> to try recovering the data from an image array using the colourmap we guessed:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rec</span> <span class="o">=</span> <span class="n">unmap</span><span class="o">.</span><span class="n">unmap</span><span class="p">(</span><span class="n">imarray</span><span class="p">,</span> <span class="n">cmap</span><span class="p">)</span>
+<span class="n">rec</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0.65882353, 0.62352941, 0.57647059, ..., 0.85490196, 0.81960784,
+        0.74117647],
+       [0.63137255, 0.59607843, 0.5254902 , ..., 0.88627451, 0.86666667,
+        0.80784314],
+       [0.62352941, 0.59215686, 0.51372549, ..., 0.90196078, 0.89019608,
+        0.83921569],
+       ...,
+       [0.69411765, 0.60392157, 0.54117647, ..., 0.56470588, 0.59215686,
+        0.64313725],
+       [0.69019608, 0.60392157, 0.55294118, ..., 0.5254902 , 0.57254902,
+        0.61568627],
+       [0.6745098 , 0.59607843, 0.5372549 , ..., 0.49411765, 0.55294118,
+        0.59607843]])
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let’s have a look at this data:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">rec</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x7fb251321f10&gt;
+</pre></div>
+</div>
+<img alt="../_images/fe93d4c6f3ae23ff07512adaaefbcc11e2218aa2d65fd0254fbe375b2cdd4462.png" src="../_images/fe93d4c6f3ae23ff07512adaaefbcc11e2218aa2d65fd0254fbe375b2cdd4462.png" />
+</div>
+</div>
+<p>Or we can plot it with the colourmap we recovered:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">rec</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">cmap</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x7fb25135cc10&gt;
+</pre></div>
+</div>
+<img alt="../_images/a16f2b0656c63eb9ecdccb6ea700e589b05d9b0772cb4743255d0303f8c90566.png" src="../_images/a16f2b0656c63eb9ecdccb6ea700e589b05d9b0772cb4743255d0303f8c90566.png" />
+</div>
+</div>
+<p>Or, in this case, we can use the colourmap we know was applied originally to create the image:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">rec</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;turbo&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x7fb2512ab790&gt;
+</pre></div>
+</div>
+<img alt="../_images/ddef16dae70fd05d7cd06f3cd0a2adce37f818efa926cc6c6ee36e8d04b04976.png" src="../_images/ddef16dae70fd05d7cd06f3cd0a2adce37f818efa926cc6c6ee36e8d04b04976.png" />
+</div>
+</div>
+<p>These results look very close.</p>
+<p>We can compute the difference:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">data</span> <span class="o">-</span> <span class="n">rec</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;RdBu&#39;</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=-</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.colorbar.Colorbar at 0x7fb251193d30&gt;
+</pre></div>
+</div>
+<img alt="../_images/6d8c9a1e34370d1d8210ef5ac80b9f9994bc88fd2cf43ab8f4ebdb8123a1b8f5.png" src="../_images/6d8c9a1e34370d1d8210ef5ac80b9f9994bc88fd2cf43ab8f4ebdb8123a1b8f5.png" />
+</div>
+</div>
+<p>The absolute error seems to go up to a little above 8% in some areas. Each colourmap has its own error profile, but this order of error magnitude is typical.</p>
+</section>
+<section id="all-in-one">
+<h2>All in one<a class="headerlink" href="#all-in-one" title="Permalink to this heading">#</a></h2>
+<p>Sometimes we can actually skip the colormap guessing step and let <code class="docutils literal notranslate"><span class="pre">unmap.unmap</span></code> try to do it. Let’s try it:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rec</span> <span class="o">=</span> <span class="n">unmap</span><span class="o">.</span><span class="n">unmap</span><span class="p">(</span><span class="n">imarray</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">rec</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x7fb251035bb0&gt;
+</pre></div>
+</div>
+<img alt="../_images/c9d4e5603373ce0a68e0b97f0c35c210c66ef09d0e1395eee2b0ffa9923c8ab2.png" src="../_images/c9d4e5603373ce0a68e0b97f0c35c210c66ef09d0e1395eee2b0ffa9923c8ab2.png" />
+</div>
+</div>
+<p>Nice. If it works.</p>
+</section>
+</section>
+
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          <a class="next-page" href="Unmap_data_from_an_image.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">Unmap data from an image</div>
+              </div>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="../readme.html">
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">unmap</div>
+                
+              </div>
+            </a>
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+                Copyright &#169; 2022, Matt Hall
+            </div>
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            
+          </div>
+          <div class="right-details">
+            <div class="icons">
+              <a class="muted-link " href="https://code.agilescientific.com" aria-label="Agile">
+                <svg width="200" height="200" version="1.1" viewBox="0 0 187.5 187.5" xmlns="http://www.w3.org/2000/svg">
+                <g transform="matrix(3.94 -1.28 1.28 3.94 -906.1 -3676)" style="color-rendering:auto;color:#000000;fill:#14ca29;image-rendering:auto;isolation:auto;mix-blend-mode:normal;shape-rendering:auto;solid-color:#000000;stroke-width:1px;text-decoration-color:#000000;text-decoration-line:none;text-decoration-style:solid;text-indent:0;text-transform:none;white-space:normal">
+                <path d="m-46.98 936.1q3.515-1.622 6.705-3.244t5.083-2.379 3.028-0.757q1.893 0 3.244 1.298 1.406 1.244 1.406 3.136 0 1.081-0.7029 2.271-0.6489 1.136-1.406 1.46-6.975 2.758-15.36 4.001 1.514 1.406 3.731 3.731t2.325 2.487q0.8111 1.136 2.271 2.812 1.46 1.676 2.001 2.65 0.5948 0.9192 0.5948 2.271 0 1.73-1.298 3.028t-3.352 1.298q-2.055 0-4.65-3.19-2.541-3.19-6.597-11.46-4.109 7.462-5.515 9.841t-2.704 3.623q-1.298 1.19-2.974 1.19-2.001 0-3.352-1.352-1.298-1.406-1.298-2.974 0-1.46 0.5407-2.217 4.975-6.759 10.38-11.73-4.542-0.7029-8.111-1.568t-7.57-2.541q-0.6489-0.3244-1.298-1.46-0.5948-1.19-0.5948-2.163 0-1.893 1.352-3.136 1.406-1.298 3.19-1.298 1.298 0 3.244 0.8111 1.947 0.757 4.921 2.271 3.028 1.46 6.867 3.298-0.7029-3.407-1.19-7.786-0.4326-4.434-0.4326-6.056 0-2.001 1.244-3.407 1.298-1.46 3.298-1.46 1.947 0 3.19 1.46 1.298 1.406 1.298 3.785 0 0.6489-0.2163 2.595-0.1622 1.893-0.5407 4.65-0.3244 2.704-0.757 6.218z" style="fill:#14ca29"/>
+                </g>
+                </svg>
+            </a>
+              
+            </div>
+          </div>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">Overview of <code class="docutils literal notranslate"><span class="pre">unmap</span></code></a><ul>
+<li><a class="reference internal" href="#guess-the-colourmap">Guess the colourmap</a></li>
+<li><a class="reference internal" href="#recover-the-data">Recover the data</a></li>
+<li><a class="reference internal" href="#all-in-one">All in one</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
+      
+      
+    </aside>
+  </div>
+</div><script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/scripts/furo.js"></script>
+    </body>
+</html>

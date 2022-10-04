@@ -2,15 +2,14 @@
 <html class="no-js" lang="en">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
-    <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
-<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="prev" title="Unmap data from an image" href="userguide/Unmap_data_from_an_image.html" />
+    <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="prev" title="Guess the colourmap from an image" href="userguide/Guess_the_colourmap_from_an_image.html" />
 
-    <link rel="shortcut icon" href="_static/favicon.ico"/><meta name="generator" content="sphinx-5.1.1, furo 2022.09.15"/>
+    <link rel="shortcut icon" href="_static/favicon.ico"/><meta name="generator" content="sphinx-5.2.3, furo 2022.09.29"/>
         <title>unmap package - unmap documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?digest=9ec31e2665bf879c1d47d93a8ec4893870ee1e45" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
-    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?digest=d81277517bee4d6b0349d71bb2661d4890b5617c" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css" />
     
@@ -162,7 +161,9 @@
   <p class="caption" role="heading"><span class="caption-text">User guide</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="readme.html">unmap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="userguide/Overview_of_unmap.html">Overview of <code class="docutils literal notranslate"><span class="pre">unmap</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="userguide/Unmap_data_from_an_image.html">Unmap data from an image</a></li>
+<li class="toctree-l1"><a class="reference internal" href="userguide/Guess_the_colourmap_from_an_image.html">Guess the colourmap from an image</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">API reference</span></p>
 <ul class="current">
@@ -194,7 +195,8 @@
           <span>Back to top</span>
         </a>
         <div class="content-icon-container">
-          <div class="theme-toggle-container theme-toggle-content">
+          
+<div class="theme-toggle-container theme-toggle-content">
             <button class="theme-toggle">
               <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
               <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
@@ -215,6 +217,8 @@
 </section>
 <section id="module-unmap.unmap">
 <span id="unmap-unmap-module"></span><h2>unmap.unmap module<a class="headerlink" href="#module-unmap.unmap" title="Permalink to this heading">#</a></h2>
+<p>unmap.py</p>
+<p>Functions for recoving data from images with a known colourmap.</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="unmap.unmap.check_arr">
 <span class="sig-prename descclassname"><span class="pre">unmap.unmap.</span></span><span class="sig-name descname"><span class="pre">check_arr</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">arr</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/unmap/unmap.html#check_arr"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#unmap.unmap.check_arr" title="Permalink to this definition">#</a></dt>
@@ -344,16 +348,14 @@ problem.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="unmap.unmap.unmap">
-<span class="sig-prename descclassname"><span class="pre">unmap.unmap.</span></span><span class="sig-name descname"><span class="pre">unmap</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">arr</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cmap</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">crop</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vrange</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(0,</span> <span class="pre">1)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">levels</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">256</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nan_colours</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">background</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'w'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">threshold</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hillshade</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">quantize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/unmap/unmap.html#unmap"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#unmap.unmap.unmap" title="Permalink to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">unmap.unmap.</span></span><span class="sig-name descname"><span class="pre">unmap</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">arr</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cmap</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">crop</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vrange</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(0,</span> <span class="pre">1)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">levels</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">256</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nan_colours</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">background</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'w'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">threshold</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hillshade</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">quantize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/unmap/unmap.html#unmap"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#unmap.unmap.unmap" title="Permalink to this definition">#</a></dt>
 <dd><p>Unmap data, via a colourmap, from an image. Reverse false-colouring.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>arr</strong> – NumPy array of image data.</p></li>
 <li><p><strong>cmap</strong> – Either another array, or pixel extent of colourbar in image,
-or name of mpl colourbar or if None, just use lightness (say)
-If get pixels and they’re a few wide, then average them along
-short axis? Again, depends on scatter.</p></li>
+or name of mpl colourbar or if None, try to guess it.</p></li>
 <li><p><strong>crop</strong> – If not None, crop the image to the given rectangle.
 Given as a tuple (left, top, right, bottom).</p></li>
 <li><p><strong>vrange</strong> – (vmin, vmax) for the colourbar.</p></li>
@@ -377,6 +379,198 @@ make the false colour image.</p>
 </dd></dl>
 
 </section>
+<section id="module-unmap.unweave">
+<span id="unmap-unweave-module"></span><h2>unmap.unweave module<a class="headerlink" href="#module-unmap.unweave" title="Permalink to this heading">#</a></h2>
+<p>unweave.py</p>
+<p>Functions for ‘unweaving the rainbow’: recovering colour maps from
+images with no a priori knowledge. Refactored from an earlier version.</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="unmap.unweave.construct_graph">
+<span class="sig-prename descclassname"><span class="pre">unmap.unweave.</span></span><span class="sig-name descname"><span class="pre">construct_graph</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">imarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">colors</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">256</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">normed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/unmap/unweave.html#construct_graph"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#unmap.unweave.construct_graph" title="Permalink to this definition">#</a></dt>
+<dd><p>Construct an undirected value adjacency graph from an image array.</p>
+<p>Weights are the number of times a pair of values co-occur in the image,
+normalized per value (i.e. per node in the graph).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>imarray</strong> (<em>np.ndarray</em>) – Array of values.</p></li>
+<li><p><strong>colors</strong> (<em>int</em>) – Number of colours in the image.</p></li>
+<li><p><strong>normed</strong> (<em>bool</em>) – Whether to normalize the weights.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Value adjacency graph.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>G (nx.Graph)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="unmap.unweave.convert_imarray">
+<span class="sig-prename descclassname"><span class="pre">unmap.unweave.</span></span><span class="sig-name descname"><span class="pre">convert_imarray</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">imarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">colors</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">256</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/unmap/unweave.html#convert_imarray"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#unmap.unweave.convert_imarray" title="Permalink to this definition">#</a></dt>
+<dd><p>Convert an RGB image array to an index array and colourtable. The array
+will be quantized to the specified number of colours, and will be no larger
+than 512x512 pixels.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>imarray</strong> (<em>np.ndarray</em>) – The RGB or RGBA image array.</p></li>
+<li><p><strong>colors</strong> (<em>int</em>) – Number of colours to reduce to.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Array of indices into the colourtable.
+unique_colors (np.ndarray): Colourtable.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>imarray (np.ndarray)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="unmap.unweave.guess_cmap_from_array">
+<span class="sig-prename descclassname"><span class="pre">unmap.unweave.</span></span><span class="sig-name descname"><span class="pre">guess_cmap_from_array</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">array</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">source_colors</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">256</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target_colors</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">256</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_weight</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.025</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_dist</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.25</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_neighbours</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">20</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reverse</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'auto'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">equilibrate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/unmap/unweave.html#guess_cmap_from_array"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#unmap.unweave.guess_cmap_from_array" title="Permalink to this definition">#</a></dt>
+<dd><p>Guess the colormap of an image.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>array</strong> (<em>np.ndarray</em>) – The RGB or RGBA image array.</p></li>
+<li><p><strong>source_colors</strong> (<em>int</em>) – Number of colours to detect in the source image.</p></li>
+<li><p><strong>target_colors</strong> (<em>int</em>) – Number of colours to return in the colormap.</p></li>
+<li><p><strong>min_weight</strong> (<em>float</em>) – Minimum weight to keep. See <cite>prune_graph</cite>.</p></li>
+<li><p><strong>max_dist</strong> (<em>float</em>) – Maximum distance to keep. See <cite>prune_graph</cite>.</p></li>
+<li><p><strong>max_neighbours</strong> (<em>int</em>) – Maximum number of neighbours to allow. See <cite>prune_graph</cite>.</p></li>
+<li><p><strong>reverse</strong> (<em>bool</em>) – Whether to reverse the colormap. If ‘auto’, the
+colormap will start with the end closest to dark blue. If False,
+the direction is essentially random.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="unmap.unweave.guess_cmap_from_image">
+<span class="sig-prename descclassname"><span class="pre">unmap.unweave.</span></span><span class="sig-name descname"><span class="pre">guess_cmap_from_image</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fname</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">source_colors</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">256</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target_colors</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">256</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_weight</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.025</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_dist</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.25</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_neighbours</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">20</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reverse</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'auto'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">equilibrate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/unmap/unweave.html#guess_cmap_from_image"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#unmap.unweave.guess_cmap_from_image" title="Permalink to this definition">#</a></dt>
+<dd><p>Guess the colormap of an image.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>fname</strong> (<em>str</em>) – Filename or URL of image to guess.</p></li>
+<li><p><strong>source_colors</strong> (<em>int</em>) – Number of colours to detect in the source image.</p></li>
+<li><p><strong>target_colors</strong> (<em>int</em>) – Number of colours to return in the colormap.</p></li>
+<li><p><strong>min_weight</strong> (<em>float</em>) – Minimum weight to keep. See <cite>prune_graph</cite>.</p></li>
+<li><p><strong>max_dist</strong> (<em>float</em>) – Maximum distance to keep. See <cite>prune_graph</cite>.</p></li>
+<li><p><strong>max_neighbours</strong> (<em>int</em>) – Maximum number of neighbours to allow. See <cite>prune_graph</cite>.</p></li>
+<li><p><strong>reverse</strong> (<em>bool</em>) – Whether to reverse the colormap. If ‘auto’, the
+colormap will start with the end closest to dark blue. If False,
+the direction is essentially random.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="unmap.unweave.longest_shortest_path">
+<span class="sig-prename descclassname"><span class="pre">unmap.unweave.</span></span><span class="sig-name descname"><span class="pre">longest_shortest_path</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">G</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/unmap/unweave.html#longest_shortest_path"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#unmap.unweave.longest_shortest_path" title="Permalink to this definition">#</a></dt>
+<dd><p>Find the longest shortest path in a graph. This should be the path between
+the ends of the longest chain in the graph.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>G</strong> (<em>nx.Graph</em>) – Graph to search.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Longest shortest path.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>path (list)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="unmap.unweave.ordered_unique">
+<span class="sig-prename descclassname"><span class="pre">unmap.unweave.</span></span><span class="sig-name descname"><span class="pre">ordered_unique</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">seq</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/unmap/unweave.html#ordered_unique"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#unmap.unweave.ordered_unique" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="unmap.unweave.path_to_cmap">
+<span class="sig-prename descclassname"><span class="pre">unmap.unweave.</span></span><span class="sig-name descname"><span class="pre">path_to_cmap</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">unique_colors</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">colors</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">256</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reverse</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'auto'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">equilibrate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/unmap/unweave.html#path_to_cmap"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#unmap.unweave.path_to_cmap" title="Permalink to this definition">#</a></dt>
+<dd><p>Convert a path through the graph to a colormap.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>path</strong> (<em>list</em>) – Path to convert.</p></li>
+<li><p><strong>unique_colors</strong> (<em>np.ndarray</em>) – Colourtable.</p></li>
+<li><p><strong>colors</strong> (<em>int</em>) – Number of colours to return. Default is 256. Use None to
+use twice the number of colours in the path.</p></li>
+<li><p><strong>reverse</strong> (<em>bool</em>) – Whether to reverse the colormap. If ‘auto’, the
+colormap will start with the end closest to dark blue. If False,
+the direction is essentially random.</p></li>
+<li><p><strong>equilibrate</strong> (<em>bool</em>) – Whether to equilibrate the colormap. This will
+try to ensure that the colormap’s colors are as evenly spaced as
+possible.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Colormap.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>matplotlib.colors.LinearSegmentedColormap</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="unmap.unweave.plot_graph">
+<span class="sig-prename descclassname"><span class="pre">unmap.unweave.</span></span><span class="sig-name descname"><span class="pre">plot_graph</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">G</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">unique_colors</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">layout</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'kamada_kawai'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ax</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">figsize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(12,</span> <span class="pre">8)</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/unmap/unweave.html#plot_graph"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#unmap.unweave.plot_graph" title="Permalink to this definition">#</a></dt>
+<dd><p>Plot a graph with colours.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>G</strong> (<em>nx.Graph</em>) – Graph to plot.</p></li>
+<li><p><strong>unique_colors</strong> (<em>np.ndarray</em>) – Colourtable.</p></li>
+<li><p><strong>layout</strong> (<em>str</em>) – Layout to use.</p></li>
+<li><p><strong>ax</strong> (<em>matplotlib.axes.Axes</em>) – Axes to plot on.</p></li>
+<li><p><strong>figsize</strong> (<em>tuple</em>) – Figure size.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Axes.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>ax (matplotlib.axes.Axes)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="unmap.unweave.prune_graph">
+<span class="sig-prename descclassname"><span class="pre">unmap.unweave.</span></span><span class="sig-name descname"><span class="pre">prune_graph</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">G</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">unique_colors</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_weight</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.025</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_dist</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.25</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_neighbours</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">20</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/unmap/unweave.html#prune_graph"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#unmap.unweave.prune_graph" title="Permalink to this definition">#</a></dt>
+<dd><p>Prune a graph to remove edges with low weight and high distance.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>G</strong> (<em>nx.Graph</em>) – Graph to prune.</p></li>
+<li><p><strong>unique_colors</strong> (<em>np.ndarray</em>) – Colourtable.</p></li>
+<li><p><strong>min_weight</strong> (<em>float</em>) – Minimum weight to keep.</p></li>
+<li><p><strong>max_dist</strong> (<em>float</em>) – Maximum distance to keep.</p></li>
+<li><p><strong>max_neighbours</strong> (<em>int</em>) – Maximum number of neighbours to allow. Nodes with
+more neighbours than this will be removed.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Pruned graph.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>G (nx.Graph)</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
 <section id="module-unmap">
 <span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-unmap" title="Permalink to this heading">#</a></h2>
 </section>
@@ -388,14 +582,14 @@ make the false colour image.</p>
         
         <div class="related-pages">
           
-          <a class="prev-page" href="userguide/Unmap_data_from_an_image.html">
+          <a class="prev-page" href="userguide/Guess_the_colourmap_from_an_image.html">
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
               <div class="page-info">
                 <div class="context">
                   <span>Previous</span>
                 </div>
                 
-                <div class="title">Unmap data from an image</div>
+                <div class="title">Guess the colourmap from an image</div>
                 
               </div>
             </a>
@@ -440,7 +634,29 @@ make the false colour image.</p>
             <ul>
 <li><a class="reference internal" href="#">unmap package</a><ul>
 <li><a class="reference internal" href="#submodules">Submodules</a></li>
-<li><a class="reference internal" href="#module-unmap.unmap">unmap.unmap module</a></li>
+<li><a class="reference internal" href="#module-unmap.unmap">unmap.unmap module</a><ul>
+<li><a class="reference internal" href="#unmap.unmap.check_arr"><code class="docutils literal notranslate"><span class="pre">check_arr()</span></code></a></li>
+<li><a class="reference internal" href="#unmap.unmap.crop_out"><code class="docutils literal notranslate"><span class="pre">crop_out()</span></code></a></li>
+<li><a class="reference internal" href="#unmap.unmap.get_background_rgb"><code class="docutils literal notranslate"><span class="pre">get_background_rgb()</span></code></a></li>
+<li><a class="reference internal" href="#unmap.unmap.get_cmap"><code class="docutils literal notranslate"><span class="pre">get_cmap()</span></code></a></li>
+<li><a class="reference internal" href="#unmap.unmap.is_greyscale"><code class="docutils literal notranslate"><span class="pre">is_greyscale()</span></code></a></li>
+<li><a class="reference internal" href="#unmap.unmap.normalize"><code class="docutils literal notranslate"><span class="pre">normalize()</span></code></a></li>
+<li><a class="reference internal" href="#unmap.unmap.remove_hillshade"><code class="docutils literal notranslate"><span class="pre">remove_hillshade()</span></code></a></li>
+<li><a class="reference internal" href="#unmap.unmap.unmap"><code class="docutils literal notranslate"><span class="pre">unmap()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-unmap.unweave">unmap.unweave module</a><ul>
+<li><a class="reference internal" href="#unmap.unweave.construct_graph"><code class="docutils literal notranslate"><span class="pre">construct_graph()</span></code></a></li>
+<li><a class="reference internal" href="#unmap.unweave.convert_imarray"><code class="docutils literal notranslate"><span class="pre">convert_imarray()</span></code></a></li>
+<li><a class="reference internal" href="#unmap.unweave.guess_cmap_from_array"><code class="docutils literal notranslate"><span class="pre">guess_cmap_from_array()</span></code></a></li>
+<li><a class="reference internal" href="#unmap.unweave.guess_cmap_from_image"><code class="docutils literal notranslate"><span class="pre">guess_cmap_from_image()</span></code></a></li>
+<li><a class="reference internal" href="#unmap.unweave.longest_shortest_path"><code class="docutils literal notranslate"><span class="pre">longest_shortest_path()</span></code></a></li>
+<li><a class="reference internal" href="#unmap.unweave.ordered_unique"><code class="docutils literal notranslate"><span class="pre">ordered_unique()</span></code></a></li>
+<li><a class="reference internal" href="#unmap.unweave.path_to_cmap"><code class="docutils literal notranslate"><span class="pre">path_to_cmap()</span></code></a></li>
+<li><a class="reference internal" href="#unmap.unweave.plot_graph"><code class="docutils literal notranslate"><span class="pre">plot_graph()</span></code></a></li>
+<li><a class="reference internal" href="#unmap.unweave.prune_graph"><code class="docutils literal notranslate"><span class="pre">prune_graph()</span></code></a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#module-unmap">Module contents</a></li>
 </ul>
 </li>
@@ -458,11 +674,7 @@ make the false colour image.</p>
     <script src="_static/underscore.js"></script>
     <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
+    <script src="_static/sphinx_highlight.js"></script>
     <script src="_static/scripts/furo.js"></script>
-    <script>let toggleHintShow = 'Click to show';</script>
-    <script>let toggleHintHide = 'Click to hide';</script>
-    <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="_static/togglebutton.js"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     </body>
 </html>

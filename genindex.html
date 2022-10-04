@@ -4,11 +4,10 @@
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><link rel="index" title="Index" href="#" /><link rel="search" title="Search" href="search.html" />
 
-    <link rel="shortcut icon" href="_static/favicon.ico"/><meta name="generator" content="sphinx-5.1.1, furo 2022.09.15"/><title>Index - unmap documentation</title>
+    <link rel="shortcut icon" href="_static/favicon.ico"/><meta name="generator" content="sphinx-5.2.3, furo 2022.09.29"/><title>Index - unmap documentation</title>
 <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?digest=9ec31e2665bf879c1d47d93a8ec4893870ee1e45" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
-    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?digest=d81277517bee4d6b0349d71bb2661d4890b5617c" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css" />
     
@@ -160,7 +159,9 @@
   <p class="caption" role="heading"><span class="caption-text">User guide</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="readme.html">unmap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="userguide/Overview_of_unmap.html">Overview of <code class="docutils literal notranslate"><span class="pre">unmap</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="userguide/Unmap_data_from_an_image.html">Unmap data from an image</a></li>
+<li class="toctree-l1"><a class="reference internal" href="userguide/Guess_the_colourmap_from_an_image.html">Guess the colourmap from an image</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">API reference</span></p>
 <ul>
@@ -209,7 +210,7 @@
           
 <section class="genindex-section">
   <h1 id="index">Index</h1>
-  <div class="genindex-jumpbox"><a href="#C"><strong>C</strong></a> | <a href="#G"><strong>G</strong></a> | <a href="#I"><strong>I</strong></a> | <a href="#M"><strong>M</strong></a> | <a href="#N"><strong>N</strong></a> | <a href="#R"><strong>R</strong></a> | <a href="#U"><strong>U</strong></a></div>
+  <div class="genindex-jumpbox"><a href="#C"><strong>C</strong></a> | <a href="#G"><strong>G</strong></a> | <a href="#I"><strong>I</strong></a> | <a href="#L"><strong>L</strong></a> | <a href="#M"><strong>M</strong></a> | <a href="#N"><strong>N</strong></a> | <a href="#O"><strong>O</strong></a> | <a href="#P"><strong>P</strong></a> | <a href="#R"><strong>R</strong></a> | <a href="#U"><strong>U</strong></a></div>
 </section>
 <section id="C" class="genindex-section">
   <h2>C</h2>
@@ -217,8 +218,12 @@
     <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="unmap.html#unmap.unmap.check_arr">check_arr() (in module unmap.unmap)</a>
 </li>
+        <li><a href="unmap.html#unmap.unweave.construct_graph">construct_graph() (in module unmap.unweave)</a>
+</li>
     </ul></td>
     <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="unmap.html#unmap.unweave.convert_imarray">convert_imarray() (in module unmap.unweave)</a>
+</li>
         <li><a href="unmap.html#unmap.unmap.crop_out">crop_out() (in module unmap.unmap)</a>
 </li>
     </ul></td>
@@ -231,9 +236,13 @@
     <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="unmap.html#unmap.unmap.get_background_rgb">get_background_rgb() (in module unmap.unmap)</a>
 </li>
+        <li><a href="unmap.html#unmap.unmap.get_cmap">get_cmap() (in module unmap.unmap)</a>
+</li>
     </ul></td>
     <td style="width: 33%; vertical-align: top;"><ul>
-        <li><a href="unmap.html#unmap.unmap.get_cmap">get_cmap() (in module unmap.unmap)</a>
+        <li><a href="unmap.html#unmap.unweave.guess_cmap_from_array">guess_cmap_from_array() (in module unmap.unweave)</a>
+</li>
+        <li><a href="unmap.html#unmap.unweave.guess_cmap_from_image">guess_cmap_from_image() (in module unmap.unweave)</a>
 </li>
     </ul></td>
   </tr></table>
@@ -244,6 +253,16 @@
   <table style="width: 100%" class="indextable genindextable"><tr>
     <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="unmap.html#unmap.unmap.is_greyscale">is_greyscale() (in module unmap.unmap)</a>
+</li>
+    </ul></td>
+  </tr></table>
+</section>
+
+<section id="L" class="genindex-section">
+  <h2>L</h2>
+  <table style="width: 100%" class="indextable genindextable"><tr>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="unmap.html#unmap.unweave.longest_shortest_path">longest_shortest_path() (in module unmap.unweave)</a>
 </li>
     </ul></td>
   </tr></table>
@@ -261,6 +280,8 @@
 </li>
           <li><a href="unmap.html#module-unmap.unmap">unmap.unmap</a>
 </li>
+          <li><a href="unmap.html#module-unmap.unweave">unmap.unweave</a>
+</li>
         </ul></li>
     </ul></td>
   </tr></table>
@@ -271,6 +292,32 @@
   <table style="width: 100%" class="indextable genindextable"><tr>
     <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="unmap.html#unmap.unmap.normalize">normalize() (in module unmap.unmap)</a>
+</li>
+    </ul></td>
+  </tr></table>
+</section>
+
+<section id="O" class="genindex-section">
+  <h2>O</h2>
+  <table style="width: 100%" class="indextable genindextable"><tr>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="unmap.html#unmap.unweave.ordered_unique">ordered_unique() (in module unmap.unweave)</a>
+</li>
+    </ul></td>
+  </tr></table>
+</section>
+
+<section id="P" class="genindex-section">
+  <h2>P</h2>
+  <table style="width: 100%" class="indextable genindextable"><tr>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="unmap.html#unmap.unweave.path_to_cmap">path_to_cmap() (in module unmap.unweave)</a>
+</li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="unmap.html#unmap.unweave.plot_graph">plot_graph() (in module unmap.unweave)</a>
+</li>
+        <li><a href="unmap.html#unmap.unweave.prune_graph">prune_graph() (in module unmap.unweave)</a>
 </li>
     </ul></td>
   </tr></table>
@@ -297,15 +344,22 @@
           <li><a href="unmap.html#module-unmap">module</a>
 </li>
         </ul></li>
-    </ul></td>
-    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="unmap.html#unmap.unmap.unmap">unmap() (in module unmap.unmap)</a>
 </li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
         <li>
     unmap.unmap
 
         <ul>
           <li><a href="unmap.html#module-unmap.unmap">module</a>
+</li>
+        </ul></li>
+        <li>
+    unmap.unweave
+
+        <ul>
+          <li><a href="unmap.html#module-unmap.unweave">module</a>
 </li>
         </ul></li>
     </ul></td>
@@ -358,11 +412,7 @@
     <script src="_static/underscore.js"></script>
     <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
+    <script src="_static/sphinx_highlight.js"></script>
     <script src="_static/scripts/furo.js"></script>
-    <script>let toggleHintShow = 'Click to show';</script>
-    <script>let toggleHintHide = 'Click to hide';</script>
-    <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="_static/togglebutton.js"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     </body>
 </html>

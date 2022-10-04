@@ -2,15 +2,14 @@
 <html class="no-js" lang="en">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
-    <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
-<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Unmap data from an image" href="userguide/Unmap_data_from_an_image.html" /><link rel="prev" title="unmap: data liberation for images" href="index.html" />
+    <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Overview of unmap" href="userguide/Overview_of_unmap.html" /><link rel="prev" title="unmap: data liberation for images" href="index.html" />
 
-    <link rel="shortcut icon" href="_static/favicon.ico"/><meta name="generator" content="sphinx-5.1.1, furo 2022.09.15"/>
+    <link rel="shortcut icon" href="_static/favicon.ico"/><meta name="generator" content="sphinx-5.2.3, furo 2022.09.29"/>
         <title>unmap - unmap documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?digest=9ec31e2665bf879c1d47d93a8ec4893870ee1e45" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
-    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?digest=d81277517bee4d6b0349d71bb2661d4890b5617c" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css" />
     
@@ -162,7 +161,9 @@
   <p class="caption" role="heading"><span class="caption-text">User guide</span></p>
 <ul class="current">
 <li class="toctree-l1 current current-page"><a class="current reference internal" href="#">unmap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="userguide/Overview_of_unmap.html">Overview of <code class="docutils literal notranslate"><span class="pre">unmap</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="userguide/Unmap_data_from_an_image.html">Unmap data from an image</a></li>
+<li class="toctree-l1"><a class="reference internal" href="userguide/Guess_the_colourmap_from_an_image.html">Guess the colourmap from an image</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">API reference</span></p>
 <ul>
@@ -194,7 +195,8 @@
           <span>Back to top</span>
         </a>
         <div class="content-icon-container">
-          <div class="theme-toggle-container theme-toggle-content">
+          
+<div class="theme-toggle-container theme-toggle-content">
             <button class="theme-toggle">
               <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
               <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
@@ -215,61 +217,23 @@
 <a class="reference external" href="https://pypi.org/project/unmap//"><img alt="PyPI version" src="https://img.shields.io/pypi/v/unmap.svg" /></a>
 <a class="reference external" href="https://pypi.org/project/unmap//"><img alt="PyPI versions" src="https://img.shields.io/pypi/pyversions/unmap.svg" /></a>
 <a class="reference external" href="https://pypi.org/project/unmap/"><img alt="PyPI license" src="https://img.shields.io/pypi/l/unmap.svg" /></a></p>
-<p>Unmap data from pseudocolor images, with knowledge of the colourmap (for now!).</p>
+<p>Unmap data from pseudocolor images, with knowledge of the colourmap for now, but the goal is to drop this requirement.</p>
+<p>in other words, this library is the opposite of <code class="docutils literal notranslate"><span class="pre">plt.imshow()</span></code>.</p>
 <section id="installation">
 <h2>Installation<a class="headerlink" href="#installation" title="Permalink to this heading">#</a></h2>
 <p>You can install this package with <code class="docutils literal notranslate"><span class="pre">pip</span></code>:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pip install unmap
 </pre></div>
 </div>
+<p>There are <code class="docutils literal notranslate"><span class="pre">dev</span></code>, <code class="docutils literal notranslate"><span class="pre">test</span></code> and <code class="docutils literal notranslate"><span class="pre">docs</span></code> options for installing dependencies for those purposes, eg <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">unmap[dev]</span></code>.</p>
 </section>
 <section id="documentation">
 <h2>Documentation<a class="headerlink" href="#documentation" title="Permalink to this heading">#</a></h2>
-<p>Read <a class="reference external" href="https://kwinkunks.github.io/unmap">the documentation</a></p>
+<p>Read <a class="reference external" href="https://kwinkunks.github.io/unmap">the documentation</a>, especially <a class="reference external" href="https://kwinkunks.github.io/unmap/userguide/Unmap_data_from_an_image.html">the examples</a>.</p>
 </section>
-<section id="example">
-<h2>Example<a class="headerlink" href="#example" title="Permalink to this heading">#</a></h2>
-<p>Let’s grab an image from the web and unmap it. First we’ll download the image:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">io</span> <span class="kn">import</span> <span class="n">BytesIO</span>
-
-<span class="kn">import</span> <span class="nn">requests</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">from</span> <span class="nn">PIL</span> <span class="kn">import</span> <span class="n">Image</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-
-
-<span class="k">def</span> <span class="nf">get_image_from_web</span><span class="p">(</span><span class="n">uri</span><span class="p">):</span>
-    <span class="n">data</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">uri</span><span class="p">)</span><span class="o">.</span><span class="n">content</span>
-    <span class="n">img</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">BytesIO</span><span class="p">(</span><span class="n">data</span><span class="p">))</span><span class="o">.</span><span class="n">convert</span><span class="p">(</span><span class="s1">&#39;RGB&#39;</span><span class="p">)</span>
-    <span class="n">rgb_im</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">img</span><span class="p">)[</span><span class="o">...</span><span class="p">,</span> <span class="p">:</span><span class="mi">3</span><span class="p">]</span> <span class="o">/</span> <span class="mf">255.</span>
-    <span class="k">return</span> <span class="n">rgb_im</span>
-
-<span class="c1"># An image from Hugh Pumprey&#39;s blog post Colours for Contours, licensed CC BY</span>
-<span class="c1"># https://blogs.ed.ac.uk/hughpumphrey/2017/06/29/colours-for-contours/</span>
-<span class="n">uri</span> <span class="o">=</span> <span class="s1">&#39;https://blogs.ed.ac.uk/hughpumphrey/wp-content/uploads/sites/958/2017/06/jeti.png&#39;</span>
-<span class="n">img</span> <span class="o">=</span> <span class="n">get_image_from_web</span><span class="p">(</span><span class="n">uri</span><span class="p">)</span>
-</pre></div>
-</div>
-<p>The image looks like this:</p>
-<p><img alt="Hugh_Pumphrey_CC-BY_original.png" src="_images/Hugh_Pumphrey_CC-BY_original.png" /></p>
-<p>Now we’ll unmap it:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">unmap</span>
-
-<span class="n">data</span> <span class="o">=</span> <span class="n">unmap</span><span class="o">.</span><span class="n">unmap</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;jet&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
-</pre></div>
-</div>
-<p>This results in:</p>
-<p><img alt="The unmapped data." src="_images/Hugh_Pumphrey_CC-BY_unmapped_1.png" /></p>
-<p>Notice that the data is there, but so is the colourbar. Also, the new data’s colourbar shows that our dataset ranges from 0 to 1, but we can see from the colourbar in the original plot that it should range from about 0.4 to 1.333. So let’s add <code class="docutils literal notranslate"><span class="pre">vrange</span></code> and <code class="docutils literal notranslate"><span class="pre">crop</span></code> arguments to deal with these issues:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">unmap</span><span class="o">.</span><span class="n">unmap</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;jet&#39;</span><span class="p">,</span> <span class="n">vrange</span><span class="o">=</span><span class="p">(</span><span class="mf">0.400</span><span class="p">,</span> <span class="mf">1.333</span><span class="p">),</span> <span class="n">crop</span><span class="o">=</span><span class="p">(</span><span class="mi">115</span><span class="p">,</span> <span class="mi">72</span><span class="p">,</span> <span class="mi">690</span><span class="p">,</span> <span class="mi">647</span><span class="p">))</span>
-</pre></div>
-</div>
-<p>Which gives us:</p>
-<p><img alt="The final result, cropped to the data area." src="_images/Hugh_Pumphrey_CC-BY_unmapped_2.png" /></p>
-<p>We could even plot this side by side with the original data, using the same colourmap, as a rough QC:</p>
-<p><img alt="Comparison between input and output." src="_images/Hugh_Pumphrey_CC-BY_compare.png" /></p>
-<p>The extents of the data area are different. We could pass the <code class="docutils literal notranslate"><span class="pre">extent</span></code> argument to <code class="docutils literal notranslate"><span class="pre">plt.imshow</span></code> to fix this, but an even better idea is to put the data in an <code class="docutils literal notranslate"><span class="pre">xarray.DataArray</span></code>, because then the coordinates are attached to the data in a much more useful way. You could do this on your own, or you can use the Gio library’s <code class="docutils literal notranslate"><span class="pre">unmap_to_dataarray()</span></code> function to do it for you.</p>
+<section id="contributing">
+<h2>Contributing<a class="headerlink" href="#contributing" title="Permalink to this heading">#</a></h2>
+<p>Take a look at <a class="reference external" href="https://github.com/kwinkunks/unmap/blob/main/CONTRIBUTING.md"><code class="docutils literal notranslate"><span class="pre">CONTRIBUTING.md</span></code></a>.</p>
 </section>
 <section id="testing">
 <h2>Testing<a class="headerlink" href="#testing" title="Permalink to this heading">#</a></h2>
@@ -298,12 +262,12 @@
       <footer>
         
         <div class="related-pages">
-          <a class="next-page" href="userguide/Unmap_data_from_an_image.html">
+          <a class="next-page" href="userguide/Overview_of_unmap.html">
               <div class="page-info">
                 <div class="context">
                   <span>Next</span>
                 </div>
-                <div class="title">Unmap data from an image</div>
+                <div class="title">Overview of <code class="docutils literal notranslate"><span class="pre">unmap</span></code></div>
               </div>
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
             </a>
@@ -360,7 +324,7 @@
 <li><a class="reference internal" href="#">unmap</a><ul>
 <li><a class="reference internal" href="#installation">Installation</a></li>
 <li><a class="reference internal" href="#documentation">Documentation</a></li>
-<li><a class="reference internal" href="#example">Example</a></li>
+<li><a class="reference internal" href="#contributing">Contributing</a></li>
 <li><a class="reference internal" href="#testing">Testing</a></li>
 <li><a class="reference internal" href="#building">Building</a></li>
 </ul>
@@ -379,11 +343,7 @@
     <script src="_static/underscore.js"></script>
     <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
+    <script src="_static/sphinx_highlight.js"></script>
     <script src="_static/scripts/furo.js"></script>
-    <script>let toggleHintShow = 'Click to show';</script>
-    <script>let toggleHintHide = 'Click to hide';</script>
-    <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="_static/togglebutton.js"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     </body>
 </html>

@@ -12,6 +12,14 @@ unmap.unmap module
    :undoc-members:
    :show-inheritance:
 
+unmap.unweave module
+--------------------
+
+.. automodule:: unmap.unweave
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 Module contents
 ---------------
 

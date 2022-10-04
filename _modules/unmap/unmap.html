@@ -4,12 +4,11 @@
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" />
 
-    <link rel="shortcut icon" href="../../_static/favicon.ico"/><meta name="generator" content="sphinx-5.1.1, furo 2022.09.15"/>
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/><meta name="generator" content="sphinx-5.2.3, furo 2022.09.29"/>
         <title>unmap.unmap - unmap documentation</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo.css?digest=9ec31e2665bf879c1d47d93a8ec4893870ee1e45" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo.css?digest=d81277517bee4d6b0349d71bb2661d4890b5617c" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
     <link rel="stylesheet" type="text/css" href="../../_static/custom.css" />
     
@@ -161,7 +160,9 @@
   <p class="caption" role="heading"><span class="caption-text">User guide</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../readme.html">unmap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../userguide/Overview_of_unmap.html">Overview of <code class="docutils literal notranslate"><span class="pre">unmap</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../userguide/Unmap_data_from_an_image.html">Unmap data from an image</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../userguide/Guess_the_colourmap_from_an_image.html">Guess the colourmap from an image</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">API reference</span></p>
 <ul>
@@ -208,15 +209,26 @@
         </div>
         <article role="main">
           <h1>Source code for unmap.unmap</h1><div class="highlight"><pre>
-<span></span><span class="kn">import</span> <span class="nn">warnings</span>
+<span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">unmap.py</span>
+
+<span class="sd">Functions for recoving data from images with a known colourmap.</span>
+
+<span class="sd">Author: Matt Hall</span>
+<span class="sd">Copyright: 2022, Matt Hall</span>
+<span class="sd">Licence: Apache 2.0</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">import</span> <span class="nn">warnings</span>
 <span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">Counter</span>
 
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">from</span> <span class="nn">scipy.spatial</span> <span class="kn">import</span> <span class="n">cKDTree</span>
 <span class="kn">from</span> <span class="nn">scipy.cluster.vq</span> <span class="kn">import</span> <span class="n">kmeans</span>
 <span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">cm</span>
-<span class="kn">from</span> <span class="nn">matplotlib.colors</span> <span class="kn">import</span> <span class="n">hsv_to_rgb</span><span class="p">,</span> <span class="n">rgb_to_hsv</span>
+<span class="kn">from</span> <span class="nn">matplotlib.colors</span> <span class="kn">import</span> <span class="n">ListedColormap</span><span class="p">,</span> <span class="n">hsv_to_rgb</span><span class="p">,</span> <span class="n">rgb_to_hsv</span>
 <span class="kn">from</span> <span class="nn">matplotlib.colors</span> <span class="kn">import</span> <span class="n">to_rgb</span><span class="p">,</span> <span class="n">LinearSegmentedColormap</span>
+
+<span class="kn">from</span> <span class="nn">.unweave</span> <span class="kn">import</span> <span class="n">guess_cmap_from_array</span>
 
 
 <div class="viewcode-block" id="check_arr"><a class="viewcode-back" href="../../unmap.html#unmap.unmap.check_arr">[docs]</a><span class="k">def</span> <span class="nf">check_arr</span><span class="p">(</span><span class="n">arr</span><span class="p">):</span>
@@ -242,8 +254,8 @@
     <span class="k">elif</span> <span class="p">(</span><span class="n">c</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="ow">or</span> <span class="p">(</span><span class="n">c</span> <span class="o">==</span> <span class="mi">2</span><span class="p">)</span> <span class="ow">or</span> <span class="p">(</span><span class="n">c</span> <span class="o">&gt;=</span> <span class="mi">5</span><span class="p">):</span>
         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Array must be a grayscale or RGB(A) image.&#39;</span><span class="p">)</span>
     <span class="k">elif</span> <span class="n">c</span> <span class="o">==</span> <span class="mi">4</span><span class="p">:</span>
-        <span class="n">arr</span> <span class="o">=</span> <span class="n">arr</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="p">:</span><span class="mi">3</span><span class="p">]</span>
         <span class="n">alpha</span> <span class="o">=</span> <span class="n">arr</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+        <span class="n">arr</span> <span class="o">=</span> <span class="n">arr</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="p">:</span><span class="mi">3</span><span class="p">]</span>
 
     <span class="k">return</span> <span class="n">arr</span><span class="p">,</span> <span class="n">alpha</span></div>
 
@@ -348,6 +360,13 @@
         <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;cmap name not recognized by matplotlib&quot;</span><span class="p">)</span>
 
+    <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">cmap</span><span class="p">,</span> <span class="n">LinearSegmentedColormap</span><span class="p">)</span> <span class="ow">or</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">cmap</span><span class="p">,</span> <span class="n">ListedColormap</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">cmap</span>
+
+    <span class="k">elif</span> <span class="n">cmap</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="c1"># Try to guess from array.</span>
+        <span class="k">return</span> <span class="n">guess_cmap_from_array</span><span class="p">(</span><span class="n">arr</span><span class="p">,</span> <span class="n">source_colors</span><span class="o">=</span><span class="n">levels</span><span class="p">)</span>
+
     <span class="k">else</span><span class="p">:</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="n">cmap</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">cmap</span><span class="p">)</span>
@@ -419,7 +438,7 @@
 
 
 <div class="viewcode-block" id="unmap"><a class="viewcode-back" href="../../unmap.html#unmap.unmap.unmap">[docs]</a><span class="k">def</span> <span class="nf">unmap</span><span class="p">(</span><span class="n">arr</span><span class="p">,</span>
-          <span class="n">cmap</span><span class="p">,</span>
+          <span class="n">cmap</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
           <span class="n">crop</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
           <span class="n">vrange</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
           <span class="n">levels</span><span class="o">=</span><span class="mi">256</span><span class="p">,</span>
@@ -435,9 +454,7 @@
 <span class="sd">    Args:</span>
 <span class="sd">        arr: NumPy array of image data.</span>
 <span class="sd">        cmap: Either another array, or pixel extent of colourbar in image,</span>
-<span class="sd">                or name of mpl colourbar or if None, just use lightness (say)</span>
-<span class="sd">                If get pixels and they&#39;re a few wide, then average them along</span>
-<span class="sd">                short axis? Again, depends on scatter.</span>
+<span class="sd">                or name of mpl colourbar or if None, try to guess it.</span>
 <span class="sd">        crop: If not None, crop the image to the given rectangle.</span>
 <span class="sd">            Given as a tuple (left, top, right, bottom).</span>
 <span class="sd">        vrange: (vmin, vmax) for the colourbar.</span>
@@ -535,11 +552,7 @@
     <script src="../../_static/underscore.js"></script>
     <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/sphinx_highlight.js"></script>
     <script src="../../_static/scripts/furo.js"></script>
-    <script>let toggleHintShow = 'Click to show';</script>
-    <script>let toggleHintHide = 'Click to hide';</script>
-    <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../../_static/togglebutton.js"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     </body>
 </html>
