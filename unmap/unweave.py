@@ -63,7 +63,7 @@ def construct_graph(imarray, colors=256, normed=True):
     Returns:
         G (nx.Graph): Value adjacency graph.
     """
-    glcm = graycomatrix(imarray,
+    glcm = graycomatrix(np.asarray(imarray),
                         distances=[1],
                         angles=[0, np.pi/4, np.pi/2, 3*np.pi/4],
                         levels=colors,
