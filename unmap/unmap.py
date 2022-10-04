@@ -17,6 +17,8 @@ from matplotlib import cm
 from matplotlib.colors import ListedColormap, hsv_to_rgb, rgb_to_hsv
 from matplotlib.colors import to_rgb, LinearSegmentedColormap
 
+from .unweave import guess_cmap_from_array
+
 
 def check_arr(arr):
     """
@@ -41,8 +43,8 @@ def check_arr(arr):
     elif (c == 0) or (c == 2) or (c >= 5):
         raise ValueError('Array must be a grayscale or RGB(A) image.')
     elif c == 4:
-        arr = arr[..., :3]
         alpha = arr[..., 3]
+        arr = arr[..., :3]
 
     return arr, alpha
 
@@ -150,6 +152,10 @@ def get_cmap(cmap, arr=None, levels=256, quantize=False):
     elif isinstance(cmap, LinearSegmentedColormap) or isinstance(cmap, ListedColormap):
         return cmap
 
+    elif cmap is None:
+        # Try to guess from array.
+        return guess_cmap_from_array(arr, source_colors=levels)
+
     else:
         try:
             cmap = np.array(cmap)
@@ -221,7 +227,7 @@ def is_greyscale(arr, epsilon=1e-6):
 
 
 def unmap(arr,
-          cmap,
+          cmap=None,
           crop=None,
           vrange=(0, 1),
           levels=256,
@@ -237,9 +243,7 @@ def unmap(arr,
     Args:
         arr: NumPy array of image data.
         cmap: Either another array, or pixel extent of colourbar in image,
-                or name of mpl colourbar or if None, just use lightness (say)
-                If get pixels and they're a few wide, then average them along
-                short axis? Again, depends on scatter.
+                or name of mpl colourbar or if None, try to guess it.
         crop: If not None, crop the image to the given rectangle.
             Given as a tuple (left, top, right, bottom).
         vrange: (vmin, vmax) for the colourbar.

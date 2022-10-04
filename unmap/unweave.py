@@ -17,25 +17,35 @@ import matplotlib.pyplot as plt
 from skimage.feature import graycomatrix
 
 
-def read_image(fname, colors=256):
+def ordered_unique(seq):
+    return list(dict.fromkeys(seq))
+
+
+def convert_imarray(imarray, colors=256):
     """
-    Read an image and return an index array and colourtable.
+    Convert an RGB image array to an index array and colourtable. The array
+    will be quantized to the specified number of colours, and will be no larger
+    than 512x512 pixels.
 
     Args:
-        fname (str): Path to image file, file handle, or a URL.
+        imarray (np.ndarray): The RGB or RGBA image array.
         colors (int): Number of colours to reduce to.
 
     Returns:
         imarray (np.ndarray): Array of indices into the colourtable.
         unique_colors (np.ndarray): Colourtable.
     """
-    with fsspec.open(fname) as f:
-        imp = Image.open(f)
-        imp = imp.quantize(colors=colors, dither=Image.NONE)
-        imp.thumbnail((512, 512))
+    if np.min(imarray) < 0 or np.max(imarray) > 255:
+        raise ValueError("Image array must be in the range [0, 255] or [0, 1].")
+    elif np.max(imarray) <= 1.0:
+        imarray = imarray * 255
+    imp = Image.fromarray(np.uint8(imarray))
+    imp = imp.quantize(colors=colors, dither=Image.NONE)
+    imp.thumbnail((512, 512))
     imarray = np.asarray(imp)
     palette = np.asarray(imp.getpalette()).reshape(-1, 3)
-    return imarray.astype(np.int16), palette[:colors]/255
+    unique = ordered_unique(tuple(i) for i in palette[:colors]/255)
+    return imarray, np.array(unique)
 
 
 def construct_graph(imarray, colors=256, normed=True):
@@ -219,7 +229,7 @@ def path_to_cmap(path, unique_colors, colors=256, reverse='auto', equilibrate=Fa
     return cmap
 
 
-def guess_cmap(fname,
+def guess_cmap_from_array(array,
                source_colors=256,
                target_colors=256,
                min_weight=0.025,
@@ -228,6 +238,37 @@ def guess_cmap(fname,
                reverse='auto',
                equilibrate=False
                ):
+    """
+    Guess the colormap of an image.
+
+    Args:
+        array (np.ndarray): The RGB or RGBA image array.
+        source_colors (int): Number of colours to detect in the source image.
+        target_colors (int): Number of colours to return in the colormap.
+        min_weight (float): Minimum weight to keep. See `prune_graph`.
+        max_dist (float): Maximum distance to keep. See `prune_graph`.
+        max_neighbours (int): Maximum number of neighbours to allow. See `prune_graph`.
+        reverse (bool): Whether to reverse the colormap. If 'auto', the
+            colormap will start with the end closest to dark blue. If False,
+            the direction is essentially random.
+
+    """
+    imarray, uniq = convert_imarray(array, colors=source_colors)
+    G = construct_graph(imarray, colors=source_colors)
+    G0 = prune_graph(G, uniq, min_weight=min_weight, max_dist=max_dist, max_neighbours=max_neighbours)
+    path = longest_shortest_path(G0)
+    return path_to_cmap(path, uniq, colors=target_colors, reverse=reverse, equilibrate=equilibrate)
+
+
+def guess_cmap_from_image(fname,
+                          source_colors=256,
+                          target_colors=256,
+                          min_weight=0.025,
+                          max_dist=0.25,
+                          max_neighbours=20,
+                          reverse='auto',
+                          equilibrate=False
+                          ):
     """
     Guess the colormap of an image.
 
@@ -243,8 +284,14 @@ def guess_cmap(fname,
             the direction is essentially random.
 
     """
-    imarray, uniq = read_image(fname, colors=source_colors)
-    G = construct_graph(imarray, colors=source_colors)
-    G0 = prune_graph(G, uniq, min_weight=min_weight, max_dist=max_dist, max_neighbours=max_neighbours)
-    path = longest_shortest_path(G0)
-    return path_to_cmap(path, uniq, colors=target_colors, reverse=reverse, equilibrate=equilibrate)
+    with fsspec.open(fname) as f:
+        img = Image.open(f)
+        return guess_cmap_from_array(np.asarray(img),
+                                     source_colors=source_colors,
+                                     target_colors=target_colors,
+                                     min_weight=min_weight,
+                                     max_dist=max_dist,
+                                     max_neighbours=max_neighbours,
+                                     reverse=reverse,
+                                     equilibrate=equilibrate
+                                     )

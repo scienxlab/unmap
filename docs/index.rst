@@ -20,6 +20,7 @@ User guide
     :caption: User guide
 
     readme
+    userguide/Overview_of_unmap.ipynb
     userguide/Unmap_data_from_an_image.ipynb
     userguide/Guess_the_colourmap_from_an_image.ipynb
 
