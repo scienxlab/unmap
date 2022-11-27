@@ -40,7 +40,7 @@ def convert_imarray(imarray, colors=256):
     elif np.max(imarray) <= 1.0:
         imarray = imarray * 255
     imp = Image.fromarray(np.uint8(imarray))
-    imp = imp.quantize(colors=colors, dither=Image.NONE)
+    imp = imp.quantize(colors=colors, dither=Image.Dither.NONE)
     imp.thumbnail((512, 512))
     imarray = np.array(imp)
     palette = np.array(imp.getpalette()).reshape(-1, 3)
