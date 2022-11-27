@@ -1,12 +1,79 @@
 [build-system]
-requires = [
-    "setuptools>=48",
-    "setuptools_scm[toml] >= 4, <6",
-    "setuptools_scm_git_archive",
-    "wheel >= 0.29.0",
-]
+requires = ["setuptools>=65.0", "setuptools-scm>=7.0"]
 build-backend = "setuptools.build_meta"
+
+[project]
+name = "unmap"
+authors = [{ name="Matt Hall", email="kwinkunks@gmail.com" },]
+description = "Unmap data from pseudocolor images."
+dynamic = ["version"]
+requires-python = ">=3.8"
+license = {file = "LICENSE"}
+keywords = ["plotting", "reproducibility", "visualization", "color"]
+readme = "README.md"
+classifiers = [
+    "Intended Audience :: Science/Research",
+    "Development Status :: 3 - Alpha",
+    "Natural Language :: English",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "License :: OSI Approved :: Apache Software License",
+    "Operating System :: OS Independent",
+]
+dependencies = [
+    "numpy",
+    "scipy",
+    "fsspec",
+    "aiohttp",
+    "pillow",
+    "xarray",
+    "networkx",
+    "matplotlib",
+    "scikit-image",
+]
+
+[project.optional-dependencies]
+test = [
+    "pytest",
+    "coverage[toml]",
+    "pytest-cov",
+]
+docs = [
+    "sphinx",
+    "sphinxcontrib-apidoc",
+    "furo",
+    "myst_nb",
+    "gio",
+]
+dev = [
+    "build",
+    "pytest",
+    "coverage[toml]",
+    "pytest-cov",
+    "sphinx",
+    "sphinxcontrib-apidoc",
+    "furo",
+    "myst_nb",
+    "gio",
+]
+
+[project.urls]
+"documentation" = "https://kwinkunks.github.io/unmap"
+"repository" = "https://github.com/kwinkunks/unmap  "
+
+[tool.setuptools]
+packages = ["unmap"]
 
 [tool.setuptools_scm]
 write_to = "unmap/_version.py"
-git_describe_command = "git describe --dirty --tags --long --match v* --first-parent"
+
+[tool.pytest.ini_options]
+addopts = "--ignore=docs --cov=unmap"
+
+[tool.coverage.run]
+omit = [
+    "unmap/__init__.py",
+    "unmap/_version.py",
+]
