@@ -1,5 +1,5 @@
 import numpy as np
-import matplotlib.cm as cm
+from matplotlib import colormaps as cm
 import scipy.signal
 
 import unmap

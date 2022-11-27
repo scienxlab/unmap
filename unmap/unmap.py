@@ -13,7 +13,7 @@ from collections import Counter
 import numpy as np
 from scipy.spatial import cKDTree
 from scipy.cluster.vq import kmeans
-from matplotlib import cm
+from matplotlib import colormaps as cm
 from matplotlib.colors import ListedColormap, hsv_to_rgb, rgb_to_hsv
 from matplotlib.colors import to_rgb, LinearSegmentedColormap
 
