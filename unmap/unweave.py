@@ -87,14 +87,14 @@ def construct_graph(imarray, colors=256, normed=True):
 def plot_graph(G, unique_colors, layout='kamada_kawai', ax=None, figsize=(12, 8)):
     """
     Plot a graph with colours.
-    
+
     Args:
         G (nx.Graph): Graph to plot.
         unique_colors (np.ndarray): Colourtable.
         layout (str): Layout to use.
         ax (matplotlib.axes.Axes): Axes to plot on.
         figsize (tuple): Figure size.
-        
+
     Returns:
         ax (matplotlib.axes.Axes): Axes.
     """
@@ -124,7 +124,7 @@ def plot_graph(G, unique_colors, layout='kamada_kawai', ax=None, figsize=(12, 8)
 def prune_graph(G, unique_colors, min_weight=0.025, max_dist=0.25, max_neighbours=20):
     """
     Prune a graph to remove edges with low weight and high distance.
-    
+
     Args:
         G (nx.Graph): Graph to prune.
         unique_colors (np.ndarray): Colourtable.
@@ -137,14 +137,10 @@ def prune_graph(G, unique_colors, min_weight=0.025, max_dist=0.25, max_neighbour
         G (nx.Graph): Pruned graph.
     """
     G = G.copy()
-    
-    dist = lambda u, v: np.linalg.norm(unique_colors[u] - unique_colors[v])
-    
-    # Calculate RGB distances.
-    dist_dict = {(u, v): dist(u, v) for u, v, _ in G.edges.data()}
-    nx.set_edge_attributes(G, dist_dict, 'dist')
 
-    # Calculate normalized weights.
+    dist = lambda u, v: np.linalg.norm(unique_colors[u] - unique_colors[v])
+
+    # Calculate RGB distances.
     dist_dict = {(u, v): dist(u, v) for u, v, _ in G.edges.data()}
     nx.set_edge_attributes(G, dist_dict, 'dist')
 
@@ -169,11 +165,11 @@ def longest_shortest_path(G):
 
     Args:
         G (nx.Graph): Graph to search.
-    
+
     Returns:
         path (list): Longest shortest path.
     """
-    
+
     dist = lambda u, v, d: d['dist']**2
 
     # Find the longest shortest path.
