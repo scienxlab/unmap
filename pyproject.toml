@@ -61,8 +61,8 @@ dev = [
 ]
 
 [project.urls]
-"documentation" = "https://kwinkunks.github.io/unmap"
-"repository" = "https://github.com/kwinkunks/unmap  "
+"documentation" = "https://scienxlab.github.io/unmap"
+"repository" = "https://github.com/scienxlab/unmap"
 
 [tool.setuptools]
 packages = ["unmap"]
