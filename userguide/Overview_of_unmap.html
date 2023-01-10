@@ -5,10 +5,10 @@
     <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 <link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="Unmap data from an image" href="Unmap_data_from_an_image.html" /><link rel="prev" title="unmap" href="../readme.html" />
 
-    <link rel="shortcut icon" href="../_static/favicon.ico"/><meta name="generator" content="sphinx-5.3.0, furo 2022.09.29"/>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/><!-- Generated with Sphinx 5.3.0 and Furo 2022.12.07 -->
         <title>Overview of unmap - unmap documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?digest=d81277517bee4d6b0349d71bb2661d4890b5617c" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?digest=91d0f0d1c444bdcb17a68e833c7a53903343c195" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
     <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
@@ -153,7 +153,7 @@
   
   
 </a><form class="sidebar-search-container" method="get" action="../search.html" role="search">
-  <input class="sidebar-search" placeholder=Search name="q" aria-label="Search">
+  <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
   <input type="hidden" name="check_keywords" value="yes">
   <input type="hidden" name="area" value="default">
 </form>
@@ -215,7 +215,7 @@
 <p>This library aims to do 2 things:</p>
 <ol class="arabic simple">
 <li><p>Guess the colourmap from a pseudocolour image, for those occasions when the colourmap is not known and not published along with the image.</p></li>
-<li><p>Reocover (‘unmap’) the data from a pseudocolour image, essentially performing the reverse of the pseudocolour process.</p></li>
+<li><p>Recover (‘unmap’) the data from a pseudocolour image, essentially performing the reverse of the pseudocolour process.</p></li>
 </ol>
 <p>These 2 distinct tasks are illustrated below.</p>
 <div class="cell docutils container">
@@ -234,7 +234,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x7fe3044377f0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x7f53b088e6e0&gt;
 </pre></div>
 </div>
 <img alt="../_images/ed4b4ec694655a1029a929994e66f215baa531983fa5f0d958b00e4e9b207493.png" src="../_images/ed4b4ec694655a1029a929994e66f215baa531983fa5f0d958b00e4e9b207493.png" />
@@ -247,7 +247,7 @@
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
     <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
-        <span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">data</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span><span class="si">:</span><span class="s1">0.2f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">data</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="n">j</span><span class="p">]</span><span class="si">:</span><span class="s1">0.2f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">data</span><span class="p">[:</span><span class="mi">5</span><span class="p">,</span> <span class="p">:</span><span class="mi">5</span><span class="p">],</span> <span class="n">vmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
@@ -270,7 +270,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x7fe302392b30&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x7f53ae4a5a50&gt;
 </pre></div>
 </div>
 <img alt="../_images/4d34ce0b250bc94fb346b6c89cd891e03fe52b2f0e7495a2ccb7a507723dd45d.png" src="../_images/4d34ce0b250bc94fb346b6c89cd891e03fe52b2f0e7495a2ccb7a507723dd45d.png" />
@@ -332,7 +332,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x7fe30226d7e0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x7f53ae544700&gt;
 </pre></div>
 </div>
 <img alt="../_images/2760f0eb81f0ffb31c50662cf4406b98916ef8600974805fe475313822d673af.png" src="../_images/2760f0eb81f0ffb31c50662cf4406b98916ef8600974805fe475313822d673af.png" />
@@ -346,7 +346,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x7fe3020c7970&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x7f53ae3bab30&gt;
 </pre></div>
 </div>
 <img alt="../_images/3c25bdc16249129cbba7d008f94d70274c11a4fdcd742699c3f056642453951e.png" src="../_images/3c25bdc16249129cbba7d008f94d70274c11a4fdcd742699c3f056642453951e.png" />
@@ -360,7 +360,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x7fe302149900&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x7f53ae44c6a0&gt;
 </pre></div>
 </div>
 <img alt="../_images/40f214449e284e8be1581165f2ad5b1a78d11f2a29b4ca260cb1fc517a865abf.png" src="../_images/40f214449e284e8be1581165f2ad5b1a78d11f2a29b4ca260cb1fc517a865abf.png" />
@@ -376,7 +376,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.colorbar.Colorbar at 0x7fe301fd8340&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.colorbar.Colorbar at 0x7f53ae2b7040&gt;
 </pre></div>
 </div>
 <img alt="../_images/1ab8b1b929dd98326dcdface11db439aeea87ef9f4b6cc6e0c55a6181dc1b2e5.png" src="../_images/1ab8b1b929dd98326dcdface11db439aeea87ef9f4b6cc6e0c55a6181dc1b2e5.png" />
@@ -396,7 +396,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x7fe301e73a00&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x7f53ae126860&gt;
 </pre></div>
 </div>
 <img alt="../_images/897241cfab0bb1d7dc4341075216d5ebcbba23668255a0acaa79451b5dea28da.png" src="../_images/897241cfab0bb1d7dc4341075216d5ebcbba23668255a0acaa79451b5dea28da.png" />

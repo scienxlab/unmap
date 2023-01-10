@@ -4,10 +4,10 @@
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" />
 
-    <link rel="shortcut icon" href="../../_static/favicon.ico"/><meta name="generator" content="sphinx-5.3.0, furo 2022.09.29"/>
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/><!-- Generated with Sphinx 5.3.0 and Furo 2022.12.07 -->
         <title>unmap.unweave - unmap documentation</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo.css?digest=d81277517bee4d6b0349d71bb2661d4890b5617c" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo.css?digest=91d0f0d1c444bdcb17a68e833c7a53903343c195" />
     <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
     <link rel="stylesheet" type="text/css" href="../../_static/custom.css" />
@@ -152,7 +152,7 @@
   
   
 </a><form class="sidebar-search-container" method="get" action="../../search.html" role="search">
-  <input class="sidebar-search" placeholder=Search name="q" aria-label="Search">
+  <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
   <input type="hidden" name="check_keywords" value="yes">
   <input type="hidden" name="area" value="default">
 </form>
@@ -233,7 +233,7 @@
 
 
 <div class="viewcode-block" id="convert_imarray"><a class="viewcode-back" href="../../unmap.html#unmap.unweave.convert_imarray">[docs]</a><span class="k">def</span> <span class="nf">convert_imarray</span><span class="p">(</span><span class="n">imarray</span><span class="p">,</span> <span class="n">colors</span><span class="o">=</span><span class="mi">256</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Convert an RGB image array to an index array and colourtable. The array</span>
 <span class="sd">    will be quantized to the specified number of colours, and will be no larger</span>
 <span class="sd">    than 512x512 pixels.</span>
@@ -260,7 +260,7 @@
 
 
 <div class="viewcode-block" id="construct_graph"><a class="viewcode-back" href="../../unmap.html#unmap.unweave.construct_graph">[docs]</a><span class="k">def</span> <span class="nf">construct_graph</span><span class="p">(</span><span class="n">imarray</span><span class="p">,</span> <span class="n">colors</span><span class="o">=</span><span class="mi">256</span><span class="p">,</span> <span class="n">normed</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Construct an undirected value adjacency graph from an image array.</span>
 
 <span class="sd">    Weights are the number of times a pair of values co-occur in the image,</span>
@@ -296,16 +296,16 @@
 
 
 <div class="viewcode-block" id="plot_graph"><a class="viewcode-back" href="../../unmap.html#unmap.unweave.plot_graph">[docs]</a><span class="k">def</span> <span class="nf">plot_graph</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">unique_colors</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="s1">&#39;kamada_kawai&#39;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">8</span><span class="p">)):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Plot a graph with colours.</span>
-<span class="sd">    </span>
+
 <span class="sd">    Args:</span>
 <span class="sd">        G (nx.Graph): Graph to plot.</span>
 <span class="sd">        unique_colors (np.ndarray): Colourtable.</span>
 <span class="sd">        layout (str): Layout to use.</span>
 <span class="sd">        ax (matplotlib.axes.Axes): Axes to plot on.</span>
 <span class="sd">        figsize (tuple): Figure size.</span>
-<span class="sd">        </span>
+
 <span class="sd">    Returns:</span>
 <span class="sd">        ax (matplotlib.axes.Axes): Axes.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -333,9 +333,9 @@
 
 
 <div class="viewcode-block" id="prune_graph"><a class="viewcode-back" href="../../unmap.html#unmap.unweave.prune_graph">[docs]</a><span class="k">def</span> <span class="nf">prune_graph</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">unique_colors</span><span class="p">,</span> <span class="n">min_weight</span><span class="o">=</span><span class="mf">0.025</span><span class="p">,</span> <span class="n">max_dist</span><span class="o">=</span><span class="mf">0.25</span><span class="p">,</span> <span class="n">max_neighbours</span><span class="o">=</span><span class="mi">20</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Prune a graph to remove edges with low weight and high distance.</span>
-<span class="sd">    </span>
+
 <span class="sd">    Args:</span>
 <span class="sd">        G (nx.Graph): Graph to prune.</span>
 <span class="sd">        unique_colors (np.ndarray): Colourtable.</span>
@@ -348,14 +348,10 @@
 <span class="sd">        G (nx.Graph): Pruned graph.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">G</span> <span class="o">=</span> <span class="n">G</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
-    
-    <span class="n">dist</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">unique_colors</span><span class="p">[</span><span class="n">u</span><span class="p">]</span> <span class="o">-</span> <span class="n">unique_colors</span><span class="p">[</span><span class="n">v</span><span class="p">])</span>
-    
-    <span class="c1"># Calculate RGB distances.</span>
-    <span class="n">dist_dict</span> <span class="o">=</span> <span class="p">{(</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">):</span> <span class="n">dist</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span> <span class="k">for</span> <span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">_</span> <span class="ow">in</span> <span class="n">G</span><span class="o">.</span><span class="n">edges</span><span class="o">.</span><span class="n">data</span><span class="p">()}</span>
-    <span class="n">nx</span><span class="o">.</span><span class="n">set_edge_attributes</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">dist_dict</span><span class="p">,</span> <span class="s1">&#39;dist&#39;</span><span class="p">)</span>
 
-    <span class="c1"># Calculate normalized weights.</span>
+    <span class="n">dist</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">unique_colors</span><span class="p">[</span><span class="n">u</span><span class="p">]</span> <span class="o">-</span> <span class="n">unique_colors</span><span class="p">[</span><span class="n">v</span><span class="p">])</span>
+
+    <span class="c1"># Calculate RGB distances.</span>
     <span class="n">dist_dict</span> <span class="o">=</span> <span class="p">{(</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">):</span> <span class="n">dist</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span> <span class="k">for</span> <span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">_</span> <span class="ow">in</span> <span class="n">G</span><span class="o">.</span><span class="n">edges</span><span class="o">.</span><span class="n">data</span><span class="p">()}</span>
     <span class="n">nx</span><span class="o">.</span><span class="n">set_edge_attributes</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">dist_dict</span><span class="p">,</span> <span class="s1">&#39;dist&#39;</span><span class="p">)</span>
 
@@ -374,17 +370,17 @@
 
 
 <div class="viewcode-block" id="longest_shortest_path"><a class="viewcode-back" href="../../unmap.html#unmap.unweave.longest_shortest_path">[docs]</a><span class="k">def</span> <span class="nf">longest_shortest_path</span><span class="p">(</span><span class="n">G</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Find the longest shortest path in a graph. This should be the path between</span>
 <span class="sd">    the ends of the longest chain in the graph.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        G (nx.Graph): Graph to search.</span>
-<span class="sd">    </span>
+
 <span class="sd">    Returns:</span>
 <span class="sd">        path (list): Longest shortest path.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    
+
     <span class="n">dist</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">d</span><span class="p">:</span> <span class="n">d</span><span class="p">[</span><span class="s1">&#39;dist&#39;</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span>
 
     <span class="c1"># Find the longest shortest path.</span>
@@ -403,7 +399,7 @@
 
 
 <div class="viewcode-block" id="path_to_cmap"><a class="viewcode-back" href="../../unmap.html#unmap.unweave.path_to_cmap">[docs]</a><span class="k">def</span> <span class="nf">path_to_cmap</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">unique_colors</span><span class="p">,</span> <span class="n">colors</span><span class="o">=</span><span class="mi">256</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="s1">&#39;auto&#39;</span><span class="p">,</span> <span class="n">equilibrate</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Convert a path through the graph to a colormap.</span>
 
 <span class="sd">    Args:</span>
@@ -449,7 +445,7 @@
                <span class="n">reverse</span><span class="o">=</span><span class="s1">&#39;auto&#39;</span><span class="p">,</span>
                <span class="n">equilibrate</span><span class="o">=</span><span class="kc">False</span>
                <span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Guess the colormap of an image.</span>
 
 <span class="sd">    Args:</span>
@@ -480,7 +476,7 @@
                           <span class="n">reverse</span><span class="o">=</span><span class="s1">&#39;auto&#39;</span><span class="p">,</span>
                           <span class="n">equilibrate</span><span class="o">=</span><span class="kc">False</span>
                           <span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Guess the colormap of an image.</span>
 
 <span class="sd">    Args:</span>

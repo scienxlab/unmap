@@ -40,26 +40,24 @@ plt.imshow(img)
 
 [0;31m---------------------------------------------------------------------------[0m
 [0;31mUnidentifiedImageError[0m                    Traceback (most recent call last)
-Cell [0;32mIn [1], line 17[0m
+Cell [0;32mIn[1], line 17[0m
 [1;32m     15[0m [38;5;66;03m# Public domain image.[39;00m
 [1;32m     16[0m uri [38;5;241m=[39m [38;5;124m'[39m[38;5;124mhttps://upload.wikimedia.org/wikipedia/commons/2/2b/VariableFrequency.jpg[39m[38;5;124m'[39m
 [0;32m---> 17[0m img [38;5;241m=[39m [43mget_image_from_web[49m[43m([49m[43muri[49m[43m)[49m
 [1;32m     19[0m plt[38;5;241m.[39mimshow(img)
 
-Cell [0;32mIn [1], line 11[0m, in [0;36mget_image_from_web[0;34m(uri)[0m
+Cell [0;32mIn[1], line 11[0m, in [0;36mget_image_from_web[0;34m(uri)[0m
 [1;32m      9[0m [38;5;28;01mdef[39;00m [38;5;21mget_image_from_web[39m(uri):
 [1;32m     10[0m     data [38;5;241m=[39m requests[38;5;241m.[39mget(uri)[38;5;241m.[39mcontent
 [0;32m---> 11[0m     img [38;5;241m=[39m [43mImage[49m[38;5;241;43m.[39;49m[43mopen[49m[43m([49m[43mBytesIO[49m[43m([49m[43mdata[49m[43m)[49m[43m)[49m[38;5;241m.[39mconvert([38;5;124m'[39m[38;5;124mRGB[39m[38;5;124m'[39m)
 [1;32m     12[0m     rgb_im [38;5;241m=[39m np[38;5;241m.[39masarray(img)[[38;5;241m.[39m[38;5;241m.[39m[38;5;241m.[39m, :[38;5;241m3[39m] [38;5;241m/[39m [38;5;241m255.[39m
 [1;32m     13[0m     [38;5;28;01mreturn[39;00m rgb_im
 
-File [0;32m~/.local/lib/python3.10/site-packages/PIL/Image.py:3186[0m, in [0;36mopen[0;34m(fp, mode, formats)[0m
-[1;32m   3184[0m [38;5;28;01mfor[39;00m message [38;5;129;01min[39;00m accept_warnings:
-[1;32m   3185[0m     warnings[38;5;241m.[39mwarn(message)
-[0;32m-> 3186[0m [38;5;28;01mraise[39;00m UnidentifiedImageError(
-[1;32m   3187[0m     [38;5;124m"[39m[38;5;124mcannot identify image file [39m[38;5;132;01m%r[39;00m[38;5;124m"[39m [38;5;241m%[39m (filename [38;5;28;01mif[39;00m filename [38;5;28;01melse[39;00m fp)
-[1;32m   3188[0m )
+File [0;32m~/.local/lib/python3.10/site-packages/PIL/Image.py:3283[0m, in [0;36mopen[0;34m(fp, mode, formats)[0m
+[1;32m   3281[0m     warnings[38;5;241m.[39mwarn(message)
+[1;32m   3282[0m msg [38;5;241m=[39m [38;5;124m"[39m[38;5;124mcannot identify image file [39m[38;5;132;01m%r[39;00m[38;5;124m"[39m [38;5;241m%[39m (filename [38;5;28;01mif[39;00m filename [38;5;28;01melse[39;00m fp)
+[0;32m-> 3283[0m [38;5;28;01mraise[39;00m UnidentifiedImageError(msg)
 
-[0;31mUnidentifiedImageError[0m: cannot identify image file <_io.BytesIO object at 0x7faf4c20b060>
-UnidentifiedImageError: cannot identify image file <_io.BytesIO object at 0x7faf4c20b060>
+[0;31mUnidentifiedImageError[0m: cannot identify image file <_io.BytesIO object at 0x7f4c2851c680>
+UnidentifiedImageError: cannot identify image file <_io.BytesIO object at 0x7f4c2851c680>
 

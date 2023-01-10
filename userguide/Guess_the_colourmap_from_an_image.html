@@ -5,10 +5,10 @@
     <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 <link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="unmap package" href="../unmap.html" /><link rel="prev" title="Unmap data from an image" href="Unmap_data_from_an_image.html" />
 
-    <link rel="shortcut icon" href="../_static/favicon.ico"/><meta name="generator" content="sphinx-5.3.0, furo 2022.09.29"/>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/><!-- Generated with Sphinx 5.3.0 and Furo 2022.12.07 -->
         <title>Guess the colourmap from an image - unmap documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?digest=d81277517bee4d6b0349d71bb2661d4890b5617c" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?digest=91d0f0d1c444bdcb17a68e833c7a53903343c195" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
     <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
@@ -153,7 +153,7 @@
   
   
 </a><form class="sidebar-search-container" method="get" action="../search.html" role="search">
-  <input class="sidebar-search" placeholder=Search name="q" aria-label="Search">
+  <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
   <input type="hidden" name="check_keywords" value="yes">
   <input type="hidden" name="area" value="default">
 </form>
@@ -263,27 +263,25 @@
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">UnidentifiedImageError</span><span class="g g-Whitespace">                    </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span> <span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">17</span>
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">17</span>
 <span class="g g-Whitespace">     </span><span class="mi">15</span> <span class="c1"># Public domain image.</span>
 <span class="g g-Whitespace">     </span><span class="mi">16</span> <span class="n">uri</span> <span class="o">=</span> <span class="s1">&#39;https://upload.wikimedia.org/wikipedia/commons/2/2b/VariableFrequency.jpg&#39;</span>
 <span class="ne">---&gt; </span><span class="mi">17</span> <span class="n">img</span> <span class="o">=</span> <span class="n">get_image_from_web</span><span class="p">(</span><span class="n">uri</span><span class="p">)</span>
 <span class="g g-Whitespace">     </span><span class="mi">19</span> <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">img</span><span class="p">)</span>
 
-<span class="nn">Cell In [1], line 11,</span> in <span class="ni">get_image_from_web</span><span class="nt">(uri)</span>
+<span class="nn">Cell In[1], line 11,</span> in <span class="ni">get_image_from_web</span><span class="nt">(uri)</span>
 <span class="g g-Whitespace">      </span><span class="mi">9</span> <span class="k">def</span> <span class="nf">get_image_from_web</span><span class="p">(</span><span class="n">uri</span><span class="p">):</span>
 <span class="g g-Whitespace">     </span><span class="mi">10</span>     <span class="n">data</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">uri</span><span class="p">)</span><span class="o">.</span><span class="n">content</span>
 <span class="ne">---&gt; </span><span class="mi">11</span>     <span class="n">img</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">BytesIO</span><span class="p">(</span><span class="n">data</span><span class="p">))</span><span class="o">.</span><span class="n">convert</span><span class="p">(</span><span class="s1">&#39;RGB&#39;</span><span class="p">)</span>
 <span class="g g-Whitespace">     </span><span class="mi">12</span>     <span class="n">rgb_im</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">img</span><span class="p">)[</span><span class="o">...</span><span class="p">,</span> <span class="p">:</span><span class="mi">3</span><span class="p">]</span> <span class="o">/</span> <span class="mf">255.</span>
 <span class="g g-Whitespace">     </span><span class="mi">13</span>     <span class="k">return</span> <span class="n">rgb_im</span>
 
-<span class="nn">File ~/.local/lib/python3.10/site-packages/PIL/Image.py:3186,</span> in <span class="ni">open</span><span class="nt">(fp, mode, formats)</span>
-<span class="g g-Whitespace">   </span><span class="mi">3184</span> <span class="k">for</span> <span class="n">message</span> <span class="ow">in</span> <span class="n">accept_warnings</span><span class="p">:</span>
-<span class="g g-Whitespace">   </span><span class="mi">3185</span>     <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="n">message</span><span class="p">)</span>
-<span class="ne">-&gt; </span><span class="mi">3186</span> <span class="k">raise</span> <span class="n">UnidentifiedImageError</span><span class="p">(</span>
-<span class="g g-Whitespace">   </span><span class="mi">3187</span>     <span class="s2">&quot;cannot identify image file </span><span class="si">%r</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">filename</span> <span class="k">if</span> <span class="n">filename</span> <span class="k">else</span> <span class="n">fp</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">3188</span> <span class="p">)</span>
+<span class="nn">File ~/.local/lib/python3.10/site-packages/PIL/Image.py:3283,</span> in <span class="ni">open</span><span class="nt">(fp, mode, formats)</span>
+<span class="g g-Whitespace">   </span><span class="mi">3281</span>     <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="n">message</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">3282</span> <span class="n">msg</span> <span class="o">=</span> <span class="s2">&quot;cannot identify image file </span><span class="si">%r</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">filename</span> <span class="k">if</span> <span class="n">filename</span> <span class="k">else</span> <span class="n">fp</span><span class="p">)</span>
+<span class="ne">-&gt; </span><span class="mi">3283</span> <span class="k">raise</span> <span class="n">UnidentifiedImageError</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
 
-<span class="ne">UnidentifiedImageError</span>: cannot identify image file &lt;_io.BytesIO object at 0x7faf4c20b060&gt;
+<span class="ne">UnidentifiedImageError</span>: cannot identify image file &lt;_io.BytesIO object at 0x7f4c2851c680&gt;
 </pre></div>
 </div>
 </div>

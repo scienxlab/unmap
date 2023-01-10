@@ -5,10 +5,10 @@
     <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 <link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Overview of unmap" href="userguide/Overview_of_unmap.html" /><link rel="prev" title="unmap: data liberation for images" href="index.html" />
 
-    <link rel="shortcut icon" href="_static/favicon.ico"/><meta name="generator" content="sphinx-5.3.0, furo 2022.09.29"/>
+    <link rel="shortcut icon" href="_static/favicon.ico"/><!-- Generated with Sphinx 5.3.0 and Furo 2022.12.07 -->
         <title>unmap - unmap documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?digest=d81277517bee4d6b0349d71bb2661d4890b5617c" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?digest=91d0f0d1c444bdcb17a68e833c7a53903343c195" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css" />
@@ -153,7 +153,7 @@
   
   
 </a><form class="sidebar-search-container" method="get" action="search.html" role="search">
-  <input class="sidebar-search" placeholder=Search name="q" aria-label="Search">
+  <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
   <input type="hidden" name="check_keywords" value="yes">
   <input type="hidden" name="area" value="default">
 </form>
@@ -212,13 +212,37 @@
         <article role="main">
           <section class="tex2jax_ignore mathjax_ignore" id="unmap">
 <h1>unmap<a class="headerlink" href="#unmap" title="Permalink to this heading">#</a></h1>
-<p><a class="reference external" href="https://github.com/kwinkunks/unmap/actions/workflows/run-tests.yml"><img alt="Run tests" src="https://github.com/kwinkunks/unmap/actions/workflows/run-tests.yml/badge.svg" /></a>
-<a class="reference external" href="https://github.com/kwinkunks/unmap/actions/workflows/build-docs.yml"><img alt="Build docs" src="https://github.com/kwinkunks/unmap/actions/workflows/build-docs.yml/badge.svg" /></a>
+<p><a class="reference external" href="https://github.com/scienxlab/unmap/actions/workflows/run-tests.yml"><img alt="Run tests" src="https://github.com/scienxlab/unmap/actions/workflows/run-tests.yml/badge.svg" /></a>
+<a class="reference external" href="https://github.com/scienxlab/unmap/actions/workflows/build-docs.yml"><img alt="Build docs" src="https://github.com/scienxlab/unmap/actions/workflows/build-docs.yml/badge.svg" /></a>
 <a class="reference external" href="https://pypi.org/project/unmap//"><img alt="PyPI version" src="https://img.shields.io/pypi/v/unmap.svg" /></a>
 <a class="reference external" href="https://pypi.org/project/unmap//"><img alt="PyPI versions" src="https://img.shields.io/pypi/pyversions/unmap.svg" /></a>
 <a class="reference external" href="https://pypi.org/project/unmap/"><img alt="PyPI license" src="https://img.shields.io/pypi/l/unmap.svg" /></a></p>
-<p>Unmap data from pseudocolor images, with knowledge of the colourmap for now, but the goal is to drop this requirement.</p>
-<p>in other words, this library is the opposite of <code class="docutils literal notranslate"><span class="pre">plt.imshow()</span></code>.</p>
+<p>Unmap data from pseudocolor images, with or without knowledge of the colourmap. This tool has 2 main components:</p>
+<ol class="arabic simple">
+<li><p>Guess the colourmap that was used for a pseudocolour visualization, in cases where it’s unknown and a colourbar is not included in the image.</p></li>
+<li><p>‘Unmap’ a pseudocolour visualization, separating the data from the image; essentially this is the opposite of what <code class="docutils literal notranslate"><span class="pre">plt.imshow()</span></code> does.</p></li>
+</ol>
+<section id="similar-projects">
+<h2>Similar projects<a class="headerlink" href="#similar-projects" title="Permalink to this heading">#</a></h2>
+<p>There are some other approaches to both Task 1 (above) and Task 2:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/jperryhouts/unmap"><code class="docutils literal notranslate"><span class="pre">unmap</span></code></a> (I swear I didn’t know about this tool when I named mine!) — does the data ripping part. The colourmap must be provided, but the tool also provides a way to interactively identify a colourbar in the image.</p></li>
+<li><p><a class="reference external" href="https://ieeexplore.ieee.org/document/8017646">Poco et al.</a> (<a class="reference external" href="https://github.com/uwdata/rev">GitHub</a>) attempts to both find the colourbar in a visualization, then use it to perform Task 2. The visualization must contain a colourbar.</p></li>
+<li><p><a class="reference external" href="https://github.com/yuanlinping/deep_colormap_extraction">Yuan et al.</a> attempts Task 1 using deep learning. The prediction from a CNN is refined with either Laplacian eigenmapping (manifold+based dimensionality reduction, for continuous colourmaps) or DBSCAN (for categorical colourmaps).</p></li>
+</ul>
+<p>Of these projects, only Yuan et al. (‘deep colormap extraction’) requires no <em>a priori</em> knowledge of the colourmap.</p>
+</section>
+<section id="stack-exchange-questions-about-this-topic">
+<h2>Stack Exchange questions about this topic<a class="headerlink" href="#stack-exchange-questions-about-this-topic" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>https://datascience.stackexchange.com/questions/27247/can-i-get-numeric-data-from-a-color-map</p></li>
+<li><p>https://stackoverflow.com/questions/71090534/how-to-extract-a-colormap-from-a-colorbar-image-and-use-it-in-a-heatmap</p></li>
+<li><p>https://stackoverflow.com/questions/63233529/given-a-jpg-of-2d-colorplot-colorbar-how-can-i-sample-the-image-to-extract-n</p></li>
+<li><p>https://stackoverflow.com/questions/3720840/how-to-reverse-a-color-map-image-to-scalar-values</p></li>
+<li><p>https://stackoverflow.com/questions/62267694/extract-color-table-values</p></li>
+<li><p>https://stackoverflow.com/questions/14445102/invert-not-reverse-a-colormap-in-matplotlib</p></li>
+</ul>
+</section>
 <section id="installation">
 <h2>Installation<a class="headerlink" href="#installation" title="Permalink to this heading">#</a></h2>
 <p>You can install this package with <code class="docutils literal notranslate"><span class="pre">pip</span></code>:</p>
@@ -229,22 +253,22 @@
 </section>
 <section id="documentation">
 <h2>Documentation<a class="headerlink" href="#documentation" title="Permalink to this heading">#</a></h2>
-<p>Read <a class="reference external" href="https://kwinkunks.github.io/unmap">the documentation</a>, especially <a class="reference external" href="https://kwinkunks.github.io/unmap/userguide/Unmap_data_from_an_image.html">the examples</a>.</p>
+<p>Read <a class="reference external" href="https://scienxlab.github.io/unmap">the documentation</a>, especially <a class="reference external" href="https://scienxlab.github.io/unmap/userguide/Unmap_data_from_an_image.html">the examples</a>.</p>
 </section>
 <section id="contributing">
 <h2>Contributing<a class="headerlink" href="#contributing" title="Permalink to this heading">#</a></h2>
-<p>Take a look at <a class="reference external" href="https://github.com/kwinkunks/unmap/blob/main/CONTRIBUTING.md"><code class="docutils literal notranslate"><span class="pre">CONTRIBUTING.md</span></code></a>.</p>
+<p>Take a look at <a class="reference external" href="https://github.com/scienxlab/unmap/blob/main/CONTRIBUTING.md"><code class="docutils literal notranslate"><span class="pre">CONTRIBUTING.md</span></code></a>.</p>
 </section>
 <section id="testing">
 <h2>Testing<a class="headerlink" href="#testing" title="Permalink to this heading">#</a></h2>
-<p>You can run the tests (requires <code class="docutils literal notranslate"><span class="pre">pytest</span></code> and <code class="docutils literal notranslate"><span class="pre">pytest-cov</span></code>) with</p>
+<p>After cloning this repository and installing the dependencies required for testing, you can run the tests (requires <code class="docutils literal notranslate"><span class="pre">pytest</span></code> and <code class="docutils literal notranslate"><span class="pre">pytest-cov</span></code>) with</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pytest
 </pre></div>
 </div>
 </section>
 <section id="building">
 <h2>Building<a class="headerlink" href="#building" title="Permalink to this heading">#</a></h2>
-<p>This repo uses PEP 517-style packaging. <a class="reference external" href="https://setuptools.pypa.io/en/latest/build_meta.html">Read more about this</a> and <a class="reference external" href="https://packaging.python.org/en/latest/tutorials/packaging-projects/">about Python packaging in general</a>.</p>
+<p>This repo uses PEP 517-style packaging, with the entire build system and requirements defined in the <code class="docutils literal notranslate"><span class="pre">pyproject.toml</span></code> file. <a class="reference external" href="https://setuptools.pypa.io/en/latest/build_meta.html">Read more about this</a> and <a class="reference external" href="https://packaging.python.org/en/latest/tutorials/packaging-projects/">about Python packaging in general</a>.</p>
 <p>Building the project requires <code class="docutils literal notranslate"><span class="pre">build</span></code>, so first:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pip install build
 </pre></div>
@@ -322,6 +346,8 @@
           <div class="toc-tree">
             <ul>
 <li><a class="reference internal" href="#">unmap</a><ul>
+<li><a class="reference internal" href="#similar-projects">Similar projects</a></li>
+<li><a class="reference internal" href="#stack-exchange-questions-about-this-topic">Stack Exchange questions about this topic</a></li>
 <li><a class="reference internal" href="#installation">Installation</a></li>
 <li><a class="reference internal" href="#documentation">Documentation</a></li>
 <li><a class="reference internal" href="#contributing">Contributing</a></li>
