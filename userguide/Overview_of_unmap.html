@@ -234,10 +234,10 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x7f53b088e6e0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x7feb0c4795a0&gt;
 </pre></div>
 </div>
-<img alt="../_images/ed4b4ec694655a1029a929994e66f215baa531983fa5f0d958b00e4e9b207493.png" src="../_images/ed4b4ec694655a1029a929994e66f215baa531983fa5f0d958b00e4e9b207493.png" />
+<img alt="../_images/f5d038d3a7c155b036eed42853d2e92023bc1a7b52ec6548b7dcee22b42ec791.png" src="../_images/f5d038d3a7c155b036eed42853d2e92023bc1a7b52ec6548b7dcee22b42ec791.png" />
 </div>
 </div>
 <p>Note: this is a greyscale image; it’s the closest thing we can make to a ‘pure’ visualization of the data. The values in the data array correspond to a grey level from 0 (black) to 1 (white).</p>
@@ -255,7 +255,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/7240367864d57864de5b2d283bdeb6281a93550a583a1a2794fa2afe549d45a8.png" src="../_images/7240367864d57864de5b2d283bdeb6281a93550a583a1a2794fa2afe549d45a8.png" />
+<img alt="../_images/8c21527e752579ed10e44c60619bd31d5240b1acc3504e4e25a382cef85a31f4.png" src="../_images/8c21527e752579ed10e44c60619bd31d5240b1acc3504e4e25a382cef85a31f4.png" />
 </div>
 </div>
 <p>Now we’ll make an RGB image out of this 2D array. This involves using a look-up table of colours, called a <strong>colourmap</strong>, to transform each data value into an RGB colour, which is a 3-tuple of floats like (0.25, 0.33, 0.9). In doing so, we lose the data values themselves; they are now encoded as colours.</p>
@@ -270,10 +270,10 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x7f53ae4a5a50&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x7feb0c110b20&gt;
 </pre></div>
 </div>
-<img alt="../_images/4d34ce0b250bc94fb346b6c89cd891e03fe52b2f0e7495a2ccb7a507723dd45d.png" src="../_images/4d34ce0b250bc94fb346b6c89cd891e03fe52b2f0e7495a2ccb7a507723dd45d.png" />
+<img alt="../_images/bd8c6dd5b159bd3f51703254db35153d32039a037450ffe6ce943a9402d26a07.png" src="../_images/bd8c6dd5b159bd3f51703254db35153d32039a037450ffe6ce943a9402d26a07.png" />
 </div>
 </div>
 <p>If we know the colourmap and the original range of the data, then recovering data from this image is not too hard: we can do a reverse look-up of each colour in the image and replace it with the corresponding data value. This library, <code class="docutils literal notranslate"><span class="pre">unmap</span></code>, can handle this.</p>
@@ -292,7 +292,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_html"><div style="vertical-align: middle;"><strong>recovered</strong> </div><div class="cmap"><img alt="recovered colormap" title="recovered" style="border: 1px solid #555;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAgAAAABACAYAAABsv8+/AAAAGHRFWHRUaXRsZQByZWNvdmVyZWQgY29sb3JtYXCmg4jWAAAAHnRFWHREZXNjcmlwdGlvbgByZWNvdmVyZWQgY29sb3JtYXDkGG5dAAAAMHRFWHRBdXRob3IATWF0cGxvdGxpYiB2My42LjIsIGh0dHBzOi8vbWF0cGxvdGxpYi5vcmdxzlVfAAAAMnRFWHRTb2Z0d2FyZQBNYXRwbG90bGliIHYzLjYuMiwgaHR0cHM6Ly9tYXRwbG90bGliLm9yZ19oyngAAAKOSURBVHic7dY9ctswGARQkJRzgJwkfe5/qcQCUghgBhDpTOp9r/lm8UPKlordfnz/2UoppWzHa/RZ9seSx/5r/f38km/239ZH7u8r+0fPfR5f53J8m9eXfO7v8+c+P+9+k7e9r+9Lnve3/Xr97t72tn6d/36ubT53M9vIxzzbcbN+PnfruSx52d/adK717ffcLmc9rvfrXvv+13M938a9t9ym/Da3m/VzPr+cpZ8r+2cppZTtXO/5GPk57e9bn//KfR7/mv3eUa7vPZa89797nD/XS52fW9bz671lfX3uen7J43M9yjw/ys16e81vy3xbH++pr+//aOss0/7jzNdzX/Kjvn7g4+t9PLd5f8lHz+fP4y3P7+n/lnPuz3a5vvXPX879nutdrtP5/53t5n47c13ysl/n54z1Vq/Pt7rkfq8+r59Tl/v3ub9uWa915HK5/hz3xrk657Ff27w//rw1t7bcP5+3zH7us+df/T2/6/Uc+5/L13if+++xAABxFAAACKQAAEAgBQAAAikAABBIAQCAQAoAAARSAAAgkAIAAIEUAAAIpAAAQCAFAAACKQAAEEgBAIBACgAABFIAACCQAgAAgRQAAAikAABAIAUAAAIpAAAQSAEAgEAKAAAEUgAAIJACAACBFAAACKQAAEAgBQAAAikAABBIAQCAQAoAAARSAAAgkAIAAIEUAAAIpAAAQCAFAAACKQAAEEgBAIBACgAABFIAACCQAgAAgRQAAAikAABAIAUAAAIpAAAQSAEAgEAKAAAEUgAAIJACAACBFAAACKQAAEAgBQAAAikAABBIAQCAQAoAAARSAAAgkAIAAIEUAAAIpAAAQCAFAAACKQAAEEgBAIBACgAABPoDzAJODyx2+qwAAAAASUVORK5CYII="></div><div style="vertical-align: middle; max-width: 514px; display: flex; justify-content: space-between;"><div style="float: left;"><div title="#30123bff" style="display: inline-block; width: 1em; height: 1em; margin: 0; vertical-align: middle; border: 1px solid #555; background-color: #30123bff;"></div> under</div><div style="margin: 0 auto; display: inline-block;">bad <div title="#00000000" style="display: inline-block; width: 1em; height: 1em; margin: 0; vertical-align: middle; border: 1px solid #555; background-color: #00000000;"></div></div><div style="float: right;">over <div title="#7b0402ff" style="display: inline-block; width: 1em; height: 1em; margin: 0; vertical-align: middle; border: 1px solid #555; background-color: #7b0402ff;"></div></div></div></div>
+<div class="output text_html"><div style="vertical-align: middle;"><strong>recovered</strong> </div><div class="cmap"><img alt="recovered colormap" title="recovered" style="border: 1px solid #555;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAgAAAABACAYAAABsv8+/AAAAGHRFWHRUaXRsZQByZWNvdmVyZWQgY29sb3JtYXCmg4jWAAAAHnRFWHREZXNjcmlwdGlvbgByZWNvdmVyZWQgY29sb3JtYXDkGG5dAAAAMHRFWHRBdXRob3IATWF0cGxvdGxpYiB2My42LjMsIGh0dHBzOi8vbWF0cGxvdGxpYi5vcmfURcVRAAAAMnRFWHRTb2Z0d2FyZQBNYXRwbG90bGliIHYzLjYuMywgaHR0cHM6Ly9tYXRwbG90bGliLm9yZ/rjWnYAAAKOSURBVHic7dY9ctswGARQkJRzgJwkfe5/qcQCUghgBhDpTOp9r/lm8UPKlordfnz/2UoppWzHa/RZ9seSx/5r/f38km/239ZH7u8r+0fPfR5f53J8m9eXfO7v8+c+P+9+k7e9r+9Lnve3/Xr97t72tn6d/36ubT53M9vIxzzbcbN+PnfruSx52d/adK717ffcLmc9rvfrXvv+13M938a9t9ym/Da3m/VzPr+cpZ8r+2cppZTtXO/5GPk57e9bn//KfR7/mv3eUa7vPZa89797nD/XS52fW9bz671lfX3uen7J43M9yjw/ys16e81vy3xbH++pr+//aOss0/7jzNdzX/Kjvn7g4+t9PLd5f8lHz+fP4y3P7+n/lnPuz3a5vvXPX879nutdrtP5/53t5n47c13ysl/n54z1Vq/Pt7rkfq8+r59Tl/v3ub9uWa915HK5/hz3xrk657Ff27w//rw1t7bcP5+3zH7us+df/T2/6/Uc+5/L13if+++xAABxFAAACKQAAEAgBQAAAikAABBIAQCAQAoAAARSAAAgkAIAAIEUAAAIpAAAQCAFAAACKQAAEEgBAIBACgAABFIAACCQAgAAgRQAAAikAABAIAUAAAIpAAAQSAEAgEAKAAAEUgAAIJACAACBFAAACKQAAEAgBQAAAikAABBIAQCAQAoAAARSAAAgkAIAAIEUAAAIpAAAQCAFAAACKQAAEEgBAIBACgAABFIAACCQAgAAgRQAAAikAABAIAUAAAIpAAAQSAEAgEAKAAAEUgAAIJACAACBFAAACKQAAEAgBQAAAikAABBIAQCAQAoAAARSAAAgkAIAAIEUAAAIpAAAQCAFAAACKQAAEEgBAIBACgAABPoDzAJODyx2+qwAAAAASUVORK5CYII="></div><div style="vertical-align: middle; max-width: 514px; display: flex; justify-content: space-between;"><div style="float: left;"><div title="#30123bff" style="display: inline-block; width: 1em; height: 1em; margin: 0; vertical-align: middle; border: 1px solid #555; background-color: #30123bff;"></div> under</div><div style="margin: 0 auto; display: inline-block;">bad <div title="#00000000" style="display: inline-block; width: 1em; height: 1em; margin: 0; vertical-align: middle; border: 1px solid #555; background-color: #00000000;"></div></div><div style="float: right;">over <div title="#7b0402ff" style="display: inline-block; width: 1em; height: 1em; margin: 0; vertical-align: middle; border: 1px solid #555; background-color: #7b0402ff;"></div></div></div></div>
 </div>
 <p>Phew! It looks good. Now we can give this to the unmapping function.</p>
 </section>
@@ -332,10 +332,10 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x7f53ae544700&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x7feb0c1be890&gt;
 </pre></div>
 </div>
-<img alt="../_images/2760f0eb81f0ffb31c50662cf4406b98916ef8600974805fe475313822d673af.png" src="../_images/2760f0eb81f0ffb31c50662cf4406b98916ef8600974805fe475313822d673af.png" />
+<img alt="../_images/345a6b5532408b938d5d6b391b8a2a3e7b7a5468e04a931e756419991781aab9.png" src="../_images/345a6b5532408b938d5d6b391b8a2a3e7b7a5468e04a931e756419991781aab9.png" />
 </div>
 </div>
 <p>Or we can plot it with the colourmap we recovered:</p>
@@ -346,10 +346,10 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x7f53ae3bab30&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x7feb0c021a80&gt;
 </pre></div>
 </div>
-<img alt="../_images/3c25bdc16249129cbba7d008f94d70274c11a4fdcd742699c3f056642453951e.png" src="../_images/3c25bdc16249129cbba7d008f94d70274c11a4fdcd742699c3f056642453951e.png" />
+<img alt="../_images/9c0ff0ddf29e08cad8a8453074a0eaaea7ea37da372a227bbadd75f0f57afb58.png" src="../_images/9c0ff0ddf29e08cad8a8453074a0eaaea7ea37da372a227bbadd75f0f57afb58.png" />
 </div>
 </div>
 <p>Or, in this case, we can use the colourmap we know was applied originally to create the image:</p>
@@ -360,10 +360,10 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x7f53ae44c6a0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x7feb0c083430&gt;
 </pre></div>
 </div>
-<img alt="../_images/40f214449e284e8be1581165f2ad5b1a78d11f2a29b4ca260cb1fc517a865abf.png" src="../_images/40f214449e284e8be1581165f2ad5b1a78d11f2a29b4ca260cb1fc517a865abf.png" />
+<img alt="../_images/994601365afa498e7dcee62252baed734b438658b80851324c6a71f1e8ddc38a.png" src="../_images/994601365afa498e7dcee62252baed734b438658b80851324c6a71f1e8ddc38a.png" />
 </div>
 </div>
 <p>These results look very close.</p>
@@ -376,10 +376,10 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.colorbar.Colorbar at 0x7f53ae2b7040&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.colorbar.Colorbar at 0x7feb0bf16020&gt;
 </pre></div>
 </div>
-<img alt="../_images/1ab8b1b929dd98326dcdface11db439aeea87ef9f4b6cc6e0c55a6181dc1b2e5.png" src="../_images/1ab8b1b929dd98326dcdface11db439aeea87ef9f4b6cc6e0c55a6181dc1b2e5.png" />
+<img alt="../_images/7116c82eba639f3b5b648915a990378689cd48e3b449be5186b9ab955bcc6df6.png" src="../_images/7116c82eba639f3b5b648915a990378689cd48e3b449be5186b9ab955bcc6df6.png" />
 </div>
 </div>
 <p>The absolute error seems to go up to a little above 8% in some areas. Each colourmap has its own error profile, but this order of error magnitude is typical.</p>
@@ -396,10 +396,10 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x7f53ae126860&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x7feb0bd8d720&gt;
 </pre></div>
 </div>
-<img alt="../_images/897241cfab0bb1d7dc4341075216d5ebcbba23668255a0acaa79451b5dea28da.png" src="../_images/897241cfab0bb1d7dc4341075216d5ebcbba23668255a0acaa79451b5dea28da.png" />
+<img alt="../_images/4047c7a73f3ac7ee3df8e8e97e6b666dbc9187d024bd34ebdcf3487c6c3aa5a7.png" src="../_images/4047c7a73f3ac7ee3df8e8e97e6b666dbc9187d024bd34ebdcf3487c6c3aa5a7.png" />
 </div>
 </div>
 <p>Nice. If it works.</p>
