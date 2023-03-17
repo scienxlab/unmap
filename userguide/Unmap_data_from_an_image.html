@@ -232,17 +232,17 @@
 <p>Let’s write a little function to load images from the Internet and transform them into NumPy arrays.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">io</span> <span class="kn">import</span> <span class="n">BytesIO</span>
-
-<span class="kn">import</span> <span class="nn">requests</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">from</span> <span class="nn">PIL</span> <span class="kn">import</span> <span class="n">Image</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">urllib.request</span> <span class="kn">import</span> <span class="n">urlretrieve</span>
+<span class="kn">import</span> <span class="nn">ssl</span>
 
+<span class="n">ssl</span><span class="o">.</span><span class="n">_create_default_https_context</span> <span class="o">=</span> <span class="n">ssl</span><span class="o">.</span><span class="n">_create_unverified_context</span>
 
 <span class="k">def</span> <span class="nf">get_image_from_web</span><span class="p">(</span><span class="n">uri</span><span class="p">):</span>
-    <span class="n">data</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">uri</span><span class="p">)</span><span class="o">.</span><span class="n">content</span>
-    <span class="n">img</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">BytesIO</span><span class="p">(</span><span class="n">data</span><span class="p">))</span><span class="o">.</span><span class="n">convert</span><span class="p">(</span><span class="s1">&#39;RGB&#39;</span><span class="p">)</span>
+    <span class="n">f</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">urlretrieve</span><span class="p">(</span><span class="n">uri</span><span class="p">)</span>
+    <span class="n">img</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">f</span><span class="p">)</span><span class="o">.</span><span class="n">convert</span><span class="p">(</span><span class="s1">&#39;RGB&#39;</span><span class="p">)</span>
     <span class="n">rgb_im</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">img</span><span class="p">)[</span><span class="o">...</span><span class="p">,</span> <span class="p">:</span><span class="mi">3</span><span class="p">]</span> <span class="o">/</span> <span class="mf">255.</span>
     <span class="k">return</span> <span class="n">rgb_im</span>
 
@@ -256,10 +256,10 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x7f8861bf2b60&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x7f10444e0850&gt;
 </pre></div>
 </div>
-<img alt="../_images/588459ca4d8be10088709b58a142948abb4975d1f5850d28f5095ef0f4c46b30.png" src="../_images/588459ca4d8be10088709b58a142948abb4975d1f5850d28f5095ef0f4c46b30.png" />
+<img alt="../_images/3fd7f79479fdbb6f3117835de526263e3969ac3607895d8bc1dbd422d80abeeb.png" src="../_images/3fd7f79479fdbb6f3117835de526263e3969ac3607895d8bc1dbd422d80abeeb.png" />
 </div>
 </div>
 </section>
@@ -287,7 +287,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/2538f936e791cc9314d5313373fa52f710c2efb0ffa94491986ca6901f423a06.png" src="../_images/2538f936e791cc9314d5313373fa52f710c2efb0ffa94491986ca6901f423a06.png" />
+<img alt="../_images/dbac177bb201db261f373b75b49585efbdc15dd25f92251e0ecda5c855070eb2.png" src="../_images/dbac177bb201db261f373b75b49585efbdc15dd25f92251e0ecda5c855070eb2.png" />
 </div>
 </div>
 <p>Notice that the data is there, but so is the colourbar. We can use the <code class="docutils literal notranslate"><span class="pre">crop</span></code> argument to deal with this, getting the coordinates we need (left, top, right, bottom) from mousing over the image in an image editor such as <a class="reference external" href="https://www.gimp.org/">GIMP</a>.</p>
@@ -304,7 +304,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/c941be44073605a195b26fb9d49079549d274a6154741b8114647914cf48d9c1.png" src="../_images/c941be44073605a195b26fb9d49079549d274a6154741b8114647914cf48d9c1.png" />
+<img alt="../_images/4aa1f67cad1fe716dbcce22286b761763dd58d8f52b06ea3cf568f6c66b987c6.png" src="../_images/4aa1f67cad1fe716dbcce22286b761763dd58d8f52b06ea3cf568f6c66b987c6.png" />
 </div>
 </div>
 <p>We can plot this side by side with the original data, using the same colourmap, as a rough quality check:</p>
@@ -322,7 +322,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/0d826f05c67c93903d16bffb22877e0c82c841abc7f7649b41b51c485ca31729.png" src="../_images/0d826f05c67c93903d16bffb22877e0c82c841abc7f7649b41b51c485ca31729.png" />
+<img alt="../_images/0c72a5cad43a851b41824b7bb8dd5fefac9b64d3cf0de66be510c873ec28dd04.png" src="../_images/0c72a5cad43a851b41824b7bb8dd5fefac9b64d3cf0de66be510c873ec28dd04.png" />
 </div>
 </div>
 </section>
@@ -338,10 +338,10 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x7f884ba381c0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x7f1014770bb0&gt;
 </pre></div>
 </div>
-<img alt="../_images/2893f3db3328fa725cf9b47ea8c369ab38a217b98a8f720d6b7119828c0f19d4.png" src="../_images/2893f3db3328fa725cf9b47ea8c369ab38a217b98a8f720d6b7119828c0f19d4.png" />
+<img alt="../_images/7291c1bef6c544db01482b3890dd94a59b35e89032836aab16bf8d1a79dc9b85.png" src="../_images/7291c1bef6c544db01482b3890dd94a59b35e89032836aab16bf8d1a79dc9b85.png" />
 </div>
 </div>
 <p>Awesome. This image is perfect for testing our function, because it has various challenges:</p>
@@ -363,10 +363,10 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x7f884bab54e0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x7f10147e5780&gt;
 </pre></div>
 </div>
-<img alt="../_images/be2450100908ee7bdbd950ae01aaf80cccd101d7eba6980a9256abfa7c33580b.png" src="../_images/be2450100908ee7bdbd950ae01aaf80cccd101d7eba6980a9256abfa7c33580b.png" />
+<img alt="../_images/0424662aaa87554fe1759e132030e0b66cc4e61d126b86ef0429ee418cc1e4a4.png" src="../_images/0424662aaa87554fe1759e132030e0b66cc4e61d126b86ef0429ee418cc1e4a4.png" />
 </div>
 </div>
 <p>Not all that great, but it’s a start. It looks like we’ll need to tidy up the edges a bit; they are all ragged because of JPEG compression artefacts.</p>
@@ -384,10 +384,10 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x7f884bbb7580&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x7f1014862bf0&gt;
 </pre></div>
 </div>
-<img alt="../_images/6207383e72a919573de2b45809ca29d5f4e479c70440affd952ab925ac885775.png" src="../_images/6207383e72a919573de2b45809ca29d5f4e479c70440affd952ab925ac885775.png" />
+<img alt="../_images/fa54bafa1ae03e25446f5da4e558610ed6c03a04c1dd444ad21323c7299b6a9e.png" src="../_images/fa54bafa1ae03e25446f5da4e558610ed6c03a04c1dd444ad21323c7299b6a9e.png" />
 </div>
 </div>
 <p>And blank out the colourmap area:</p>
@@ -402,10 +402,10 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x7f884bcb7eb0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x7f1029ccb610&gt;
 </pre></div>
 </div>
-<img alt="../_images/9376f2dbf5d6390a9ff855b0c984c53b7e4ac2b049d47fa6b768d13ef058ed61.png" src="../_images/9376f2dbf5d6390a9ff855b0c984c53b7e4ac2b049d47fa6b768d13ef058ed61.png" />
+<img alt="../_images/f31f303a1a063d3da7ee3ea2d142c4dcf01345c7f275645859df72b19083c0e4.png" src="../_images/f31f303a1a063d3da7ee3ea2d142c4dcf01345c7f275645859df72b19083c0e4.png" />
 </div>
 </div>
 <p>Now we can use this mask to pretty up our result:</p>
@@ -420,10 +420,10 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.contour.QuadContourSet at 0x7f884bc107f0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.contour.QuadContourSet at 0x7f101494da80&gt;
 </pre></div>
 </div>
-<img alt="../_images/d5afbccf9166652f91348e4f686b5fa0b5b3ddb34d4ecf3763494b9fd2556db3.png" src="../_images/d5afbccf9166652f91348e4f686b5fa0b5b3ddb34d4ecf3763494b9fd2556db3.png" />
+<img alt="../_images/999e66f6bd98c0c90fd13855500dc77ee024779b96c8880b2d0201800349ad97.png" src="../_images/999e66f6bd98c0c90fd13855500dc77ee024779b96c8880b2d0201800349ad97.png" />
 </div>
 </div>
 <p>You can still see the JPEG compression artefacts in the data. We could apply some smoothing, but now we’re getting into interpretation territory…</p>
