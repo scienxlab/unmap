@@ -1,7 +1,7 @@
 # unmap
 
-[![Run tests](https://github.com/kwinkunks/unmap/actions/workflows/run-tests.yml/badge.svg)](https://github.com/kwinkunks/unmap/actions/workflows/run-tests.yml)
-[![Build docs](https://github.com/kwinkunks/unmap/actions/workflows/build-docs.yml/badge.svg)](https://github.com/kwinkunks/unmap/actions/workflows/build-docs.yml)
+[![Run tests](https://github.com/scienxlab/unmap/actions/workflows/run-tests.yml/badge.svg)](https://github.com/scienxlab/unmap/actions/workflows/run-tests.yml)
+[![Build docs](https://github.com/scienxlab/unmap/actions/workflows/build-docs.yml/badge.svg)](https://github.com/scienxlab/unmap/actions/workflows/build-docs.yml)
 [![PyPI version](https://img.shields.io/pypi/v/unmap.svg)](https://pypi.org/project/unmap//)
 [![PyPI versions](https://img.shields.io/pypi/pyversions/unmap.svg)](https://pypi.org/project/unmap//)
 [![PyPI license](https://img.shields.io/pypi/l/unmap.svg)](https://pypi.org/project/unmap/)
@@ -44,12 +44,12 @@ There are `dev`, `test` and `docs` options for installing dependencies for those
 
 ## Documentation
 
-Read [the documentation](https://kwinkunks.github.io/unmap), especially [the examples](https://kwinkunks.github.io/unmap/userguide/Unmap_data_from_an_image.html).
+Read [the documentation](https://scienxlab.github.io/unmap), especially [the examples](https://scienxlab.github.io/unmap/userguide/Unmap_data_from_an_image.html).
 
 
 ## Contributing
 
-Take a look at [`CONTRIBUTING.md`](https://github.com/kwinkunks/unmap/blob/main/CONTRIBUTING.md).
+Take a look at [`CONTRIBUTING.md`](https://github.com/scienxlab/unmap/blob/main/CONTRIBUTING.md).
 
 
 ## Testing
