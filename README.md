@@ -25,12 +25,12 @@ Of these projects, only Yuan et al. ('deep colormap extraction') requires no _a 
 
 ## Stack Exchange questions about this topic
 
-- https://datascience.stackexchange.com/questions/27247/can-i-get-numeric-data-from-a-color-map
-- https://stackoverflow.com/questions/71090534/how-to-extract-a-colormap-from-a-colorbar-image-and-use-it-in-a-heatmap
-- https://stackoverflow.com/questions/63233529/given-a-jpg-of-2d-colorplot-colorbar-how-can-i-sample-the-image-to-extract-n
-- https://stackoverflow.com/questions/3720840/how-to-reverse-a-color-map-image-to-scalar-values
-- https://stackoverflow.com/questions/62267694/extract-color-table-values
-- https://stackoverflow.com/questions/14445102/invert-not-reverse-a-colormap-in-matplotlib
+- [Can I get numeric data from a color map?](https://datascience.stackexchange.com/questions/27247/can-i-get-numeric-data-from-a-color-map)
+- [How to extract a colormap from a colorbar image and use it in a heatmap?](https://stackoverflow.com/questions/71090534/how-to-extract-a-colormap-from-a-colorbar-image-and-use-it-in-a-heatmap)
+- [Given a JPG of 2D colorplot colorbar how can I sample the image to extract data?](https://stackoverflow.com/questions/63233529/given-a-jpg-of-2d-colorplot-colorbar-how-can-i-sample-the-image-to-extract-n)
+- [How to reverse a colormap image to scalar values?](https://stackoverflow.com/questions/3720840/how-to-reverse-a-color-map-image-to-scalar-values)
+- [Extract color table values?](https://stackoverflow.com/questions/62267694/extract-color-table-values)
+- [Invert not reverse a colormap in maptplotlib](https://stackoverflow.com/questions/14445102/invert-not-reverse-a-colormap-in-matplotlib)
 
 
 ## Installation
