@@ -44,7 +44,7 @@ There are `dev`, `test` and `docs` options for installing dependencies for those
 
 ## Documentation
 
-Read [the documentation](https://scienxlab.github.io/unmap), especially [the examples](https://scienxlab.github.io/unmap/userguide/Unmap_data_from_an_image.html).
+Read [the documentation](https://scienxlab.org/unmap), especially [the examples](https://scienxlab.org/unmap/userguide/Unmap_data_from_an_image.html).
 
 
 ## Contributing
